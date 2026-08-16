@@ -4,14 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Personal portfolio site for Alessandro Saldanha: React 19 + Vite (JS, not TypeScript), client-side routed with React Router, styled with the Orla design system tokens (see Design reference below). Content (projects, posts, timeline, socials) is real, ported from the original design mockup.
+Personal portfolio site for Alessandro Saldanha: React 19 + Vite (JS, not TypeScript), client-side routed with React Router, styled with the Orla design system tokens (see Reference material below). Content (projects, posts, timeline, socials) is real, ported from the original design mockup.
 
 ## Commands
 
 - `npm run dev` — start the Vite dev server with HMR
 - `npm run build` — production build
 - `npm run preview` — preview the production build locally
-- `npm run lint` — lint with Oxlint (ignores [design/](design/) via `ignorePatterns` in [.oxlintrc.json](.oxlintrc.json) — that folder is reference material, not app code)
+- `npm run lint` — lint with Oxlint (ignores [reference/](reference/) via `ignorePatterns` in [.oxlintrc.json](.oxlintrc.json) — that folder is reference material, not app code)
 
 There is no test runner configured yet. If tests are added later, document the run/single-test commands here.
 
@@ -20,19 +20,26 @@ There is no test runner configured yet. If tests are added later, document the r
 - Entry point: [src/main.jsx](src/main.jsx) wraps [src/App.jsx](src/App.jsx) in `BrowserRouter` and mounts it into `index.html`.
 - [src/App.jsx](src/App.jsx) owns the route table and the dark/light theme state (persisted to `localStorage`, applied as `data-theme` on `<html>`, defaulting to dark) and renders the persistent `Header`/`Footer` around each page.
 - Routes → pages in [src/pages/](src/pages/): `/` (Home), `/projetos` + `/projetos/:slug` (list/detail), `/blog` + `/blog/:slug` (list/detail), `/sobre`, `/contato`.
-- Content lives in [src/data/](src/data/) as plain JS modules (`projects.js`, `posts.js`, `companies.js`, `timeline.js`, `stack.js`, `social.js`) — no CMS or backend. To add a project or post, add an entry to the relevant array; listing pages, filters, and prev/next navigation update automatically.
+- Content lives in [src/data/](src/data/) as plain JS modules (`projects.js`, `posts.js`, `companies.js`, `timeline.js`, `stack.js`, `social.js`) — no CMS or backend. To add a project, post, or marquee company, add an entry to the relevant array (see README.md); listing pages, filters, and prev/next navigation update automatically.
 - `src/data/social.js` has `TODO` placeholders (WhatsApp number, GitHub/Facebook/Instagram handles) — fill these in with real values before treating the site as launch-ready.
-- Styling is global CSS, not CSS-in-JS or Tailwind: [src/styles/tokens/](src/styles/tokens/) are the Orla design system's token files (colors, typography, spacing, effects, fonts, base — copied verbatim from `design/_ds/`), and [src/styles/site.css](src/styles/site.css) has the component/layout classes built on those tokens. Both are imported once via [src/index.css](src/index.css).
-- Bundler config: [vite.config.js](vite.config.js) uses `@vitejs/plugin-react` (Oxc-based, not the SWC variant).
+- Styling is global CSS, not CSS-in-JS or Tailwind: [src/styles/tokens/](src/styles/tokens/) are the Orla design system's token files (colors, typography, spacing, effects, fonts, base), and [src/styles/site.css](src/styles/site.css) has the component/layout classes built on those tokens. Both are imported once via [src/index.css](src/index.css). `spacing.css` and `effects.css` currently define no tokens (see below) but are kept as empty files in the import chain.
+- **Tokens are trimmed, not the full design system.** Only the ~44 custom properties actually consumed by `src/` were kept in `src/styles/tokens/*.css` (verified by grep — see `docs/AUDITORIA-ESTRUTURA.md`, Fase 4). Before adding a new component that might want a color/spacing/shadow value not currently defined, check [reference/design-system/tokens/](reference/design-system/tokens/) for the full original Orla set and copy the specific token(s) needed into `src/styles/tokens/` — don't import from `reference/` directly, and don't restore the whole file wholesale.
+- `src/styles/tokens/base.css` also defines 9 `.orla-*` utility classes (`.orla-display`, `.orla-h1`–`.orla-h4`, `.orla-body`, `.orla-small`, `.orla-eyebrow`, `.orla-mono`) that no page currently uses — `site.css` has its own component classes instead. Kept deliberately (not orphaned) because they may be useful for sections of the mockup not yet migrated (see below).
+- Import alias: `@/` → `src/` is configured in `jsconfig.json` and `vite.config.js` (`resolve.alias`), reserved for imports that climb two or more directory levels. Nothing in the codebase currently needs it — every existing import is a sibling (`./Foo`) or one level up (`../data/x`); don't convert those to `@/` just for the sake of using the alias.
+- Bundler config: [vite.config.js](vite.config.js) uses `@vitejs/plugin-react` (Oxc-based, not the SWC variant); `server.watch.ignored` excludes `reference/**` so editing reference material doesn't trigger HMR.
 - `.claude/skills/` and `.claude/.agentes/` hold project-specific Claude Code skills and agent definitions.
 
-## Design reference
+## Reference material
 
-[design/](design/) holds material extracted from Claude Design — reference only, not imported by the build:
+[reference/](reference/) holds material extracted from Claude Design — reference only, not imported by the build, excluded from lint/watcher/editor search:
 
-- `Portfolio Alessandro.dc.html` + `support.js` + `thumbnail.webp` — the original visual mockup/prototype (a declarative template with `{{ }}` bindings and `<sc-if>`/`<sc-for>` custom elements, not runnable as-is). `src/pages/` + `src/styles/site.css` are a hand-built React port of this.
-- `_ds/ds-orla-.../` — the Orla design system the mockup is built on (tokens, bundled components, `readme.md`); `src/styles/tokens/` is a copy of its `tokens/*.css`. This is the design system of Orla (orla.tech), the user's employer — used here as the visual foundation for the portfolio, not to be reused outside this project without checking, and worth keeping in mind if this repo is ever made public.
-- `handoff/README.md` — a *proposed* alternative architecture (Next.js 14 App Router + TypeScript strict + Tailwind + MDX) that was **not** taken; the site was built directly into the existing Vite + JS setup instead. Its `data/*.ts` files are schema scaffolds only (empty arrays) — the real content is in `src/data/*.js`, not there.
+- `reference/mockup/Portfolio Alessandro.dc.html` + `support.js` + `thumbnail.webp` — the original visual mockup/prototype (a declarative template with `{{ }}` bindings and `<sc-if>`/`<sc-for>` custom elements, not runnable as-is; opens correctly via `file://` if you need to check it — its relative asset paths were fixed after the folder move). `src/pages/` + `src/styles/site.css` are a hand-built React port of the sections that exist; check the mockup before assuming a section is fully covered.
+- `reference/design-system/` — the Orla design system the mockup is built on (full token set, bundled components, `readme.md`). `src/styles/tokens/` started as a copy of `tokens/*.css` from here, then was trimmed to what's actually used (see Architecture above).
+- `reference/handoff-proposal/README.md` — a *proposed* alternative architecture (Next.js 14 App Router + TypeScript strict + Tailwind + MDX) that was **not** taken; the site was built directly into the existing Vite + JS setup instead. Its `data/*.ts` scaffold files were deleted (empty/never populated) — the real content is in `src/data/*.js`.
+
+This folder is the design system of Orla (orla.tech), the user's employer — used here as the visual foundation for the portfolio, not to be reused outside this project without checking, and worth keeping in mind since this repo is public.
+
+The full migration history (what was audited, decided, and executed phase by phase) is in [docs/AUDITORIA-ESTRUTURA.md](docs/AUDITORIA-ESTRUTURA.md).
 
 ## Branches and releases
 

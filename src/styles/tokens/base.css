@@ -2,6 +2,12 @@
    Orla — Base element styles & typography helpers
    Lightweight reset + brand defaults. Sets the editorial tone:
    Archivo body on a warm/white surface, Inter Tight headings.
+
+   The .orla-* helper classes below aren't used by any page yet (site.css
+   has its own component classes) — kept for sections of the mockup still
+   to be migrated. The full original Orla design system token set is
+   preserved at reference/design-system/tokens/ — see
+   docs/AUDITORIA-ESTRUTURA.md (Fase 4).
    ────────────────────────────────────────────────────────────── */
 
 *,

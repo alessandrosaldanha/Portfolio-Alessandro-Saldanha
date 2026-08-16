@@ -8,6 +8,9 @@
    (Eastman Alternate Trial) which is a licensed/trial font and is NOT
    bundled. Use the supplied logo SVG assets for the wordmark; never
    re-typeset "orla" in a substitute font.
+
+   The full original Orla design system token set is preserved at
+   reference/design-system/tokens/ — see docs/AUDITORIA-ESTRUTURA.md (Fase 4).
    ────────────────────────────────────────────────────────────── */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Comfortaa:wght@400;500;600;700&display=swap');

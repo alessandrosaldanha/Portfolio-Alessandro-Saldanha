@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "target": "ES2022",
+    "jsx": "react-jsx"
+  },
+  "exclude": ["node_modules", "dist", ".tmp", "reference"]
+}

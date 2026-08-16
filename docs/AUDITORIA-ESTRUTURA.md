@@ -300,3 +300,34 @@ Coisas que não posso decidir sozinho:
 3. **`@types/react`/`@types/react-dom`: remover ou manter?** Não têm efeito de build hoje, mas alguma extensão do seu editor pode depender delas para autocomplete em `.jsx` sem `tsconfig.json` — não testei isso especificamente (fora do escopo desta auditoria "não rode instalações"), então não posso garantir que remover é 100% inofensivo para a experiência do editor, só para o build.
 4. **Exclusão de pastas do editor é configuração local (`.vscode/settings.json` ou equivalente), não arquivo versionado por padrão** — preciso saber se você quer isso committado pro time (se algum dia houver time) ou só na sua máquina.
 5. **O número exato "456"**: não consegui reproduzi-lo pelo terminal porque o painel de Problemas do VS Code agrega motores de diagnóstico (CSS language service, TS/JS language service, possivelmente extensões) que não são invocáveis via `npm run lint`. Se quiser o número exato batido, a forma de confirmar é abrir o painel de Problemas, agrupar por pasta, e ver se `design/` concentra a contagem — isso eu não tenho como fazer pelo ambiente onde rodo comandos.
+
+## 7. Fechamento — o que foi executado
+
+Migração concluída em 4 fases, cada uma commitada isoladamente. Resumo por fase:
+
+**Fase 1 — isolar o material de referência.** `design/` → `reference/`, reorganizada em `mockup/`, `design-system/` (achatando a pasta com hash) e `handoff-proposal/`. `.oxlintrc.json` (`ignorePatterns`), `.vscode/settings.json` (`search.exclude`, `files.watcherExclude`) e `vite.config.js` (`server.watch.ignored`) passaram a excluir `reference/`. Adições não previstas originalmente, mas necessárias: `vite.config.js` precisou do `watch.ignored` pra de fato sair do escopo do Vite (só documentar não bastava); os 8 caminhos relativos dentro do mockup precisaram ser corrigidos (`_ds/ds-orla-.../` → `../design-system/`) para o arquivo continuar abrindo com estilo correto depois da reorganização. Verificado renderizando o mockup via `file://` — 0 requisições falhas.
+
+**Fase 2 — remover o que estava morto.** Removidos `reference/handoff-proposal/data/{companies,projects,social}.ts` (scaffold vazio/desatualizado, comparado lado a lado com `src/data/social.js` antes de confirmar que nenhuma URL real seria perdida). `reference/handoff-proposal/README.md` preservado. `@types/react`/`@types/react-dom` **reclassificados** de "sem uso" para "usados por tooling de editor" e mantidos — decisão revista depois de eu apontar que alimentam a aquisição automática de tipos do VS Code em `.jsx` mesmo sem `tsconfig`.
+
+**Fase 3 — consolidar o sistema de estilos.** Achado principal: **não havia nada para consolidar em tempo de execução**. A fonte única de verdade já existia em `src/` desde a Fase 1 (a "duplicação" era só arquivo-a-arquivo com `reference/`, nunca carregada pelo navegador). Zero mudança de CSS nesta fase. Produziu o inventário de 87 tokens órfãos usado na Fase 4. A metodologia de comparação visual usada aqui (hash de PNG) foi **identificada como falha** depois — não distingue regressão de ruído de captura (a animação do marquee e possível jitter de rasterização de fonte geram hash diferente sem mudança de código) — e foi substituída na Fase 4.
+
+**Fase 4 — normalizar estrutura, configs e docs.**
+- Comparação visual corrigida: `pixelmatch` + `pngjs` instalados como devDependency; capturas com `animations: 'disabled'`; resultado: **0 pixels diferentes em 16 combinações rota×viewport** (8 rotas × 2 viewports) entre antes/depois da limpeza de tokens.
+- Removidos os 87 tokens órfãos (re-verificados um a um com regex de word-boundary antes de apagar). Achado não previsto: `spacing.css` e `effects.css` ficaram **100% vazios** — nenhum dos seus tokens (escala de espaçamento, raios, containers, z-index, sombras, easing/duration) é consumido em lugar nenhum de `src/`; `site.css` foi escrito com valores px/`clamp()` literais, herdados do mockup, em vez de referenciar essa escala. Os arquivos foram mantidos (vazios, só com comentário) para não alterar a cadeia de import. As 9 classes `.orla-*` de `base.css` foram mantidas intocadas, como decidido.
+- `jsconfig.json` criado com alias `@/` → `src/`, espelhado em `vite.config.js` (`resolve.alias`). **Nenhum import foi migrado**: zero import em `src/` sobe dois níveis ou mais (o critério definido) — todos são `./irmão` ou `../data/x` (um nível). O alias fica pronto para uso futuro, não há uso retroativo.
+- Estrutura de `src/` já correspondia à árvore-alvo proposta na Fase 4 original — nada foi movido.
+- `.gitignore` já refletia as revisões acumuladas das fases anteriores — nada adicional.
+- `CLAUDE.md` e `README.md` reescritos para o estado final (estrutura, `reference/`, convenção de import, como adicionar projeto/post/empresa, pendências).
+
+### Divergências do proposto originalmente
+
+- Fase 3 não gerou nenhuma mudança de arquivo — o objetivo já estava atingido como efeito colateral da Fase 1.
+- Duas adições de escopo não previstas na Fase 1 (correção de paths do mockup, `watch.ignored` do Vite) foram necessárias para cumprir literalmente o que a própria Fase 1 pedia.
+- Metodologia de verificação visual trocada no meio do plano (hash → pixelmatch) por correção explicita de metodologia.
+
+### O que ficou em aberto
+
+- **9 classes `.orla-*` em `base.css`**: continuam sem uso por nenhuma página. Ficam preservadas para quando/se as seções do mockup ainda não portadas forem migradas.
+- **Seções do mockup ainda não migradas**: `reference/mockup/Portfolio Alessandro.dc.html` continua sendo a referência visual completa; esta auditoria nunca enumerou exatamente quais seções (se houver) ainda faltam portar para `src/pages/` — vale um levantamento dedicado se o objetivo for confirmar cobertura total.
+- **404 de `/favicon.ico`**: ruído do navegador sondando um caminho que nunca existiu (só há `favicon.svg`), presente desde o commit inicial do scaffold. Nunca foi corrigido porque estava fora do escopo de cada fase que o notou.
+- **Número exato "456" do painel de Problemas**: nunca confirmado empiricamente. O que mudou de fato: `reference/` agora está fora da busca do editor, do watcher do Vite, do lint do projeto e do `jsconfig.json` — a superfície de arquivos que o editor analisa como parte do projeto é a menor possível sem apagar o material de referência.
