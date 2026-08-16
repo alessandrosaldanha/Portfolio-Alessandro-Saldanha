@@ -12,10 +12,10 @@ export default function Home() {
   return (
     <main>
       <section className="container hero" data-rise>
-        <p className="eyebrow">Maceió · AL — remoto para o Brasil</p>
+        <p className="eyebrow">Maceió · AL · remoto para o Brasil</p>
         <h1 className="hero-title">Desenvolvedor full-stack. Do schema ao deploy.</h1>
         <p className="hero-lede">
-          Construo SaaS com React, Next.js e PostgreSQL — e documento por que cada decisão foi
+          Construo SaaS com React, Next.js e PostgreSQL. Documento por que cada decisão foi
           tomada, incluindo as que deram trabalho. Hoje na Orla.tech; à noite, dois produtos
           próprios no ar.
         </p>

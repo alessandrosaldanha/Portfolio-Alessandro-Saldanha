@@ -15,8 +15,8 @@ export default function Sobre() {
             como ANBIMA, RD Group e Conviva Hotelaria.
           </p>
           <p className="detail-text" style={{ marginTop: 18 }}>
-            Fora do expediente mantenho dois SaaS próprios no ar — um de gestão financeira para
-            igrejas e outro de escalas de ministérios. É neles que eu erro à vontade: modelagem
+            Fora do expediente mantenho dois SaaS próprios no ar. São um de gestão financeira
+            para igrejas e outro de escalas de ministérios. É neles que eu erro à vontade: modelagem
             multi-tenant, RLS, refatoração de estado, e-mail transacional. O que aprendo ali
             costuma virar post.
           </p>

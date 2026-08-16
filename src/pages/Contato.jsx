@@ -14,7 +14,7 @@ export default function Contato() {
     <main className="container" style={{ maxWidth: 1080, paddingTop: 'clamp(48px, 8vw, 96px)', paddingBottom: 'clamp(64px, 10vw, 120px)' }}>
       <h1 className="page-title">Contato</h1>
       <p className="page-lede" style={{ fontSize: 18, marginBottom: 48 }}>
-        Freelance, CLT ou só uma dúvida técnica — pode chamar. Respondo em até um dia útil.
+        Seja freelance, CLT ou só uma dúvida técnica, pode chamar. Respondo em até um dia útil.
       </p>
 
       <div className="contato-grid">
