@@ -10,7 +10,7 @@ export default function Blog() {
   const filtered = tag === 'Todas' ? posts : posts.filter((p) => p.tags.includes(tag))
 
   return (
-    <main className="container">
+    <main className="container" style={{ paddingBottom: 'clamp(64px, 10vw, 120px)' }}>
       <div className="page-header">
         <h1 className="page-title">Blog</h1>
         <p className="page-lede">Notas técnicas tiradas do que quebrou nos meus projetos.</p>

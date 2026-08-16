@@ -15,7 +15,7 @@ export default function Projetos() {
     filter === 'Todos' ? projects : projects.filter((p) => p.type === filter || p.stack.includes(filter))
 
   return (
-    <main className="container">
+    <main className="container" style={{ paddingBottom: 'clamp(64px, 10vw, 120px)' }}>
       <div className="page-header">
         <h1 className="page-title">Projetos</h1>
         <p className="page-lede">

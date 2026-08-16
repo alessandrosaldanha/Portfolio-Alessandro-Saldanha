@@ -21,7 +21,7 @@ export default function Post() {
     .filter((b) => b.kind === 'heading')
 
   return (
-    <main className="container" style={{ maxWidth: 1180 }}>
+    <main className="container" style={{ maxWidth: 1180, paddingBottom: 'clamp(64px, 10vw, 120px)' }}>
       <Link to="/blog" className="back-link">
         ← blog
       </Link>
