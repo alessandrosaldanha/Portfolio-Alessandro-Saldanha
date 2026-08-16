@@ -262,48 +262,34 @@ a:hover {
 .marquee-track:hover {
   animation-play-state: paused;
 }
+.marquee-group {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.marquee-item-wrap {
+  display: flex;
+  align-items: center;
+}
 .marquee-item {
   flex: 0 0 auto;
-  height: 56px;
-  min-width: 176px;
-  display: grid;
-  place-items: center;
-  padding: 0 22px;
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  filter: grayscale(1);
-  opacity: 0.58;
-  transition: filter 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
-}
-.marquee-item:hover {
-  filter: grayscale(0);
-  opacity: 1;
-  border-color: var(--border-default);
-}
-.marquee-item span {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 16px;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
+  color: var(--text-secondary);
   white-space: nowrap;
+  transition: color 0.2s ease;
 }
-.marquee-item-logo {
-  background: var(--neutral-950);
-  border-color: var(--neutral-950);
+.marquee-item:hover {
+  color: var(--text-primary);
 }
-.marquee-item-logo img {
-  height: 22px;
-  width: auto;
-  display: block;
-}
-.marquee-disclaimer {
-  max-width: 74ch;
-  margin: 28px auto 0;
-  padding: 0 clamp(16px, 5vw, 64px);
-  text-align: center;
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--text-tertiary);
+.marquee-sep {
+  margin: 0 clamp(14px, 2.5vw, 28px);
+  color: var(--border-default);
+  font-size: 14px;
 }
 
 /* ── Section headers ── */
@@ -1309,4 +1295,23 @@ a:hover {
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--text-tertiary);
+}
+
+/* ── Marquee: reduced motion ──
+   Overrides live last in the cascade so they win over the base
+   .marquee-mask / .marquee-track rules declared earlier in this file. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-mask {
+    overflow: visible;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  .marquee-track {
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .marquee-group[aria-hidden='true'] {
+    display: none;
+  }
 }

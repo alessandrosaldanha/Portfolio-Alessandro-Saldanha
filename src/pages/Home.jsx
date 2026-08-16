@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { companies, marqueeDisclaimer } from '../data/companies'
+import { orlaProjects } from '../data/companies'
 import { featuredProjects } from '../data/projects'
 import { posts } from '../data/posts'
 import { stackGroups } from '../data/stack'
@@ -7,7 +7,6 @@ import { waLink } from '../data/social'
 
 export default function Home() {
   const featured = featuredProjects()
-  const companiesLoop = companies.concat(companies)
 
   return (
     <main>
@@ -29,24 +28,38 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="marquee-section">
-        <p className="marquee-label">Empresas e clientes com que trabalhei</p>
+      <section className="marquee-section" aria-labelledby="orla-projects-title">
+        <h2 id="orla-projects-title" className="marquee-label">
+          Projetos entregues durante minha passagem pela Orla.tech
+        </h2>
         <div className="marquee-mask">
           <div className="marquee-track" data-marquee>
-            {companiesLoop.map((c, i) =>
-              c.logo ? (
-                <div key={c.name + i} title={c.name} className="marquee-item marquee-item-logo">
-                  <img src={c.logo} alt={c.name} />
-                </div>
-              ) : (
-                <div key={c.name + i} title={c.name} className="marquee-item">
-                  <span style={{ color: c.color }}>{c.name}</span>
-                </div>
-              ),
-            )}
+            <ul className="marquee-group">
+              {orlaProjects.map((p, i) => (
+                <li key={p.name} className="marquee-item-wrap">
+                  <span className="marquee-item">{p.name}</span>
+                  {i < orlaProjects.length - 1 && (
+                    <span className="marquee-sep" aria-hidden="true">
+                      ·
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+            <ul className="marquee-group" aria-hidden="true">
+              {orlaProjects.map((p, i) => (
+                <li key={p.name} className="marquee-item-wrap">
+                  <span className="marquee-item">{p.name}</span>
+                  {i < orlaProjects.length - 1 && (
+                    <span className="marquee-sep" aria-hidden="true">
+                      ·
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-        <p className="marquee-disclaimer">{marqueeDisclaimer}</p>
       </section>
 
       <section className="container section">
