@@ -39,7 +39,19 @@ There is no test runner configured yet. If tests are added later, document the r
 
 This folder is the design system of Orla (orla.tech), the user's employer — used here as the visual foundation for the portfolio, not to be reused outside this project without checking, and worth keeping in mind since this repo is public.
 
+`reference/` is intentionally versioned (not in `.gitignore`) — it's the audit trail for how the port was done, referenced directly from this file and from `docs/AUDITORIA-ESTRUTURA.md`.
+
 The full migration history (what was audited, decided, and executed phase by phase) is in [docs/AUDITORIA-ESTRUTURA.md](docs/AUDITORIA-ESTRUTURA.md).
+
+### VS Code Problems panel noise
+
+Most Problems-panel items in this repo (previously ~240, mostly on `src/styles/site.css` and `reference/mockup/Portfolio Alessandro.dc.html`) come from the **Microsoft Edge Tools** extension's bundled `webhint` linter, not from Oxlint, the build, or the built-in CSS/HTML language service — those stay clean (`npm run build` and `npm run lint` both pass). Its config lives in [.hintrc](.hintrc) at the repo root.
+
+`webhint` has no per-folder/per-file scoping (no `overrides`, no inline disable comments — confirmed against its docs and issue tracker), so `.hintrc` is necessarily project-wide. In practice this only mutes real noise: `compat-api/css` (browser-support warnings for `text-wrap: balance/pretty`, which degrade gracefully by design), `compat-api/html`, `no-inline-styles`, and `button-type` (the last two only ever fired on the generated `reference/mockup/*.dc.html`, which uses inline-style template bindings and non-interactive `<button>`s by construction — `index.html` and the JSX components already satisfy these hints natively).
+
+Left un-silenced, on purpose:
+- The "`transform`/`opacity` triggers Composite/Paint inside `@keyframes`" performance hints — inherent to any translate/opacity-based CSS animation (used by the marquee, rise-in, and mobile-nav-in animations); no webhint hint ID or documented VS Code setting was found to disable this specific check, and it's informational only (no build/runtime impact).
+- A handful of HTML best-practice hints on `reference/mockup/*.dc.html` (`<title>`, `lang` attribute, `sc-for`/`sc-if` custom elements inside `<ul>`) — that file is a frozen, generated Figma/dc-runtime artifact (see above), not hand-authored markup, so it isn't rewritten to satisfy a validator.
 
 ## Branches and releases
 
