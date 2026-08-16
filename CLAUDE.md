@@ -22,3 +22,8 @@ There is no test runner configured yet. If tests are added later, document the r
 - Linting: Oxlint, configured in [.oxlintrc.json](.oxlintrc.json) with the `react` and `oxc` plugins; `react/rules-of-hooks` is an error.
 - Plain JavaScript (JSX), no TypeScript — a TS template exists upstream if this project migrates later.
 - `.claude/skills/` and `.claude/.agentes/` are reserved for project-specific Claude Code skills and agent definitions, currently empty scaffolds.
+
+## Branches and releases
+
+- `main` is production; `hmg` is homologation/staging. Land features in `hmg` before merging to `main`.
+- Releases on `main` are automated by release-please ([.github/workflows/release-please.yml](.github/workflows/release-please.yml), [release-please-config.json](release-please-config.json)) — it parses Conventional Commits to bump the version and generate `CHANGELOG.md`. Commit messages must follow `feat:`, `fix:`, `chore:`, etc. for this to work correctly.
