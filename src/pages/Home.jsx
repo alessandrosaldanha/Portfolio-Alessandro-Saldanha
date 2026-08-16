@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import OrlaMarquee from '../components/OrlaMarquee'
 import { orlaProjects } from '../data/companies'
 import { featuredProjects } from '../data/projects'
 import { posts } from '../data/posts'
@@ -32,34 +33,7 @@ export default function Home() {
         <h2 id="orla-projects-title" className="marquee-label">
           Projetos entregues durante minha passagem pela Orla.tech
         </h2>
-        <div className="marquee-mask">
-          <div className="marquee-track" data-marquee>
-            <ul className="marquee-group">
-              {orlaProjects.map((p, i) => (
-                <li key={p.name} className="marquee-item-wrap">
-                  <span className="marquee-item">{p.name}</span>
-                  {i < orlaProjects.length - 1 && (
-                    <span className="marquee-sep" aria-hidden="true">
-                      ·
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ul>
-            <ul className="marquee-group" aria-hidden="true">
-              {orlaProjects.map((p, i) => (
-                <li key={p.name} className="marquee-item-wrap">
-                  <span className="marquee-item">{p.name}</span>
-                  {i < orlaProjects.length - 1 && (
-                    <span className="marquee-sep" aria-hidden="true">
-                      ·
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        <OrlaMarquee items={orlaProjects} />
       </section>
 
       <section className="container section">

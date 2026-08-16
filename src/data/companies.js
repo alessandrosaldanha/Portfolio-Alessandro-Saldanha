@@ -4,4 +4,6 @@ export const orlaProjects = [
   { name: 'Drogasil' },
   { name: 'Conviva Hotelaria' },
   { name: 'Papelzinho' },
+  { name: 'WeSafety' },
+  { name: 'FixInfra' },
 ]

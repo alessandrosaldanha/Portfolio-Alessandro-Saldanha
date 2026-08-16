@@ -18,7 +18,9 @@ body {
   min-height: 100vh;
   background: var(--surface-page);
   color: var(--text-primary);
-  transition: background 0.24s ease, color 0.24s ease;
+  transition:
+    background 0.24s ease,
+    color 0.24s ease;
 }
 
 a {
@@ -35,13 +37,26 @@ a:hover {
 }
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* --marquee-step is set from JS to the exact px width of one copy of the
+       marquee content (see OrlaMarquee.jsx) — the 50% fallback only covers the
+       first frame, before that measurement lands. */
+    transform: translateX(calc(-1 * var(--marquee-step, 50%)));
+  }
 }
 
 @keyframes riseIn {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 [data-rise] {
@@ -67,14 +82,17 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 40;
+  background: color-mix(in srgb, var(--surface-page) 86%, transparent);
+  -webkit-backdrop-filter-: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.site-header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 14px clamp(16px, 5vw, 64px);
-  background: color-mix(in srgb, var(--surface-page) 86%, transparent);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border-subtle);
+  padding-top: 14px;
+  padding-bottom: 14px;
 }
 
 .brand {
@@ -146,6 +164,152 @@ a:hover {
   background: var(--surface-sunken);
 }
 
+/* Header-level Contato: desktop only. Below 900px it lives inside the mobile
+   nav panel instead — the header bar only has room for the theme toggle and
+   the hamburger button before the wordmark starts wrapping. */
+a.header-contact {
+  display: none;
+}
+@media (min-width: 900px) {
+  a.header-contact {
+    display: inline-flex;
+  }
+}
+
+.nav-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+.nav-toggle:hover {
+  background: var(--surface-sunken);
+}
+@media (min-width: 900px) {
+  .nav-toggle {
+    display: none;
+  }
+}
+.nav-toggle-bars {
+  position: relative;
+  display: block;
+  width: 18px;
+  height: 13px;
+}
+.nav-toggle-bars span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    top 0.2s ease;
+}
+.nav-toggle-bars span:nth-child(1) {
+  top: 0;
+}
+.nav-toggle-bars span:nth-child(2) {
+  top: 50%;
+  margin-top: -1px;
+}
+.nav-toggle-bars span:nth-child(3) {
+  top: 100%;
+  margin-top: -2px;
+}
+.nav-toggle-bars[data-open] span:nth-child(1) {
+  top: 50%;
+  margin-top: -1px;
+  transform: rotate(45deg);
+}
+.nav-toggle-bars[data-open] span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle-bars[data-open] span:nth-child(3) {
+  top: 50%;
+  margin-top: -1px;
+  transform: rotate(-45deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-toggle-bars span {
+    transition: none;
+  }
+}
+
+/* ── Mobile nav overlay ── */
+
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 39;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 5vw, 64px);
+  background: var(--surface-page);
+  animation: mobileNavIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@media (min-width: 900px) {
+  .mobile-nav-overlay {
+    display: none;
+  }
+}
+@keyframes mobileNavIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav-overlay {
+    animation: none;
+  }
+}
+.mobile-nav-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 420px;
+}
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+.mobile-nav-link {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(28px, 8vw, 40px);
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 10px 0;
+}
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+  color: var(--orla-blue);
+  text-decoration: none;
+}
+.mobile-nav-contact {
+  margin-top: 24px;
+  width: 100%;
+  max-width: 220px;
+}
+
 /* ── Buttons ── */
 
 .btn {
@@ -196,7 +360,9 @@ a:hover {
 /* ── Hero ── */
 
 .hero {
-  padding: clamp(56px, 11vw, 140px) 0 clamp(40px, 7vw, 88px);
+  /* padding-block only (not the padding shorthand) so it doesn't clobber the
+     horizontal padding inherited from .container. */
+  padding-block: clamp(56px, 11vw, 140px) clamp(40px, 7vw, 88px);
 }
 .eyebrow {
   font-family: var(--font-mono);
@@ -240,17 +406,36 @@ a:hover {
 }
 .marquee-label {
   font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.16em;
+  font-size: 10px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text-tertiary);
   margin: 0 clamp(16px, 5vw, 64px) 28px;
   text-align: center;
 }
+@media (min-width: 640px) {
+  .marquee-label {
+    font-size: 12px;
+    letter-spacing: 0.16em;
+  }
+}
 .marquee-mask {
+  width: 100%;
   overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
 }
 .marquee-track {
   display: flex;
@@ -272,6 +457,7 @@ a:hover {
 .marquee-item-wrap {
   display: flex;
   align-items: center;
+  flex: 0 0 auto;
 }
 .marquee-item {
   flex: 0 0 auto;
@@ -287,6 +473,7 @@ a:hover {
   color: var(--text-primary);
 }
 .marquee-sep {
+  flex: 0 0 auto;
   margin: 0 clamp(14px, 2.5vw, 28px);
   color: var(--border-default);
   font-size: 14px;
@@ -295,7 +482,7 @@ a:hover {
 /* ── Section headers ── */
 
 .section {
-  padding: clamp(64px, 10vw, 120px) 0;
+  padding-block: clamp(64px, 10vw, 120px);
 }
 .section-head {
   display: flex;
@@ -333,7 +520,10 @@ a:hover {
   background: var(--surface-card);
   color: var(--text-primary);
   text-decoration: none;
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, border-color 0.22s ease;
+  transition:
+    transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
 }
 .project-card:hover {
   transform: translateY(-4px);
@@ -631,7 +821,9 @@ a:hover {
   background: var(--surface-page);
   color: var(--text-primary);
   text-decoration: none;
-  transition: padding 0.2s ease, background 0.2s ease;
+  transition:
+    padding 0.2s ease,
+    background 0.2s ease;
 }
 .row-item:hover {
   background: var(--surface-sunken);
@@ -1311,7 +1503,7 @@ a:hover {
     flex-wrap: wrap;
     justify-content: center;
   }
-  .marquee-group[aria-hidden='true'] {
+  .marquee-group[aria-hidden="true"] {
     display: none;
   }
 }
