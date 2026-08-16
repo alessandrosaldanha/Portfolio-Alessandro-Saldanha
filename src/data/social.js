@@ -1,13 +1,11 @@
 const waMessage = encodeURIComponent('Olá Alessandro, vi seu portfólio e gostaria de conversar sobre...')
 
-// TODO: preencher os campos marcados abaixo com os dados reais.
 export const socials = [
   {
     key: 'whatsapp',
     label: 'WhatsApp',
-    hint: 'TODO: número',
-    // TODO: trocar 55TODO pelo número com DDI+DDD, ex.: 5582999998888
-    href: `https://wa.me/55TODO?text=${waMessage}`,
+    hint: '+55 82 98127-3616',
+    href: `https://wa.me/5582981273616?text=${waMessage}`,
     aria: 'Conversar com Alessandro Saldanha no WhatsApp',
   },
   {
@@ -20,22 +18,22 @@ export const socials = [
   {
     key: 'github',
     label: 'GitHub',
-    hint: 'TODO: usuário',
-    href: 'https://github.com/TODO', // TODO: preencher
+    hint: '/alessandrosaldanha',
+    href: 'https://github.com/alessandrosaldanha',
     aria: 'Perfil de Alessandro Saldanha no GitHub',
   },
   {
     key: 'facebook',
     label: 'Facebook',
-    hint: 'TODO: perfil',
-    href: 'https://facebook.com/TODO', // TODO: preencher
+    hint: '/alessandro.saldanha.2025',
+    href: 'https://www.facebook.com/alessandro.saldanha.2025',
     aria: 'Perfil de Alessandro Saldanha no Facebook',
   },
   {
     key: 'instagram',
     label: 'Instagram',
-    hint: 'TODO: perfil',
-    href: 'https://instagram.com/TODO', // TODO: preencher
+    hint: '/alessandrosaldanha.as',
+    href: 'https://www.instagram.com/alessandrosaldanha.as',
     aria: 'Perfil de Alessandro Saldanha no Instagram',
   },
 ]

@@ -59,7 +59,6 @@ Edite `src/data/companies.js` e adicione `{ name: 'Nome da Empresa' }` ao array 
 
 ## Pontos de preenchimento pendentes
 
-- `src/data/social.js` — número de WhatsApp, usuário do GitHub, perfis de Facebook e Instagram (hoje `TODO`/placeholder).
 - Fotos e screenshots reais de projetos e galeria (hoje `"TODO: thumbnail"` / `"TODO: screenshot"`). A foto de `/sobre` já foi adicionada (`src/assets/perfil-alessandro.jpeg`).
 
 ## Estratégia de branches
