@@ -1541,7 +1541,8 @@ a.header-contact {
     0 10px 15px -3px rgb(0 0 0 / 0.1),
     0 4px 6px -4px rgb(0 0 0 / 0.1);
   pointer-events: none;
-  animation: floating-tag-float ease-in-out infinite;
+  overflow: visible;
+  animation: floating-tag-float var(--float-dur) ease-in-out var(--float-delay) infinite;
 }
 
 .floating-tag__emoji {
@@ -1558,26 +1559,40 @@ a.header-contact {
 .floating-tag--tl {
   top: -1rem;
   left: -1rem;
-  animation-duration: 5s;
-  animation-delay: 0s;
+  --float-dur: 5s;
+  --float-delay: 0s;
 }
 .floating-tag--tr {
   top: 5rem;
   right: -1rem;
-  animation-duration: 6s;
-  animation-delay: 0.8s;
+  --float-dur: 6s;
+  --float-delay: 1.2s;
+}
+.floating-tag--ml {
+  display: none;
+  top: 42%;
+  left: -1rem;
+  --float-dur: 5.2s;
+  --float-delay: 3.2s;
+}
+.floating-tag--mr {
+  display: none;
+  bottom: 9rem;
+  right: -1rem;
+  --float-dur: 6.2s;
+  --float-delay: 4s;
 }
 .floating-tag--bl {
   bottom: 6rem;
   left: -1rem;
-  animation-duration: 5.5s;
-  animation-delay: 1.6s;
+  --float-dur: 5.5s;
+  --float-delay: 2.2s;
 }
 .floating-tag--br {
   bottom: -1rem;
   right: 1.5rem;
-  animation-duration: 4.5s;
-  animation-delay: 2.4s;
+  --float-dur: 4.5s;
+  --float-delay: 5s;
 }
 
 @media (min-width: 640px) {
@@ -1591,6 +1606,16 @@ a.header-contact {
   }
   .floating-tag--tr {
     top: 6rem;
+    right: -2.5rem;
+  }
+  .floating-tag--ml {
+    display: flex;
+    top: 42%;
+    left: -2.5rem;
+  }
+  .floating-tag--mr {
+    display: flex;
+    bottom: 10rem;
     right: -2.5rem;
   }
   .floating-tag--bl {
@@ -1613,8 +1638,45 @@ a.header-contact {
   }
 }
 
+.floating-tag__spark {
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0;
+  pointer-events: none;
+  animation: floating-tag-spark var(--float-dur) ease-out var(--float-delay) infinite;
+}
+
+@keyframes floating-tag-spark {
+  0%,
+  43% {
+    opacity: 0;
+    transform: translate(-50%, 0) scale(0.3);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translate(calc(-50% + var(--sx)), var(--sy)) scale(1);
+  }
+  64%,
+  100% {
+    opacity: 0;
+    transform: translate(
+        calc(-50% + var(--sx) * 1.5),
+        calc(var(--sy) * 1.4 + 8px)
+      )
+      scale(0.2);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .floating-tag {
+    animation: none;
+  }
+  .floating-tag__spark {
     animation: none;
   }
 }
