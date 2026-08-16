@@ -4,5 +4,6 @@
   },
   "files.watcherExclude": {
     "reference/**": true
-  }
+  },
+  "css.lint.unknownProperties": "ignore"
 }
