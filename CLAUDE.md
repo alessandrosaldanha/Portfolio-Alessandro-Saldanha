@@ -53,6 +53,13 @@ Left un-silenced, on purpose:
 - The "`transform`/`opacity` triggers Composite/Paint inside `@keyframes`" performance hints — inherent to any translate/opacity-based CSS animation (used by the marquee, rise-in, and mobile-nav-in animations); no webhint hint ID or documented VS Code setting was found to disable this specific check, and it's informational only (no build/runtime impact).
 - A handful of HTML best-practice hints on `reference/mockup/*.dc.html` (`<title>`, `lang` attribute, `sc-for`/`sc-if` custom elements inside `<ul>`) — that file is a frozen, generated Figma/dc-runtime artifact (see above), not hand-authored markup, so it isn't rewritten to satisfy a validator.
 
+## Convenções de escrita
+
+- Nunca usar travessão (—) em textos voltados ao usuário. Preferir ponto final, vírgula, ou reformular a frase.
+- Evitar "não apenas X, mas também Y", "além disso" como abertura de frase, e adjetivos em fileira de três ("robusto, escalável e eficiente").
+- Frases curtas e diretas. Se uma frase precisa de vírgula pra encaixar duas ideias, considerar quebrar em duas frases.
+- Antes de qualquer commit que adicione ou edite texto voltado ao usuário, rodar `grep -rn "—" src/` e confirmar que retorna vazio. Comentários técnicos em CSS/JS (ex.: `src/styles/tokens/*.css`, `src/components/OrlaMarquee.jsx`) são exceção esperada e não texto de usuário — se o grep só pegar esses, revise manualmente antes de assumir que há uma pendência real.
+
 ## Branches and releases
 
 - `main` is production; `hmg` is homologation/staging. Land features in `hmg` before merging to `main`.

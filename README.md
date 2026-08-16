@@ -20,7 +20,9 @@ src/
   App.jsx               # rotas + estado de tema (claro/escuro)
   index.css             # importa tokens + site.css, nesta ordem
   components/           # Header (com menu mobile), Footer — layout persistente; OrlaMarquee — carrossel da home;
-                        # SocialIcon — ícones das redes no Footer/Contato; FloatingTags — tags decorativas ao redor de uma foto
+                        # SocialIcon — ícones das redes no Footer/Contato; FloatingTags — tags decorativas ao redor de uma foto,
+                        # com faíscas animadas no topo de cada pill (CSS puro, respeita prefers-reduced-motion);
+                        # 6 tags ao total, 2 delas (--ml/--mr) ocultas abaixo de 640px para não estourar a viewport
   pages/                # uma página por rota
   data/                 # conteúdo real (projetos, posts, empresas, etc.), JS puro
   styles/
@@ -56,6 +58,10 @@ Material extraído do Claude Design ao iniciar este projeto — **não faz parte
 ## Adicionar uma empresa/projeto no carrossel da home
 
 Edite `src/data/companies.js` e adicione `{ name: 'Nome da Empresa' }` ao array `orlaProjects`. Os nomes aparecem como wordmarks tipográficos (mesma fonte, peso e cor para todos, sem logos). O carrossel (`src/components/OrlaMarquee.jsx`) mede a largura do conjunto em tempo de execução e calcula quantas cópias renderizar e a duração da animação, então o loop continua infinito e sem vão vazio conforme a lista cresce — não é preciso mexer em CSS.
+
+## Convenções de escrita
+
+Texto voltado ao usuário (bio, cards de projeto, posts, meta description, alt text) não usa travessão (—) nem outros tiques comuns de escrita gerada por IA. Regras completas na seção "Convenções de escrita" do [CLAUDE.md](CLAUDE.md).
 
 ## Pontos de preenchimento pendentes
 
