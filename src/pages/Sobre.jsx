@@ -1,6 +1,7 @@
 import { timeline } from '../data/timeline'
 import { allStack } from '../data/stack'
 import perfilAlessandro from '../assets/perfil-alessandro.jpeg'
+import FloatingTags from '../components/FloatingTags'
 
 export default function Sobre() {
   return (
@@ -21,7 +22,9 @@ export default function Sobre() {
           </p>
         </div>
         <div className="sobre-photo">
-          <img src={perfilAlessandro} alt="Alessandro Saldanha" />
+          <FloatingTags>
+            <img src={perfilAlessandro} alt="Alessandro Saldanha" />
+          </FloatingTags>
         </div>
       </div>
 

@@ -19,7 +19,8 @@ src/
   main.jsx              # monta <App/> em <BrowserRouter>
   App.jsx               # rotas + estado de tema (claro/escuro)
   index.css             # importa tokens + site.css, nesta ordem
-  components/           # Header (com menu mobile), Footer — layout persistente; OrlaMarquee — carrossel da home
+  components/           # Header (com menu mobile), Footer — layout persistente; OrlaMarquee — carrossel da home;
+                        # SocialIcon — ícones das redes no Footer/Contato; FloatingTags — tags decorativas ao redor de uma foto
   pages/                # uma página por rota
   data/                 # conteúdo real (projetos, posts, empresas, etc.), JS puro
   styles/
@@ -59,7 +60,7 @@ Edite `src/data/companies.js` e adicione `{ name: 'Nome da Empresa' }` ao array 
 ## Pontos de preenchimento pendentes
 
 - `src/data/social.js` — número de WhatsApp, usuário do GitHub, perfis de Facebook e Instagram (hoje `TODO`/placeholder).
-- Fotos e screenshots reais de projetos, galeria e `/sobre` (hoje `"TODO: thumbnail"` / `"TODO: screenshot"` / `"TODO: foto"`).
+- Fotos e screenshots reais de projetos e galeria (hoje `"TODO: thumbnail"` / `"TODO: screenshot"`). A foto de `/sobre` já foi adicionada (`src/assets/perfil-alessandro.jpeg`).
 
 ## Estratégia de branches
 
