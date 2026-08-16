@@ -19,7 +19,7 @@ src/
   main.jsx              # monta <App/> em <BrowserRouter>
   App.jsx               # rotas + estado de tema (claro/escuro)
   index.css             # importa tokens + site.css, nesta ordem
-  components/           # Header, Footer — layout persistente
+  components/           # Header (com menu mobile), Footer — layout persistente; OrlaMarquee — carrossel da home
   pages/                # uma página por rota
   data/                 # conteúdo real (projetos, posts, empresas, etc.), JS puro
   styles/
@@ -54,7 +54,7 @@ Material extraído do Claude Design ao iniciar este projeto — **não faz parte
 
 ## Adicionar uma empresa/projeto no carrossel da home
 
-Edite `src/data/companies.js`. Cada entrada tem `name` e, opcionalmente, `logo` (caminho em `public/logos/`) — sem `logo`, o nome aparece só como texto.
+Edite `src/data/companies.js` e adicione `{ name: 'Nome da Empresa' }` ao array `orlaProjects`. Os nomes aparecem como wordmarks tipográficos (mesma fonte, peso e cor para todos, sem logos). O carrossel (`src/components/OrlaMarquee.jsx`) mede a largura do conjunto em tempo de execução e calcula quantas cópias renderizar e a duração da animação, então o loop continua infinito e sem vão vazio conforme a lista cresce — não é preciso mexer em CSS.
 
 ## Pontos de preenchimento pendentes
 
