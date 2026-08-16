@@ -83,7 +83,8 @@ a:hover {
   top: 0;
   z-index: 40;
   background: color-mix(in srgb, var(--surface-page) 86%, transparent);
-  -webkit-backdrop-filter-: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-subtle);
 }
 .site-header-inner {
@@ -422,14 +423,14 @@ a.header-contact {
 .marquee-mask {
   width: 100%;
   overflow: hidden;
-  mask-image: linear-gradient(
+  -webkit-mask-image: linear-gradient(
     90deg,
     transparent,
     #000 8%,
     #000 92%,
     transparent
   );
-  -webkit-mask-image: linear-gradient(
+  mask-image: linear-gradient(
     90deg,
     transparent,
     #000 8%,
@@ -1501,8 +1502,8 @@ a.header-contact {
 @media (prefers-reduced-motion: reduce) {
   .marquee-mask {
     overflow: visible;
-    mask-image: none;
     -webkit-mask-image: none;
+    mask-image: none;
   }
   .marquee-track {
     width: auto;
