@@ -4,8 +4,8 @@ export const socials = [
   {
     key: 'whatsapp',
     label: 'WhatsApp',
-    hint: '+55 82 98127-3616',
-    href: `https://wa.me/5582981273616?text=${waMessage}`,
+    hint: '+55 82 98127-3619',
+    href: `https://wa.me/5582981273619?text=${waMessage}`,
     aria: 'Conversar com Alessandro Saldanha no WhatsApp',
   },
   {
