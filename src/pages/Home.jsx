@@ -4,7 +4,6 @@ import { orlaProjects } from '../data/companies'
 import { featuredProjects } from '../data/projects'
 import { posts } from '../data/posts'
 import { stackGroups } from '../data/stack'
-import { waLink } from '../data/social'
 
 export default function Home() {
   const featured = featuredProjects()
@@ -23,9 +22,6 @@ export default function Home() {
           <Link to="/projetos" className="btn btn-primary">
             Ver projetos
           </Link>
-          <a href={waLink} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
-            Falar no WhatsApp
-          </a>
         </div>
       </section>
 
