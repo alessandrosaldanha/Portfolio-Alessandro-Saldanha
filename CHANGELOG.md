@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.0](https://github.com/alessandrosaldanha/Portfolio-Alessandro-Saldanha/compare/v1.0.0...v1.1.0) (2026-08-16)
+
+
+### Features
+
+* **stack:** adicionar Xano e nomear ferramentas no-code/low-code ([59cbbfb](https://github.com/alessandrosaldanha/Portfolio-Alessandro-Saldanha/commit/59cbbfb03439361007602cff897e1e43b51f3061))
+
+
+### Bug Fixes
+
+* **layout:** adicionar padding inferior antes do footer ([02c430f](https://github.com/alessandrosaldanha/Portfolio-Alessandro-Saldanha/commit/02c430fd6ab87537381ccf757494b036e21c56b5))
+* **projetos:** adicionar link ao vivo do Maré de Estudos ([233fe70](https://github.com/alessandrosaldanha/Portfolio-Alessandro-Saldanha/commit/233fe70e430850018cc2406f439433d938592fe5))
+
 ## 1.0.0 (2026-08-16)
 
 
