@@ -1,5 +1,6 @@
 import { timeline } from '../data/timeline'
 import { allStack } from '../data/stack'
+import perfilAlessandro from '../assets/perfil-alessandro.jpeg'
 
 export default function Sobre() {
   return (
@@ -19,7 +20,9 @@ export default function Sobre() {
             costuma virar post.
           </p>
         </div>
-        <div className="sobre-photo">TODO: foto</div>
+        <div className="sobre-photo">
+          <img src={perfilAlessandro} alt="Alessandro Saldanha" />
+        </div>
       </div>
 
       <section className="sobre-section">

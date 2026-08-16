@@ -1,4 +1,5 @@
 import { socials } from '../data/social'
+import SocialIcon from './SocialIcon'
 
 export default function Footer() {
   return (
@@ -19,7 +20,7 @@ export default function Footer() {
               title={s.label}
               className="social-icon"
             >
-              {s.short}
+              <SocialIcon name={s.key} />
             </a>
           ))}
         </div>
