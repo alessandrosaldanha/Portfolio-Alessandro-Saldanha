@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/ds-orla-5529f280-07c0-46b0-a23a-b29b19b0ccfb/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/ds-orla-5529f280-07c0-46b0-a23a-b29b19b0ccfb/tokens/colors.css">
+<link rel="stylesheet" href="_ds/ds-orla-5529f280-07c0-46b0-a23a-b29b19b0ccfb/tokens/typography.css">
+<link rel="stylesheet" href="_ds/ds-orla-5529f280-07c0-46b0-a23a-b29b19b0ccfb/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/ds-orla-5529f280-07c0-46b0-a23a-b29b19b0ccfb/tokens/effects.css">
+<link rel="stylesheet" href="_ds/ds-orla-5529f280-07c0-46b0-a23a-b29b19b0ccfb/tokens/base.css">
+<link rel="stylesheet" href="_ds/ds-orla-5529f280-07c0-46b0-a23a-b29b19b0ccfb/styles.css">
+<script src="_ds/ds-orla-5529f280-07c0-46b0-a23a-b29b19b0ccfb/_ds_bundle.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Archivo', system-ui, sans-serif; }
+  a { color: var(--orla-blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes riseIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  [data-rise] { animation: riseIn .5s cubic-bezier(0.16,1,0.3,1) both; }
+  @media (prefers-reduced-motion: reduce) {
+    [data-marquee] { animation: none !important; }
+    [data-rise] { animation: none !important; }
+  }
+  ::selection { background: var(--orla-blue); color: #fff; }
+</style>
+</helmet>
+
+<div data-theme="{{ theme }}" style="min-height: 100vh; background: var(--surface-page); color: var(--text-primary); font-family: 'Archivo', system-ui, sans-serif; transition: background .24s ease, color .24s ease;">
+
+  <header style="position: sticky; top: 0; z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 14px clamp(16px, 5vw, 64px); background: color-mix(in srgb, var(--surface-page) 86%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-subtle);">
+    <a href="#" onClick="{{ goHome }}" style="display: flex; align-items: baseline; gap: 10px; color: var(--text-primary); text-decoration: none;">
+      <span style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.02em;">alessandro saldanha</span>
+      <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--orla-blue); display: inline-block;"></span>
+    </a>
+    <nav style="display: none; gap: 4px; align-items: center;" data-nav-desktop>
+      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="5">
+        <a href="#" onClick="{{ item.onClick }}" style="padding: 8px 12px; border-radius: 8px; font-size: 14px; color: var(--text-secondary); text-decoration: none;" style-hover="color: var(--text-primary); background: var(--surface-sunken);">{{ item.label }}</a>
+      </sc-for>
+    </nav>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <button onClick="{{ toggleTheme }}" aria-label="Alternar tema claro e escuro" style="width: 44px; height: 44px; display: grid; place-items: center; border-radius: 10px; border: 1px solid var(--border-subtle); background: transparent; color: var(--text-primary); cursor: pointer; font-size: 15px;" style-hover="background: var(--surface-sunken);">{{ themeIcon }}</button>
+      <a href="#" onClick="{{ goContato }}" style="display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border-radius: 10px; background: var(--text-primary); color: var(--surface-page); font-size: 14px; font-weight: 600; text-decoration: none;" style-hover="opacity: .88; text-decoration: none;">Contato</a>
+    </div>
+  </header>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <main>
+    <section style="padding: clamp(56px, 11vw, 140px) clamp(16px, 5vw, 64px) clamp(40px, 7vw, 88px); max-width: 1240px; margin: 0 auto;" data-rise>
+      <p style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-tertiary); margin: 0 0 28px;">Maceió · AL — remoto para o Brasil</p>
+      <h1 style="font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(40px, 8.5vw, 92px); line-height: 0.98; letter-spacing: -0.035em; margin: 0; max-width: 16ch; text-wrap: balance;">Desenvolvedor full-stack. Do schema ao deploy.</h1>
+      <p style="font-size: clamp(17px, 2.2vw, 22px); line-height: 1.55; color: var(--text-secondary); max-width: 56ch; margin: 28px 0 0; text-wrap: pretty;">Construo SaaS com React, Next.js e PostgreSQL — e documento por que cada decisão foi tomada, incluindo as que deram trabalho. Hoje na Orla.tech; à noite, dois produtos próprios no ar.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px;">
+        <a href="#" onClick="{{ goProjetos }}" style="display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border-radius: 12px; background: var(--orla-blue); color: #fff; font-weight: 600; font-size: 15px; text-decoration: none;" style-hover="background: var(--blue-600); text-decoration: none;">Ver projetos</a>
+        <a href="{{ waLink }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 26px; border-radius: 12px; border: 1px solid var(--border-default); color: var(--text-primary); font-weight: 600; font-size: 15px; text-decoration: none;" style-hover="background: var(--surface-sunken); text-decoration: none;">Falar no WhatsApp</a>
+      </div>
+    </section>
+
+    <section style="padding: clamp(32px, 6vw, 64px) 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+      <p style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-tertiary); margin: 0 clamp(16px, 5vw, 64px) 28px; text-align: center;">Empresas e clientes com que trabalhei</p>
+      <div style="overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);">
+        <div data-marquee style="display: flex; width: max-content; gap: clamp(28px, 5vw, 72px); animation: marquee 34s linear infinite; align-items: center;" style-hover="animation-play-state: paused;">
+          <sc-for list="{{ companiesLoop }}" as="c" hint-placeholder-count="10">
+            <div title="{{ c.name }}" style="flex: 0 0 auto; height: 56px; min-width: 176px; display: grid; place-items: center; padding: 0 22px; border: 1px solid var(--border-subtle); border-radius: 12px; filter: grayscale(1); opacity: .58; transition: filter .2s ease, opacity .2s ease, border-color .2s ease;" style-hover="filter: grayscale(0); opacity: 1; border-color: var(--border-default);">
+              <span style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: -0.01em; color: {{ c.color }}; white-space: nowrap;">{{ c.name }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <p style="max-width: 74ch; margin: 28px auto 0; padding: 0 clamp(16px, 5vw, 64px); text-align: center; font-size: 13px; line-height: 1.6; color: var(--text-tertiary);">ANBIMA, RD Group (Droga Raia/Drogasil) e Conviva Hotelaria são clientes atendidos por mim como desenvolvedor pela Orla.tech — não houve vínculo direto com essas empresas.</p>
+    </section>
+
+    <section style="padding: clamp(64px, 10vw, 120px) clamp(16px, 5vw, 64px); max-width: 1240px; margin: 0 auto;">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 44px;">
+        <h2 style="font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(30px, 4.5vw, 48px); letter-spacing: -0.03em; margin: 0;">Projetos em destaque</h2>
+        <a href="#" onClick="{{ goProjetos }}" style="font-size: 14px; font-weight: 600;">Todos os projetos →</a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+        <sc-for list="{{ featured }}" as="p" hint-placeholder-count="3">
+          <a href="#" onClick="{{ p.onClick }}" style="display: flex; flex-direction: column; border: 1px solid var(--border-subtle); border-radius: 16px; overflow: hidden; background: var(--surface-card); color: var(--text-primary); text-decoration: none; transition: transform .22s cubic-bezier(0.16,1,0.3,1), box-shadow .22s ease, border-color .22s ease;" style-hover="transform: translateY(-4px); box-shadow: 0 18px 40px -24px rgba(0,0,0,.55); border-color: var(--border-default); text-decoration: none;">
+            <div style="aspect-ratio: 16 / 10; background: var(--surface-sunken); display: grid; place-items: center; border-bottom: 1px solid var(--border-subtle);">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--text-tertiary);">TODO: thumbnail</span>
+            </div>
+            <div style="padding: 24px; display: flex; flex-direction: column; gap: 12px; flex: 1;">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orla-blue);">{{ p.role }}</span>
+              <h3 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 23px; letter-spacing: -0.02em; margin: 0;">{{ p.name }}</h3>
+              <p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--text-secondary); text-wrap: pretty;">{{ p.outcome }}</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 14px;">
+                <sc-for list="{{ p.chips }}" as="chip" hint-placeholder-count="4">
+                  <span style="font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border-subtle); color: var(--text-secondary); white-space: nowrap;">{{ chip }}</span>
+                </sc-for>
+              </div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding: 0 clamp(16px, 5vw, 64px) clamp(64px, 10vw, 120px); max-width: 1240px; margin: 0 auto;">
+      <h2 style="font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(30px, 4.5vw, 48px); letter-spacing: -0.03em; margin: 0 0 44px;">Stack</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--border-subtle); border: 1px solid var(--border-subtle); border-radius: 16px; overflow: hidden;">
+        <sc-for list="{{ stackGroups }}" as="g" hint-placeholder-count="4">
+          <div style="background: var(--surface-page); padding: 28px 24px;">
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-tertiary); margin: 0 0 18px;">{{ g.label }}</p>
+            <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px;">
+              <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="5">
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--text-primary);">
+                  <span style="width: 7px; height: 7px; border-radius: 2px; background: var(--orla-blue); flex: 0 0 auto;"></span>{{ it }}
+                </li>
+              </sc-for>
+            </ul>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding: 0 clamp(16px, 5vw, 64px) clamp(64px, 10vw, 120px); max-width: 1240px; margin: 0 auto;">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 32px;">
+        <h2 style="font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(30px, 4.5vw, 48px); letter-spacing: -0.03em; margin: 0;">Escrevendo</h2>
+        <a href="#" onClick="{{ goBlog }}" style="font-size: 14px; font-weight: 600;">Todos os posts →</a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+        <sc-for list="{{ posts }}" as="post" hint-placeholder-count="3">
+          <a href="#" onClick="{{ post.onClick }}" style="display: flex; flex-direction: column; gap: 10px; padding: 24px; border: 1px solid var(--border-subtle); border-radius: 16px; color: var(--text-primary); text-decoration: none; transition: background .2s ease;" style-hover="background: var(--surface-sunken); text-decoration: none;">
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-tertiary);">{{ post.meta }}</span>
+            <h3 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 19px; line-height: 1.25; letter-spacing: -0.02em; margin: 0; text-wrap: pretty;">{{ post.title }}</h3>
+            <p style="margin: 0; font-size: 14px; line-height: 1.55; color: var(--text-secondary);">{{ post.excerpt }}</p>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding: clamp(56px, 9vw, 104px) clamp(16px, 5vw, 64px); background: var(--surface-inverse); color: var(--text-inverse);">
+      <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 32px;">
+        <div>
+          <h2 style="font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(30px, 5vw, 56px); letter-spacing: -0.03em; margin: 0; max-width: 18ch; text-wrap: balance;">Tem um produto para tirar do papel?</h2>
+          <p style="margin: 18px 0 0; font-size: 17px; opacity: .7; max-width: 46ch;">Respondo em até um dia útil. Freelance ou CLT, Maceió ou remoto.</p>
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="#" onClick="{{ goContato }}" style="display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border-radius: 12px; background: var(--orla-blue); color: #fff; font-weight: 600; text-decoration: none;" style-hover="background: var(--blue-600); text-decoration: none;">Falar comigo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isProjetos }}" hint-placeholder-val="{{ false }}">
+  <main style="padding: clamp(48px, 8vw, 96px) clamp(16px, 5vw, 64px) clamp(64px, 10vw, 120px); max-width: 1240px; margin: 0 auto;">
+    <h1 style="font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(36px, 6vw, 64px); letter-spacing: -0.03em; margin: 0;">Projetos</h1>
+    <p style="font-size: 17px; color: var(--text-secondary); max-width: 60ch; margin: 18px 0 40px;">Produtos próprios, freelances e entregas corporativas. Cada página descreve o escopo exato do que eu fiz.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px;">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="7">
+        <button onClick="{{ f.onClick }}" style="height: 40px; padding: 0 16px; border-radius: 999px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; border: 1px solid {{ f.border }}; background: {{ f.bg }}; color: {{ f.fg }};">{{ f.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 1px; background: var(--border-subtle); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+      <sc-for list="{{ filteredProjects }}" as="p" hint-placeholder-count="5">
+        <a href="#" onClick="{{ p.onClick }}" style="display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 30px 4px; background: var(--surface-page); color: var(--text-primary); text-decoration: none; transition: padding .2s ease;" style-hover="background: var(--surface-sunken); text-decoration: none; padding-left: 16px; padding-right: 16px;">
+          <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px;">
+            <h2 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(22px, 3vw, 30px); letter-spacing: -0.025em; margin: 0;">{{ p.name }}</h2>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary);">{{ p.badgeLine }}</span>
+          </div>
+          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: var(--text-secondary); max-width: 72ch; text-wrap: pretty;">{{ p.tagline }}</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+            <sc-for list="{{ p.stack }}" as="s" hint-placeholder-count="5">
+              <span style="font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border-subtle); color: var(--text-secondary); white-space: nowrap;">{{ s }}</span>
+            </sc-for>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isDetalhe }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <div style="max-width: 1240px; margin: 0 auto; padding: clamp(28px, 5vw, 56px) clamp(16px, 5vw, 64px) 0;">
+      <a href="#" onClick="{{ goProjetos }}" style="font-size: 13px; font-family: 'JetBrains Mono', monospace; color: var(--text-tertiary);">← projetos</a>
+    </div>
+    <header style="max-width: 1240px; margin: 0 auto; padding: 28px clamp(16px, 5vw, 64px) clamp(40px, 6vw, 64px); border-bottom: 1px solid var(--border-subtle);">
+      <h1 style="font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(36px, 6.5vw, 72px); letter-spacing: -0.035em; line-height: 1; margin: 0; max-width: 18ch;">{{ p.name }}</h1>
+      <p style="font-size: clamp(17px, 2vw, 21px); line-height: 1.5; color: var(--text-secondary); max-width: 58ch; margin: 22px 0 0; text-wrap: pretty;">{{ p.tagline }}</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px;">
+        <sc-for list="{{ p.badges }}" as="b" hint-placeholder-count="3">
+          <span style="font-size: 12px; font-family: 'JetBrains Mono', monospace; padding: 6px 12px; border-radius: 8px; background: var(--surface-sunken); color: var(--text-secondary); white-space: nowrap;">{{ b }}</span>
+        </sc-for>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px;">
+        <sc-if value="{{ p.live }}" hint-placeholder-val="{{ true }}">
+          <a href="{{ p.liveHref }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; height: 48px; padding: 0 22px; border-radius: 10px; background: var(--text-primary); color: var(--surface-page); font-weight: 600; font-size: 14px; text-decoration: none;" style-hover="opacity: .88; text-decoration: none;">Ver ao vivo</a>
+        </sc-if>
+        <sc-if value="{{ p.repo }}" hint-placeholder-val="{{ false }}">
+          <a href="{{ p.repo }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; height: 48px; padding: 0 22px; border-radius: 10px; border: 1px solid var(--border-default); color: var(--text-primary); font-weight: 600; font-size: 14px; text-decoration: none;" style-hover="background: var(--surface-sunken); text-decoration: none;">Código</a>
+        </sc-if>
+      </div>
+    </header>
+
+    <div style="max-width: 1240px; margin: 0 auto; padding: clamp(40px, 6vw, 72px) clamp(16px, 5vw, 64px) clamp(64px, 10vw, 120px); display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(40px, 6vw, 72px); align-items: start;" data-detail-grid>
+      <aside style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 24px; padding: 26px; border: 1px solid var(--border-subtle); border-radius: 16px; background: var(--surface-card);">
+        <sc-for list="{{ p.overview }}" as="o" hint-placeholder-count="4">
+          <div>
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-tertiary); margin: 0 0 8px;">{{ o.label }}</p>
+            <p style="margin: 0; font-size: 14px; line-height: 1.5; color: var(--text-primary);">{{ o.value }}</p>
+          </div>
+        </sc-for>
+      </aside>
+
+      <div style="display: flex; flex-direction: column; gap: clamp(48px, 7vw, 80px); max-width: 78ch;">
+        <section>
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orla-blue); margin: 0 0 16px;">Contexto e problema</p>
+          <p style="font-size: 17px; line-height: 1.7; color: var(--text-secondary); margin: 0; text-wrap: pretty;">{{ p.context }}</p>
+        </section>
+
+        <section>
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orla-blue); margin: 0 0 16px;">Meu papel</p>
+          <p style="font-size: 17px; line-height: 1.7; color: var(--text-secondary); margin: 0; text-wrap: pretty;">{{ p.myRole }}</p>
+        </section>
+
+        <sc-if value="{{ p.hasDecisions }}" hint-placeholder-val="{{ true }}">
+        <section>
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orla-blue); margin: 0 0 24px;">Arquitetura e decisões técnicas</p>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <sc-for list="{{ p.decisions }}" as="d" hint-placeholder-count="3">
+              <article style="border: 1px solid var(--border-subtle); border-radius: 16px; overflow: hidden;">
+                <h3 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 19px; letter-spacing: -0.02em; margin: 0; padding: 20px 24px; background: var(--surface-sunken); border-bottom: 1px solid var(--border-subtle);">{{ d.decision }}</h3>
+                <dl style="margin: 0; padding: 22px 24px; display: grid; grid-template-columns: minmax(0,1fr); gap: 16px;">
+                  <div>
+                    <dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 6px;">Alternativas</dt>
+                    <dd style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--text-secondary);">{{ d.alternatives }}</dd>
+                  </div>
+                  <div>
+                    <dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 6px;">Por quê</dt>
+                    <dd style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--text-secondary);">{{ d.why }}</dd>
+                  </div>
+                  <div style="border-left: 2px solid var(--orla-blue); padding-left: 14px;">
+                    <dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 6px;">Trade-off aceito</dt>
+                    <dd style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--text-secondary);">{{ d.tradeoff }}</dd>
+                  </div>
+                </dl>
+              </article>
+            </sc-for>
+          </div>
+        </section>
+        </sc-if>
+
+        <sc-if value="{{ p.hasFeatures }}" hint-placeholder-val="{{ true }}">
+        <section>
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orla-blue); margin: 0 0 24px;">Funcionalidades principais</p>
+          <div style="display: flex; flex-direction: column; gap: 28px;">
+            <sc-for list="{{ p.features }}" as="f" hint-placeholder-count="3">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; align-items: center;">
+                <div>
+                  <h3 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 18px; letter-spacing: -0.02em; margin: 0 0 8px;">{{ f.title }}</h3>
+                  <p style="margin: 0; font-size: 15px; line-height: 1.65; color: var(--text-secondary);">{{ f.body }}</p>
+                </div>
+                <div style="aspect-ratio: 16 / 10; border-radius: 12px; border: 1px solid var(--border-subtle); background: var(--surface-sunken); display: grid; place-items: center;">
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-tertiary);">TODO: screenshot</span>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+        </sc-if>
+
+        <sc-if value="{{ p.hasChallenge }}" hint-placeholder-val="{{ true }}">
+        <section>
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orla-blue); margin: 0 0 24px;">Desafio técnico em destaque</p>
+          <h3 style="font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(24px, 3.4vw, 34px); letter-spacing: -0.025em; margin: 0 0 24px; text-wrap: pretty;">{{ p.challenge.title }}</h3>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <sc-for list="{{ p.challenge.steps }}" as="s" hint-placeholder-count="4">
+              <div style="display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 18px; align-items: start;">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); padding-top: 5px;">{{ s.label }}</span>
+                <p style="margin: 0; font-size: 16px; line-height: 1.7; color: var(--text-secondary); text-wrap: pretty;">{{ s.body }}</p>
+              </div>
+            </sc-for>
+          </div>
+          <pre style="margin: 28px 0 0; padding: 22px; border-radius: 14px; background: var(--neutral-950); color: #e6e6e6; border: 1px solid var(--border-subtle); overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.7;">{{ p.challenge.code }}</pre>
+        </section>
+        </sc-if>
+
+        <sc-if value="{{ p.hasResults }}" hint-placeholder-val="{{ true }}">
+        <section>
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orla-blue); margin: 0 0 20px;">Resultados e aprendizados</p>
+          <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px;">
+            <sc-for list="{{ p.results }}" as="r" hint-placeholder-count="3">
+              <li style="display: grid; grid-template-columns: 14px minmax(0,1fr); gap: 14px; font-size: 16px; line-height: 1.65; color: var(--text-secondary);">
+                <span style="width: 7px; height: 7px; border-radius: 2px; background: var(--orla-blue); margin-top: 9px;"></span>{{ r }}
+              </li>
+            </sc-for>
+          </ul>
+        </section>
+        </sc-if>
+
+        <sc-if value="{{ p.hasGallery }}" hint-placeholder-val="{{ true }}">
+        <section>
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orla-blue); margin: 0 0 20px;">Galeria</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+            <sc-for list="{{ p.gallery }}" as="g" hint-placeholder-count="3">
+              <button onClick="{{ g.onClick }}" style="aspect-ratio: 4 / 3; border-radius: 12px; border: 1px solid var(--border-subtle); background: var(--surface-sunken); cursor: zoom-in; display: grid; place-items: center; padding: 0;" style-hover="border-color: var(--orla-blue);">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-tertiary);">{{ g.label }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </section>
+        </sc-if>
+      </div>
+    </div>
+
+    <nav style="border-top: 1px solid var(--border-subtle); max-width: 1240px; margin: 0 auto; padding: 36px clamp(16px, 5vw, 64px) clamp(56px, 8vw, 96px); display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+      <a href="#" onClick="{{ prevProject.onClick }}" style="display: flex; flex-direction: column; gap: 6px; color: var(--text-primary); text-decoration: none; max-width: 44%;" style-hover="text-decoration: none; color: var(--orla-blue);">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-tertiary);">← Projeto anterior</span>
+        <span style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 19px; letter-spacing: -0.02em;">{{ prevProject.name }}</span>
+      </a>
+      <a href="#" onClick="{{ nextProject.onClick }}" style="display: flex; flex-direction: column; gap: 6px; align-items: flex-end; text-align: right; color: var(--text-primary); text-decoration: none; max-width: 44%;" style-hover="text-decoration: none; color: var(--orla-blue);">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-tertiary);">Próximo projeto →</span>
+        <span style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 19px; letter-spacing: -0.02em;">{{ nextProject.name }}</span>
+      </a>
+    </nav>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isBlog }}" hint-placeholder-val="{{ false }}">
+  <main style="padding: clamp(48px, 8vw, 96px) clamp(16px, 5vw, 64px) clamp(64px, 10vw, 120px); max-width: 1000px; margin: 0 auto;">
+    <h1 style="font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(36px, 6vw, 64px); letter-spacing: -0.03em; margin: 0;">Blog</h1>
+    <p style="font-size: 17px; color: var(--text-secondary); max-width: 58ch; margin: 18px 0 36px;">Notas técnicas tiradas do que quebrou nos meus projetos. <a href="#" onClick="{{ noop }}">RSS</a>.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px;">
+      <sc-for list="{{ tagFilters }}" as="t" hint-placeholder-count="5">
+        <button onClick="{{ t.onClick }}" style="height: 36px; padding: 0 14px; border-radius: 999px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; border: 1px solid {{ t.border }}; background: {{ t.bg }}; color: {{ t.fg }};">{{ t.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 1px; background: var(--border-subtle); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+      <sc-for list="{{ filteredPosts }}" as="post" hint-placeholder-count="3">
+        <a href="#" onClick="{{ post.onClick }}" style="display: flex; flex-direction: column; gap: 10px; padding: 28px 4px; background: var(--surface-page); color: var(--text-primary); text-decoration: none;" style-hover="background: var(--surface-sunken); text-decoration: none; padding-left: 16px; padding-right: 16px;">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-tertiary);">{{ post.meta }}</span>
+          <h2 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(20px, 2.6vw, 27px); letter-spacing: -0.025em; margin: 0; text-wrap: pretty;">{{ post.title }}</h2>
+          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: var(--text-secondary); max-width: 70ch;">{{ post.excerpt }}</p>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px;">
+            <sc-for list="{{ post.tags }}" as="tag" hint-placeholder-count="3">
+              <span style="font-size: 12px; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--border-subtle); color: var(--text-secondary); white-space: nowrap;">{{ tag }}</span>
+            </sc-for>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isPost }}" hint-placeholder-val="{{ false }}">
+  <main style="max-width: 1180px; margin: 0 auto; padding: clamp(36px, 6vw, 72px) clamp(16px, 5vw, 64px) clamp(64px, 10vw, 120px);">
+    <a href="#" onClick="{{ goBlog }}" style="font-size: 13px; font-family: 'JetBrains Mono', monospace; color: var(--text-tertiary);">← blog</a>
+    <div style="display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; margin-top: 28px; align-items: start;" data-post-grid>
+      <article style="max-width: 68ch;">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-tertiary);">{{ post.meta }}</span>
+        <h1 style="font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(32px, 5.4vw, 56px); line-height: 1.05; letter-spacing: -0.035em; margin: 16px 0 0; text-wrap: balance;">{{ post.title }}</h1>
+        <p style="font-size: 19px; line-height: 1.6; color: var(--text-secondary); margin: 22px 0 0;">{{ post.excerpt }}</p>
+        <div style="display: flex; gap: 10px; align-items: center; margin: 26px 0 40px; padding-bottom: 26px; border-bottom: 1px solid var(--border-subtle); flex-wrap: wrap;">
+          <span style="font-size: 13px; color: var(--text-tertiary);">Compartilhar:</span>
+          <a href="#" onClick="{{ noop }}" style="font-size: 13px; font-weight: 600;">LinkedIn</a>
+          <a href="#" onClick="{{ noop }}" style="font-size: 13px; font-weight: 600;">WhatsApp</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 30px;">
+          <sc-for list="{{ post.body }}" as="b" hint-placeholder-count="6">
+            <sc-if value="{{ b.isHeading }}" hint-placeholder-val="{{ false }}">
+              <h2 id="{{ b.id }}" style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 26px; letter-spacing: -0.025em; margin: 14px 0 0; scroll-margin-top: 90px;">{{ b.text }}</h2>
+            </sc-if>
+            <sc-if value="{{ b.isText }}" hint-placeholder-val="{{ true }}">
+              <p style="margin: 0; font-size: 17px; line-height: 1.75; color: var(--text-secondary); text-wrap: pretty;">{{ b.text }}</p>
+            </sc-if>
+            <sc-if value="{{ b.isCode }}" hint-placeholder-val="{{ false }}">
+              <pre style="margin: 0; padding: 22px; border-radius: 14px; background: var(--neutral-950); color: #e6e6e6; border: 1px solid var(--border-subtle); overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.7;">{{ b.text }}</pre>
+            </sc-if>
+            <sc-if value="{{ b.isCallout }}" hint-placeholder-val="{{ false }}">
+              <aside style="padding: 18px 22px; border-radius: 12px; border: 1px solid var(--border-subtle); border-left: 3px solid var(--orla-blue); background: var(--surface-sunken); font-size: 15px; line-height: 1.65; color: var(--text-secondary);">{{ b.text }}</aside>
+            </sc-if>
+            <sc-if value="{{ b.isTodo }}" hint-placeholder-val="{{ false }}">
+              <p style="margin: 0; padding: 14px 18px; border-radius: 10px; border: 1px dashed var(--border-default); font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-tertiary);">{{ b.text }}</p>
+            </sc-if>
+          </sc-for>
+        </div>
+      </article>
+      <aside style="position: sticky; top: 96px; display: none;" data-toc>
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-tertiary); margin: 0 0 14px;">Nesta página</p>
+        <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; border-left: 1px solid var(--border-subtle); padding-left: 16px;">
+          <sc-for list="{{ post.toc }}" as="t" hint-placeholder-count="4">
+            <li><a href="{{ t.href }}" style="font-size: 14px; color: var(--text-secondary); text-decoration: none;" style-hover="color: var(--text-primary);">{{ t.text }}</a></li>
+          </sc-for>
+        </ul>
+      </aside>
+    </div>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isSobre }}" hint-placeholder-val="{{ false }}">
+  <main style="max-width: 1080px; margin: 0 auto; padding: clamp(48px, 8vw, 96px) clamp(16px, 5vw, 64px) clamp(64px, 10vw, 120px);">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 44px; align-items: start;">
+      <div>
+        <h1 style="font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(36px, 6vw, 60px); letter-spacing: -0.035em; line-height: 1.02; margin: 0;">Alessandro Saldanha</h1>
+        <p style="font-size: 18px; line-height: 1.7; color: var(--text-secondary); margin: 24px 0 0; text-wrap: pretty;">Sou desenvolvedor em Maceió. Comecei como estagiário de desenvolvimento na Orla.tech e hoje atuo como desenvolvedor júnior, implementando features em produtos de clientes como ANBIMA, RD Group e Conviva Hotelaria.</p>
+        <p style="font-size: 18px; line-height: 1.7; color: var(--text-secondary); margin: 18px 0 0; text-wrap: pretty;">Fora do expediente mantenho dois SaaS próprios no ar — um de gestão financeira para igrejas e outro de escalas de ministérios. É neles que eu erro à vontade: modelagem multi-tenant, RLS, refatoração de estado, e-mail transacional. O que aprendo ali costuma virar post.</p>
+      </div>
+      <div style="aspect-ratio: 4 / 5; border-radius: 16px; border: 1px solid var(--border-subtle); background: var(--surface-sunken); display: grid; place-items: center;">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-tertiary);">TODO: foto</span>
+      </div>
+    </div>
+    <section style="margin-top: clamp(56px, 8vw, 88px);">
+      <h2 style="font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(26px, 3.6vw, 38px); letter-spacing: -0.03em; margin: 0 0 32px;">Trajetória</h2>
+      <div style="display: flex; flex-direction: column; gap: 1px; background: var(--border-subtle); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+        <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="3">
+          <div style="background: var(--surface-page); padding: 24px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+            <div>
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--text-tertiary); margin: 0 0 6px;">{{ t.period }}</p>
+              <p style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 19px; letter-spacing: -0.02em; margin: 0;">{{ t.role }}</p>
+              <p style="margin: 4px 0 0; font-size: 14px; color: var(--text-tertiary);">{{ t.org }}</p>
+            </div>
+            <p style="margin: 0; font-size: 15px; line-height: 1.65; color: var(--text-secondary); grid-column: span 2; text-wrap: pretty;">{{ t.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+    <section style="margin-top: clamp(48px, 7vw, 72px);">
+      <h2 style="font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(26px, 3.6vw, 38px); letter-spacing: -0.03em; margin: 0 0 28px;">Ferramentas do dia a dia</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+        <sc-for list="{{ allStack }}" as="s" hint-placeholder-count="18">
+          <span style="font-size: 14px; padding: 8px 14px; border-radius: 10px; border: 1px solid var(--border-subtle); color: var(--text-secondary); white-space: nowrap;">{{ s }}</span>
+        </sc-for>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isContato }}" hint-placeholder-val="{{ false }}">
+  <main style="max-width: 1080px; margin: 0 auto; padding: clamp(48px, 8vw, 96px) clamp(16px, 5vw, 64px) clamp(64px, 10vw, 120px);">
+    <h1 style="font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(36px, 6vw, 64px); letter-spacing: -0.035em; margin: 0;">Contato</h1>
+    <p style="font-size: 18px; color: var(--text-secondary); max-width: 54ch; margin: 18px 0 48px;">Freelance, CLT ou só uma dúvida técnica — pode chamar. Respondo em até um dia útil.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; align-items: start;">
+      <form onSubmit="{{ onSubmit }}" style="display: flex; flex-direction: column; gap: 18px;">
+        <label style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; font-weight: 600; color: var(--text-secondary);">Nome
+          <input type="text" required style="height: 48px; padding: 0 14px; border-radius: 10px; border: 1px solid var(--border-subtle); background: var(--surface-card); color: var(--text-primary); font-size: 15px; font-family: inherit;">
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; font-weight: 600; color: var(--text-secondary);">E-mail
+          <input type="email" required style="height: 48px; padding: 0 14px; border-radius: 10px; border: 1px solid var(--border-subtle); background: var(--surface-card); color: var(--text-primary); font-size: 15px; font-family: inherit;">
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; font-weight: 600; color: var(--text-secondary);">Mensagem
+          <textarea rows="6" required style="padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border-subtle); background: var(--surface-card); color: var(--text-primary); font-size: 15px; font-family: inherit; resize: vertical;"></textarea>
+        </label>
+        <button type="submit" style="height: 52px; border-radius: 12px; border: none; background: var(--orla-blue); color: #fff; font-weight: 600; font-size: 15px; cursor: pointer; font-family: inherit;" style-hover="background: var(--blue-600);">{{ submitLabel }}</button>
+      </form>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-tertiary); margin: 0 0 4px;">Canais diretos</p>
+        <sc-for list="{{ socials }}" as="s" hint-placeholder-count="5">
+          <a href="{{ s.href }}" target="_blank" rel="noopener noreferrer" aria-label="{{ s.aria }}" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 56px; padding: 0 18px; border: 1px solid var(--border-subtle); border-radius: 12px; color: var(--text-primary); text-decoration: none;" style-hover="background: var(--surface-sunken); text-decoration: none; border-color: var(--border-default);">
+            <span style="font-weight: 600; font-size: 15px;">{{ s.label }}</span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-tertiary);">{{ s.hint }}</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </main>
+  </sc-if>
+
+  <footer style="border-top: 1px solid var(--border-subtle); padding: clamp(40px, 6vw, 64px) clamp(16px, 5vw, 64px);">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 28px; justify-content: space-between; align-items: center;">
+      <div>
+        <p style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: -0.02em; margin: 0;">alessandro saldanha</p>
+        <p style="margin: 6px 0 0; font-size: 13px; color: var(--text-tertiary);">Maceió, AL · desenvolvedor full-stack</p>
+      </div>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <sc-for list="{{ socials }}" as="s" hint-placeholder-count="5">
+          <a href="{{ s.href }}" target="_blank" rel="noopener noreferrer" aria-label="{{ s.aria }}" title="{{ s.label }}" style="width: 44px; height: 44px; display: grid; place-items: center; border-radius: 10px; border: 1px solid var(--border-subtle); color: var(--text-secondary); text-decoration: none; font-size: 12px; font-weight: 700; font-family: 'JetBrains Mono', monospace;" style-hover="color: var(--text-primary); border-color: var(--border-default); text-decoration: none;">{{ s.short }}</a>
+        </sc-for>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1280, &quot;height&quot;: 900}}">
+const COMPANIES = [
+  // TODO: trocar por SVG/PNG reais em /public/logos — data/companies.ts
+  { name: 'Orla.tech', color: 'var(--orla-blue)' },
+  { name: 'ANBIMA', color: 'var(--text-primary)' },
+  { name: 'RD Group', color: 'var(--text-primary)' },
+  { name: 'Conviva Hotelaria', color: 'var(--text-primary)' },
+  { name: 'Sorria Clínicas', color: 'var(--text-primary)' }
+];
+
+const PROJECTS = [
+  {
+    slug: 'contabilidade-igreja',
+    name: 'Contabilidade Igreja',
+    tagline: 'SaaS de gestão financeira para igrejas: lançamentos, relatórios e prestação de contas em multi-tenant.',
+    role: 'Produto próprio · solo',
+    outcome: 'Isolamento por igreja resolvido no banco com RLS, sem camada de middleware.',
+    badges: ['Papel: Solo, full-stack', 'Período: 2024 — atual', 'Tipo: Produto próprio'],
+    type: 'Produto próprio', featured: true,
+    live: true, liveHref: 'https://contabilidadereformada.com.br', repo: null,
+    stack: ['React', 'Supabase', 'PostgreSQL', 'Tailwind', 'React Router'],
+    chips: ['React', 'Supabase', 'PostgreSQL', 'RLS'],
+    overview: [
+      { label: 'Cliente', value: 'Produto próprio' },
+      { label: 'Duração', value: '2024 — em evolução' },
+      { label: 'Time', value: 'Solo' },
+      { label: 'Stack', value: 'React, Supabase (Postgres, RLS, Auth, Storage, Edge Functions), Tailwind, React Router' }
+    ],
+    context: 'Igrejas pequenas costumam controlar caixa em planilhas compartilhadas por WhatsApp. Ninguém sabe qual é a versão vigente, o tesoureiro anterior leva o histórico embora e a prestação de contas para a assembleia vira uma noite de reconciliação manual. O problema não é contábil: é de acesso e de histórico confiável.',
+    myRole: 'Fiz tudo: modelagem do banco, políticas de segurança, front-end, landing e deploy. É um produto meu, então não há aqui escopo de terceiros — quando digo que decidi algo, decidi mesmo.',
+    decisions: [
+      { decision: 'Isolamento multi-tenant via Row Level Security, não via camada de aplicação',
+        alternatives: 'Um banco por igreja; filtro por tenant_id no cliente; um backend Node intermediando todas as queries.',
+        why: 'Com RLS a regra de acesso vive junto do dado. O cliente fala direto com o Postgres via PostgREST e nenhuma query esquecida vaza dados de outra igreja, porque o filtro não é opcional.',
+        tradeoff: 'Debug de política é mais chato que debug de if: erro de RLS aparece como "linha não existe", não como "acesso negado". Precisei de um conjunto de testes SQL rodando como cada papel para ter confiança.' },
+      { decision: 'Permissões como tabela de papéis + funções SQL, não como flags no perfil',
+        alternatives: 'Booleanos no registro do usuário (is_admin, can_edit); checagem só no front.',
+        why: 'Tesoureiro, pastor e conselho enxergam coisas diferentes do mesmo lançamento. Uma tabela de papéis por igreja permite que a mesma pessoa seja admin numa e leitora em outra.',
+        tradeoff: 'Toda política vira um JOIN a mais. Resolvi com funções STABLE que o planner consegue cachear dentro da transação.' },
+      { decision: 'Pricing da landing vindo do banco por RPC SECURITY DEFINER',
+        alternatives: 'Preços hardcoded no componente; JSON estático no build.',
+        why: 'A landing é pública, mas os planos vivem numa tabela protegida. Uma função SECURITY DEFINER expõe exatamente as colunas de vitrine e nada mais — mudar preço não exige deploy.',
+        tradeoff: 'SECURITY DEFINER ignora RLS por definição, então a função precisa ser paranoica sobre o que retorna. Mantive uma só, pequena, com search_path fixo.' }
+    ],
+    features: [
+      { title: 'Lançamentos com categorias e anexos', body: 'Entradas e saídas com comprovante em Storage, categoria e centro de custo. O anexo herda a mesma política de acesso do lançamento.' },
+      { title: 'Relatórios de prestação de contas', body: 'Fechamento por período com totais por categoria, pronto para ler em assembleia ou exportar.' },
+      { title: 'Convite e papéis por igreja', body: 'Admin convida por e-mail e define o papel; o acesso é revogável sem tocar no histórico de quem lançou o quê.' }
+    ],
+    challenge: {
+      title: 'Um relatório vazio que só acontecia em igrejas novas',
+      steps: [
+        { label: 'Problema', body: 'Igrejas recém-cadastradas viam o relatório mensal em branco mesmo com lançamentos salvos. Em contas antigas, nunca acontecia.' },
+        { label: 'Investigação', body: 'O log do PostgREST mostrava a query retornando zero linhas, sem erro. Rodando o mesmo SQL como service_role, os dados estavam lá — o que apontava para a política, não para o dado. A diferença entre as contas era o registro de configuração da igreja, criado por um trigger que só rodava no primeiro lançamento.' },
+        { label: 'Solução', body: 'A política do relatório dependia indiretamente desse registro de configuração. Movi a criação para o momento do cadastro da igreja, dentro da mesma transação, e escrevi a política para não depender de dado opcional.' },
+        { label: 'Resultado', body: 'O caso sumiu e virou teste de regressão: um script cria uma igreja zerada e valida que todas as views respondem antes do primeiro lançamento.' }
+      ],
+      code: "create policy \"relatorio_por_igreja\"\n  on public.lancamentos for select\n  using (\n    igreja_id in (\n      select m.igreja_id from public.membros m\n      where m.user_id = auth.uid()\n    )\n  );\n-- antes: o predicado passava por configuracoes_igreja,\n-- que podia simplesmente não existir ainda."
+    },
+    results: [
+      'Nenhum incidente de vazamento entre tenants desde que as políticas passaram a ser testadas por papel.',
+      'Mudança de preço na landing deixou de exigir deploy — é uma linha no banco.',
+      'Aprendizado principal: RLS é ótima como fonte da verdade, mas exige um harness de teste próprio; sem ele você está confiando na leitura do código.'
+    ],
+    gallery: ['Dashboard', 'Lançamentos', 'Relatório']
+  },
+  {
+    slug: 'gestao-de-escalas',
+    name: 'Gestão de Escalas',
+    tagline: 'SaaS para montar e comunicar escalas de ministérios, com convites, confirmações e e-mails transacionais.',
+    role: 'Produto próprio · solo',
+    outcome: 'Store Zustand de 1160 linhas quebrada em slices — e a partir daí a feature nova parou de doer.',
+    badges: ['Papel: Solo, full-stack', 'Período: 2025 — atual', 'Tipo: Produto próprio'],
+    type: 'Produto próprio', featured: true,
+    live: true, liveHref: 'https://gestaodeescalas-seven.vercel.app', repo: null,
+    stack: ['Next.js', 'TypeScript', 'Zustand', 'Neon PostgreSQL', 'Google OAuth', 'Resend'],
+    chips: ['Next.js', 'TypeScript', 'Zustand', 'Neon'],
+    overview: [
+      { label: 'Cliente', value: 'Produto próprio' },
+      { label: 'Duração', value: '2025 — em evolução' },
+      { label: 'Time', value: 'Solo' },
+      { label: 'Stack', value: 'Next.js (App Router), TypeScript, Zustand, Neon PostgreSQL, Google OAuth, Resend' }
+    ],
+    context: 'Escala de ministério vive em grupo de WhatsApp: alguém posta uma imagem, três pessoas respondem que não podem, e a versão final existe só na cabeça do líder. Faltava um lugar onde a escala fosse um estado, não uma mensagem.',
+    myRole: 'Produto próprio, feito sozinho: modelagem, autenticação, front-end, disparo de e-mails e deploy.',
+    decisions: [
+      { decision: 'Zustand em slices por domínio, com a store composta na raiz',
+        alternatives: 'Manter a store única; migrar para Redux Toolkit; jogar tudo em React Query + estado local.',
+        why: 'A store monolítica tinha crescido para 1160 linhas e qualquer alteração recarregava metade da árvore. Slices por domínio (escalas, membros, ministérios, UI) deram fronteiras claras e seletores estreitos.',
+        tradeoff: 'Ações que cruzam slices ficam mais verbosas — precisam de um orquestrador em vez de mexer no estado vizinho direto. Aceitei a verbosidade em troca de saber quem escreve onde.' },
+      { decision: 'RBAC checado no servidor, com o front apenas escondendo o que já é negado',
+        alternatives: 'Confiar no gate visual do componente; middleware genérico por rota.',
+        why: 'Líder, escalado e visitante têm ações distintas sobre a mesma escala. Esconder botão não é autorização; a checagem mora na server action.',
+        tradeoff: 'Alguma duplicação entre a regra do servidor e a condição visual. Centralizei a regra num módulo compartilhado para as duas lerem a mesma fonte.' },
+      { decision: 'Resend para e-mail transacional em vez de SMTP próprio',
+        alternatives: 'Nodemailer com SMTP de provedor; notificação só dentro do app.',
+        why: 'Convite e lembrete precisam chegar na caixa de entrada, não no spam. Entregabilidade é um problema de infraestrutura que eu não quero manter sozinho.',
+        tradeoff: 'Mais uma dependência externa e um limite de envio no plano gratuito. O disparo é enfileirado e idempotente para não perder convite em pico.' }
+    ],
+    features: [
+      { title: 'Montagem de escala por ministério', body: 'Líder monta a escala do mês por função e vê conflitos de disponibilidade antes de publicar.' },
+      { title: 'Convite e confirmação', body: 'Cada escalado recebe e-mail com link direto para confirmar ou recusar; o estado volta para a escala em tempo real.' },
+      { title: 'Login com Google', body: 'OAuth do Google elimina senha para um público que não quer criar mais uma conta.' }
+    ],
+    challenge: {
+      title: 'Quebrando uma store de 1160 linhas sem parar o produto',
+      steps: [
+        { label: 'Problema', body: 'Um único create() concentrava estado de escalas, membros, ministérios e UI. Cada mutação notificava todos os assinantes e o app repintava inteiro ao marcar uma presença.' },
+        { label: 'Investigação', body: 'O profiler do React mostrava re-render de componentes que não liam o dado alterado. A causa era o padrão de consumo: componentes pegavam a store inteira em vez de um seletor.' },
+        { label: 'Solução', body: 'Extraí um slice por domínio, mantendo a assinatura pública da store igual durante a migração, e troquei os consumos por seletores estreitos com comparação rasa. Migrei um domínio por vez, com o app funcionando entre cada passo.' },
+        { label: 'Resultado', body: 'Marcar presença passou a repintar só a linha afetada, e adicionar campo novo virou mudança local em um arquivo em vez de uma leitura de 1160 linhas.' }
+      ],
+      code: "// antes\nconst store = useAppStore(); // qualquer mudança repinta\n\n// depois\nconst escala = useAppStore(s => s.escalas.byId[id]);\nconst confirmar = useAppStore(s => s.escalas.confirmar);\n\nexport const createEscalasSlice = (set, get) => ({\n  escalas: { byId: {}, confirmar: (id, userId) => set(/* ... */) }\n});"
+    },
+    results: [
+      'Re-render em massa eliminado nas telas de escala — a interação mais frequente do produto.',
+      'Onboarding de feature nova caiu para um arquivo de slice + um componente, sem tocar no resto.',
+      'Aprendizado: o problema não era Zustand, era consumir estado sem seletor. Refatorar mantendo a API pública permitiu migrar sem branch longa.'
+    ],
+    gallery: ['Escala do mês', 'Convite por e-mail', 'Painel do líder']
+  },
+  {
+    slug: 'sorria-clinicas',
+    name: 'Sorria Clínicas Odontológicas',
+    tagline: 'Redesign e site multi-página em Next.js, com foco em SEO local e Core Web Vitals.',
+    role: 'Freelance · solo',
+    outcome: 'Site institucional refeito para ser encontrado em busca local e carregar rápido em 4G.',
+    badges: ['Papel: Freelance, solo', 'Período: 2025', 'Tipo: Cliente'],
+    type: 'Freelance', featured: true,
+    live: false, liveHref: '#', repo: null,
+    stack: ['Next.js', 'TypeScript', 'Tailwind', 'SEO', 'next/image'],
+    chips: ['Next.js', 'TypeScript', 'Tailwind', 'SEO'],
+    overview: [
+      { label: 'Cliente', value: 'Sorria Clínicas Odontológicas' },
+      { label: 'Duração', value: '2025' },
+      { label: 'Time', value: 'Solo' },
+      { label: 'Stack', value: 'Next.js (App Router), TypeScript, Tailwind, next/image' }
+    ],
+    context: 'A clínica tinha uma página única e pesada, sem estrutura por especialidade e sem sinais de negócio local. Quem buscava por procedimento na região simplesmente não chegava até ela.',
+    myRole: 'Freelance solo: levantamento de conteúdo com a cliente, arquitetura de páginas, implementação e publicação. O conteúdo clínico foi validado por ela; eu não escrevi promessa de resultado.',
+    decisions: [
+      { decision: 'Uma página por especialidade em vez de âncoras numa home longa',
+        alternatives: 'Manter one-page com seções; blog genérico sem página de serviço.',
+        why: 'Busca local acontece por procedimento. Cada página vira um alvo de busca próprio, com título, descrição e conteúdo específicos.',
+        tradeoff: 'Mais páginas para a cliente manter atualizadas. Estruturei o conteúdo em arquivos de dados para que editar texto não exija mexer em layout.' },
+      { decision: 'Imagens servidas por next/image com dimensões fixas',
+        alternatives: 'Tags img diretas com as fotos originais do fotógrafo.',
+        why: 'As fotos originais pesavam megabytes e derrubavam LCP e CLS no 3G/4G do público real.',
+        tradeoff: 'Exige informar largura e altura em cada uso, o que engessa um pouco o layout — em troca, nada pula durante o carregamento.' }
+    ],
+    features: [
+      { title: 'Páginas por especialidade', body: 'Cada procedimento tem página própria com conteúdo, dúvidas frequentes e chamada para agendamento no WhatsApp.' },
+      { title: 'Dados de negócio local', body: 'Endereço, horários e mapa estruturados para aparecer corretamente em busca e mapas.' }
+    ],
+    results: [
+      'Estrutura pronta para busca por procedimento, que antes não existia.',
+      'Carregamento estável em conexão móvel — sem salto de layout nas fotos.',
+      'TODO: preencher com números reais de Search Console / Lighthouse depois de 90 dias no ar.'
+    ],
+    gallery: ['Home', 'Página de especialidade', 'Mobile']
+  },
+  {
+    slug: 'mare-de-estudos',
+    name: 'Maré de Estudos',
+    tagline: 'Curadoria de playlists do YouTube para estudo, com design system próprio.',
+    role: 'Produto próprio · solo',
+    outcome: 'Projeto onde construí meu próprio design system antes de construir as telas.',
+    badges: ['Papel: Solo, full-stack', 'Período: 2025', 'Tipo: Produto próprio'],
+    type: 'Produto próprio', featured: false,
+    live: false, liveHref: '#', repo: null,
+    stack: ['React 19', 'TypeScript', 'Vite', 'Supabase', 'Tailwind'],
+    chips: ['React 19', 'TypeScript', 'Vite', 'Supabase'],
+    overview: [
+      { label: 'Cliente', value: 'Produto próprio' },
+      { label: 'Duração', value: '2025' },
+      { label: 'Time', value: 'Solo' },
+      { label: 'Stack', value: 'React 19, TypeScript, Vite, Supabase, Tailwind' }
+    ],
+    context: 'Boa aula no YouTube existe de sobra; o que falta é ordem. A plataforma sugere o próximo vídeo pelo que prende atenção, não pelo que faz sentido estudar depois.',
+    myRole: 'Produto próprio, solo. Curadoria, modelagem e front-end.',
+    decisions: [
+      { decision: 'Design system próprio em tokens antes das telas',
+        alternatives: 'Usar uma biblioteca de componentes pronta; estilizar direto com utilitários.',
+        why: 'Queria consistência sem carregar uma biblioteca inteira, e usar o projeto para praticar a disciplina de token → primitivo → componente.',
+        tradeoff: 'Começo mais lento: as primeiras duas telas custaram o dobro. A partir da terceira, cada tela nova saiu quase de graça.' }
+    ],
+    features: [
+      { title: 'Trilhas ordenadas', body: 'Playlists organizadas em ordem de estudo, não em ordem de publicação.' }
+    ],
+    results: [
+      'Base de componentes reaproveitada depois em outros projetos pessoais.',
+      'Aprendizado: token primeiro, componente depois — inverter essa ordem custa retrabalho.'
+    ],
+    gallery: ['Trilhas', 'Detalhe da playlist']
+  },
+  {
+    slug: 'orla-corporativos',
+    name: 'Projetos corporativos — Orla.tech',
+    tagline: 'Implementação de features em produtos de clientes da Orla.tech: ANBIMA, RD Group (Droga Raia/Drogasil) e Conviva Hotelaria.',
+    role: 'Estagiário → dev júnior',
+    outcome: 'Entregas em bases grandes e já existentes, sob padrões e revisão de time.',
+    badges: ['Papel: Estagiário → Desenvolvedor júnior', 'Período: 2024 — atual', 'Tipo: Cliente (via Orla.tech)'],
+    type: 'Cliente', featured: false,
+    live: false, liveHref: '#', repo: null,
+    stack: ['React', 'TypeScript', 'Next.js', 'No-code/Low-code'],
+    chips: ['React', 'TypeScript', 'Next.js'],
+    overview: [
+      { label: 'Cliente', value: 'ANBIMA, RD Group, Conviva Hotelaria — via Orla.tech' },
+      { label: 'Duração', value: '2024 — atual' },
+      { label: 'Time', value: 'Equipe da Orla.tech' },
+      { label: 'Stack', value: 'React, TypeScript, Next.js e ferramentas low-code, conforme o produto' }
+    ],
+    context: 'São produtos de clientes cobertos por acordo de confidencialidade. Descrevo aqui apenas o tipo de trabalho e o meu escopo — sem telas, dados de negócio ou detalhes de arquitetura do cliente.',
+    myRole: 'Entrei como estagiário de desenvolvimento e hoje atuo como desenvolvedor júnior. Meu escopo é implementação de features e correções sobre bases já existentes, seguindo a arquitetura definida pelo time e passando por code review. Não fui responsável pelas decisões de arquitetura desses produtos, e não vou reivindicá-las aqui.',
+    decisions: [],
+    features: [],
+    results: [
+      'Prática diária em base grande, com padrão de código, review e ambiente de homologação — coisa que projeto pessoal não ensina.',
+      'Aprendizado: em código de outra pessoa, ler antes de propor economiza o dobro do tempo depois.'
+    ],
+    gallery: []
+  }
+];
+
+const POSTS = [
+  {
+    slug: 'rls-supabase-multi-tenancy',
+    title: 'RLS no Supabase: multi-tenancy sem middleware',
+    excerpt: 'Como deixei o Postgres ser a autoridade de acesso do Contabilidade Igreja — e o que isso cobra em troca na hora de debugar.',
+    date: '12 de março de 2026', read: '9 min', tags: ['Supabase', 'PostgreSQL', 'Arquitetura'],
+    body: [
+      { kind: 'text', text: 'A pergunta que abre qualquer SaaS multi-tenant é onde mora o filtro por tenant. A resposta comum é "na aplicação": um middleware injeta o tenant_id em toda query e a vida segue — até a query que alguém escreveu com pressa não passar pelo middleware.' },
+      { kind: 'heading', text: 'Por que RLS' },
+      { kind: 'text', text: 'Row Level Security move essa regra para dentro do banco. A política é avaliada em toda leitura e escrita, venha de onde vier: do cliente, de uma Edge Function ou do seu psql às duas da manhã. O filtro deixa de ser algo que você lembra de aplicar.' },
+      { kind: 'callout', text: 'Regra prática: se a regra de acesso puder ser esquecida por um desenvolvedor apressado, ela está no lugar errado.' },
+      { kind: 'heading', text: 'A política mínima' },
+      { kind: 'code', text: "alter table lancamentos enable row level security;\n\ncreate policy \"membro_le_sua_igreja\"\n  on lancamentos for select\n  using (igreja_id in (\n    select igreja_id from membros where user_id = auth.uid()\n  ));" },
+      { kind: 'heading', text: 'O que isso cobra em troca' },
+      { kind: 'text', text: 'Erro de política não grita. Ele devolve zero linhas, como se o dado não existisse — o que é ótimo para segurança e péssimo para debug. A saída foi um harness de teste que roda o mesmo conjunto de queries assumindo cada papel e falha quando o resultado diverge do esperado.' },
+      { kind: 'todo', text: 'TODO: continuar — seção sobre funções STABLE e custo de planner, e o script de teste por papel.' }
+    ]
+  },
+  {
+    slug: 'zustand-slices',
+    title: 'Quebrando uma store Zustand de 1160 linhas em slices',
+    excerpt: 'Uma refatoração feita em produção, um domínio por vez, mantendo a API pública da store intacta.',
+    date: '28 de janeiro de 2026', read: '11 min', tags: ['React', 'Zustand', 'Refatoração'],
+    body: [
+      { kind: 'text', text: 'A store do Gestão de Escalas cresceu do jeito honesto: uma feature de cada vez, sempre "só mais um campo". Quando bateu 1160 linhas, marcar a presença de uma pessoa repintava a tela inteira.' },
+      { kind: 'heading', text: 'O sintoma não era o tamanho' },
+      { kind: 'text', text: 'Arquivo grande incomoda, mas não causa re-render. A causa real era o padrão de consumo: componentes chamavam useAppStore() sem seletor e assinavam o objeto inteiro. Qualquer set() notificava todo mundo.' },
+      { kind: 'heading', text: 'Migrando sem branch longa' },
+      { kind: 'text', text: 'A regra que tornou isso viável foi manter a assinatura pública igual durante toda a migração. Cada slice saiu para o seu arquivo, a store raiz continuou expondo os mesmos nomes, e os componentes foram convertidos para seletores estreitos em pequenos lotes.' },
+      { kind: 'code', text: "export const createEscalasSlice = (set, get) => ({\n  escalas: {\n    byId: {},\n    confirmar: (id, userId) => set(state => ({ /* ... */ }))\n  }\n});\n\nexport const useAppStore = create((...a) => ({\n  ...createEscalasSlice(...a),\n  ...createMembrosSlice(...a),\n  ...createUiSlice(...a)\n}));" },
+      { kind: 'todo', text: 'TODO: continuar — comparação rasa, ações que cruzam slices e como medi o ganho no profiler.' }
+    ]
+  },
+  {
+    slug: 'bug-persistencia-mes-sem-registro',
+    title: 'O bug silencioso de persistência que só aparecia em meses sem registro',
+    excerpt: 'Zero linhas não é erro. Foi por isso que esse bug sobreviveu tanto tempo — e o que ele me ensinou sobre estado inicial.',
+    date: '4 de dezembro de 2025', read: '7 min', tags: ['PostgreSQL', 'Debug', 'Supabase'],
+    body: [
+      { kind: 'text', text: 'O relatório aparecia vazio para igrejas recém-criadas. Nenhum erro no console, nenhuma exceção no servidor, nenhum alerta. Só uma tela em branco e a suspeita de que o dado não tinha sido salvo — que era exatamente a pista errada.' },
+      { kind: 'heading', text: 'Zero linhas engana' },
+      { kind: 'text', text: 'Com RLS, "sem permissão" e "sem dado" chegam ao cliente do mesmo jeito. Rodar a mesma query com um papel privilegiado foi o que separou as duas hipóteses em cinco minutos: o dado estava lá.' },
+      { kind: 'heading', text: 'Estado inicial é feature' },
+      { kind: 'text', text: 'A política dependia de um registro de configuração que só nascia junto do primeiro lançamento. Ou seja: o sistema só funcionava depois de usado. Movi a criação para a transação de cadastro e passei a testar toda tela com uma conta zerada.' },
+      { kind: 'todo', text: 'TODO: continuar — checklist de estado vazio que passei a rodar antes de cada release.' }
+    ]
+  }
+];
+
+const TIMELINE = [
+  { period: '2024 — atual', role: 'Estagiário → Desenvolvedor júnior', org: 'Orla.tech', body: 'Implementação de features e correções em produtos de clientes (ANBIMA, RD Group, Conviva Hotelaria), sobre bases existentes e com code review. Aqui aprendi a trabalhar dentro da arquitetura de outra pessoa.' },
+  { period: '2024 — atual', role: 'Desenvolvedor de produtos próprios', org: 'Contabilidade Igreja · Gestão de Escalas', body: 'Dois SaaS no ar, feitos do banco ao deploy. É onde tomo as decisões de arquitetura documentadas neste portfólio.' },
+  { period: '2025', role: 'Desenvolvedor freelance', org: 'Sorria Clínicas Odontológicas', body: 'Redesign e site multi-página em Next.js, com foco em busca local e performance em conexão móvel.' }
+];
+
+const STACK_GROUPS = [
+  { label: 'Front-end', items: ['React / React 19', 'Next.js (App Router)', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Vite'] },
+  { label: 'Back-end e dados', items: ['PostgreSQL', 'Supabase (RLS, Auth, Storage, Edge Functions)', 'Neon', 'Server Actions', 'Resend'] },
+  { label: 'No-code / low-code', items: ['Ferramentas low-code em projetos de cliente'] },
+  { label: 'Ferramentas', items: ['Git / GitHub', 'Vercel', 'Figma', 'Google OAuth'] }
+];
+
+const SOCIALS = [
+  { key: 'wa', label: 'WhatsApp', short: 'WA', hint: 'TODO: número', aria: 'Conversar com Alessandro no WhatsApp', href: 'https://wa.me/55TODO?text=' + encodeURIComponent('Olá Alessandro, vi seu portfólio e gostaria de conversar sobre...') },
+  { key: 'li', label: 'LinkedIn', short: 'IN', hint: '/alessandro-saldanha', aria: 'Perfil de Alessandro Saldanha no LinkedIn', href: 'https://www.linkedin.com/in/alessandro-saldanha-0868b8185/' },
+  { key: 'gh', label: 'GitHub', short: 'GH', hint: 'TODO: usuário', aria: 'Perfil de Alessandro Saldanha no GitHub', href: '#' },
+  { key: 'fb', label: 'Facebook', short: 'FB', hint: 'TODO: perfil', aria: 'Perfil de Alessandro Saldanha no Facebook', href: '#' },
+  { key: 'ig', label: 'Instagram', short: 'IG', hint: 'TODO: perfil', aria: 'Perfil de Alessandro Saldanha no Instagram', href: '#' }
+];
+
+class Component extends DCLogic {
+  state = {
+    route: 'home', slug: PROJECTS[0].slug, postSlug: POSTS[0].slug,
+    theme: 'dark', filter: 'Todos', tag: 'Todas', sent: false
+  };
+
+  componentDidMount() {
+    const mq = window.matchMedia('(min-width: 900px)');
+    const apply = () => {
+      const root = this.el || document;
+      const nav = root.querySelector('[data-nav-desktop]');
+      if (nav) nav.style.display = mq.matches ? 'flex' : 'none';
+      const toc = root.querySelector('[data-toc]');
+      if (toc) toc.style.display = mq.matches ? 'block' : 'none';
+      const dg = root.querySelector('[data-detail-grid]');
+      if (dg) dg.style.gridTemplateColumns = mq.matches ? '280px minmax(0, 1fr)' : 'minmax(0, 1fr)';
+      const pg = root.querySelector('[data-post-grid]');
+      if (pg) pg.style.gridTemplateColumns = mq.matches ? 'minmax(0, 1fr) 220px' : 'minmax(0, 1fr)';
+    };
+    this._apply = apply;
+    mq.addEventListener('change', apply);
+    this._mq = mq;
+    apply();
+  }
+  componentDidUpdate() { if (this._apply) requestAnimationFrame(this._apply); }
+  componentWillUnmount() { if (this._mq && this._apply) this._mq.removeEventListener('change', this._apply); }
+
+  nav(route, extra) {
+    return (e) => {
+      if (e && e.preventDefault) e.preventDefault();
+      this.setState(Object.assign({ route }, extra || {}));
+      window.scrollTo(0, 0);
+    };
+  }
+
+  renderVals() {
+    const st = this.state;
+    const idx = Math.max(0, PROJECTS.findIndex(p => p.slug === st.slug));
+    const raw = PROJECTS[idx];
+    const post = POSTS.find(p => p.slug === st.postSlug) || POSTS[0];
+
+    const types = ['Todos'].concat(Array.from(new Set(PROJECTS.map(p => p.type))));
+    const stacks = Array.from(new Set(PROJECTS.flatMap(p => p.stack))).slice(0, 6);
+    const filterKeys = types.concat(stacks);
+    const active = (on) => on
+      ? { bg: 'var(--text-primary)', fg: 'var(--surface-page)', border: 'var(--text-primary)' }
+      : { bg: 'transparent', fg: 'var(--text-secondary)', border: 'var(--border-subtle)' };
+
+    const withNav = (p) => Object.assign({}, p, { onClick: this.nav('detalhe', { slug: p.slug }) });
+    const list = st.filter === 'Todos' ? PROJECTS
+      : PROJECTS.filter(p => p.type === st.filter || p.stack.indexOf(st.filter) > -1);
+
+    const tags = ['Todas'].concat(Array.from(new Set(POSTS.flatMap(p => p.tags))));
+    const postCards = POSTS.map(p => ({
+      title: p.title, excerpt: p.excerpt, tags: p.tags,
+      meta: p.date + ' · ' + p.read,
+      onClick: this.nav('post', { postSlug: p.slug })
+    }));
+
+    const p = Object.assign({}, raw, {
+      badgeLine: raw.role + ' · ' + raw.badges[1].replace('Período: ', ''),
+      hasDecisions: raw.decisions.length > 0,
+      hasFeatures: raw.features.length > 0,
+      hasChallenge: !!raw.challenge,
+      hasResults: raw.results.length > 0,
+      hasGallery: raw.gallery.length > 0,
+      gallery: raw.gallery.map(g => ({ label: g + ' — TODO', onClick: (e) => e.preventDefault() }))
+    });
+
+    const prev = PROJECTS[(idx - 1 + PROJECTS.length) % PROJECTS.length];
+    const next = PROJECTS[(idx + 1) % PROJECTS.length];
+
+    return {
+      theme: st.theme,
+      themeIcon: st.theme === 'dark' ? '☾' : '☀',
+      toggleTheme: () => this.setState(s => ({ theme: s.theme === 'dark' ? 'light' : 'dark' })),
+      isHome: st.route === 'home', isProjetos: st.route === 'projetos', isDetalhe: st.route === 'detalhe',
+      isBlog: st.route === 'blog', isPost: st.route === 'post', isSobre: st.route === 'sobre', isContato: st.route === 'contato',
+      goHome: this.nav('home'), goProjetos: this.nav('projetos'), goBlog: this.nav('blog'), goContato: this.nav('contato'),
+      noop: (e) => e.preventDefault(),
+      navItems: [
+        { label: 'Projetos', onClick: this.nav('projetos') },
+        { label: 'Blog', onClick: this.nav('blog') },
+        { label: 'Sobre', onClick: this.nav('sobre') }
+      ],
+      waLink: SOCIALS[0].href,
+      companiesLoop: COMPANIES.concat(COMPANIES),
+      featured: PROJECTS.filter(x => x.featured).map(withNav),
+      filteredProjects: list.map(withNav),
+      filters: filterKeys.map(f => Object.assign({ label: f, onClick: () => this.setState({ filter: f }) }, active(st.filter === f))),
+      stackGroups: STACK_GROUPS,
+      allStack: STACK_GROUPS.flatMap(g => g.items),
+      posts: postCards,
+      filteredPosts: st.tag === 'Todas' ? postCards : postCards.filter(c => c.tags.indexOf(st.tag) > -1),
+      tagFilters: tags.map(t => Object.assign({ label: t, onClick: () => this.setState({ tag: t }) }, active(st.tag === t))),
+      p, prevProject: withNav(prev), nextProject: withNav(next),
+      post: {
+        title: post.title, excerpt: post.excerpt,
+        meta: post.date + ' · ' + post.read + ' · ' + post.tags.join(', '),
+        body: post.body.map((b, i) => ({
+          text: b.text, id: 'h-' + i,
+          isHeading: b.kind === 'heading', isText: b.kind === 'text',
+          isCode: b.kind === 'code', isCallout: b.kind === 'callout', isTodo: b.kind === 'todo'
+        })),
+        toc: post.body.map((b, i) => ({ kind: b.kind, text: b.text, href: '#h-' + i })).filter(t => t.kind === 'heading')
+      },
+      timeline: TIMELINE,
+      socials: SOCIALS,
+      submitLabel: st.sent ? 'Mensagem enviada (demo)' : 'Enviar mensagem',
+      onSubmit: (e) => { e.preventDefault(); this.setState({ sent: true }); }
+    };
+  }
+}
+
+</script>
+</body>
+</html>
