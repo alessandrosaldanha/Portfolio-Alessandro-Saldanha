@@ -272,7 +272,8 @@ alternativa válida.
   como "lançamentos, relatórios e prestação de contas" genéricos.
 - Screenshots reais em `src/assets/contabilidade-reformada/`: capa do case
   (`contabilidade-login.webp`) e imagem em seis dos sete blocos de feature — "Multi-igreja com
-  admin por igreja" (`contabilidade-detalhes-igreja.webp`), "Extrato bancário lido por IA"
+  admin por igreja" (`contabilidade-multi-igreja.webp`, tela de Detalhes da Igreja com o seletor
+  de igrejas aberto mostrando várias cadastradas), "Extrato bancário lido por IA"
   (`contabilidade-extrato-ia.webp`), "Livro caixa com filtros" (`contabilidade-livro-caixa.webp`),
   "Dashboard mensal, trimestral e anual" (`contabilidade-dashboard.webp`), "Trilha de auditoria"
   (`contabilidade-auditoria.webp`) e "Gestão de usuários por igreja"
