@@ -22,7 +22,9 @@ src/
   components/           # Header (com menu mobile), Footer — layout persistente; OrlaMarquee — carrossel da home;
                         # SocialIcon — ícones das redes no Footer/Contato; FloatingTags — tags decorativas ao redor de uma foto,
                         # com faíscas animadas no topo de cada pill (CSS puro, respeita prefers-reduced-motion);
-                        # 6 tags ao total, 2 delas (--ml/--mr) ocultas abaixo de 640px para não estourar a viewport
+                        # 6 tags ao total, 2 delas (--ml/--mr) ocultas abaixo de 640px para não estourar a viewport;
+                        # GalleryLightbox — dialog acessível pra ampliar imagem de galeria (Esc/fundo/botão fecha,
+                        # setas navegam, focus trap, foco volta ao thumbnail ao fechar), usado por ProjetoDetalhe
   pages/                # uma página por rota
   data/                 # conteúdo real (projetos, posts, empresas, etc.), JS puro
   styles/
@@ -50,7 +52,7 @@ Material extraído do Claude Design ao iniciar este projeto — **não faz parte
 Antes de escrever qualquer texto de projeto (contexto, papel, features), confira [docs/CONTEUDO.md](docs/CONTEUDO.md) — é a fonte da verdade dos fatos (trajetória, produtos próprios, escopo real de cada cliente). Não deduza feature a partir do código nem invente métrica ou resultado; se um fato não estiver lá, é melhor perguntar do que assumir.
 
 1. Adicione uma entrada em `src/data/projects.js`, seguindo o formato dos projetos existentes (`slug`, `name`, `tagline`, `overview`, `decisions`, `features`, `challenge`, `results`, `gallery` — os últimos quatro são opcionais e cada seção só renderiza se tiver conteúdo).
-2. Cada item de `features` aceita `href` opcional (troca o placeholder de screenshot por um link "Ver ao vivo") e/ou `image: { src, alt, width, height }` opcional (troca o placeholder por uma screenshot real; com os dois juntos, a imagem vira o link clicável), além de `highlight` opcional (uma tag curta ao lado do título, ex. "Entrega solo"). O título da seção "Funcionalidades principais" pode ser sobrescrito com `featuresLabel`, útil quando os itens são na verdade projetos distintos (ver o case `orla-corporativos`). `coverImage: { src, alt, width, height }` no projeto (não no feature) mostra uma imagem de capa logo abaixo do cabeçalho do case. Cada item de `gallery` aceita uma string simples (vira botão de texto, sem imagem) ou `{ src, alt, width, height }` (vira thumbnail clicável que abre a imagem original em nova aba). Todo campo de imagem precisa de `alt` descritivo, nunca `"screenshot"` ou vazio, e nunca reaproveitar a mesma imagem em dois blocos diferentes do mesmo case (ver CLAUDE.md).
+2. Cada item de `features` aceita `href` opcional (troca o placeholder de screenshot por um link "Ver ao vivo") e/ou `image: { src, alt, width, height }` opcional (troca o placeholder por uma screenshot real; com os dois juntos, a imagem vira o link clicável), além de `highlight` opcional (uma tag curta ao lado do título, ex. "Entrega solo"). O título da seção "Funcionalidades principais" pode ser sobrescrito com `featuresLabel`, útil quando os itens são na verdade projetos distintos (ver o case `orla-corporativos`). `coverImage: { src, alt, width, height }` no projeto (não no feature) mostra uma imagem de capa logo abaixo do cabeçalho do case, e `thumb: { src, alt, width, height }` troca o placeholder do card de destaque na home por uma screenshot real. Cada item de `gallery` aceita uma string simples (vira botão de texto, sem imagem) ou `{ src, alt, width, height }` (vira thumbnail clicável que abre em [GalleryLightbox](src/components/GalleryLightbox.jsx), nunca o arquivo `.webp` direto). Todo campo de imagem precisa de `alt` descritivo, nunca `"screenshot"` ou vazio; nunca reaproveitar a mesma imagem em dois blocos diferentes do mesmo case, nem manter versão clara e escura da mesma tela na galeria (ver CLAUDE.md).
 3. Marque `featured: true` se quiser que apareça na home.
 4. Pronto — a listagem em `/projetos`, os filtros, a navegação anterior/próximo e a home se atualizam sozinhos. Nenhuma mudança de layout é necessária.
 
@@ -69,8 +71,9 @@ Texto voltado ao usuário (bio, cards de projeto, posts, meta description, alt t
 
 ## Pontos de preenchimento pendentes
 
-- Fotos e screenshots reais de projetos e galeria. Enquanto não existem, os placeholders (`.project-card-thumb` na home, `.feature-shot` no case) são caixas vazias estilizadas, sem texto de tarefa — nenhum "TODO" deve aparecer renderizado (regra em [CLAUDE.md](CLAUDE.md)). A foto de `/sobre` já foi adicionada (`src/assets/perfil-alessandro.jpeg`).
+- Nexus (WeSafety) e Maré de Estudos já têm screenshots reais (`coverImage`, `thumb`, imagem por `feature` e `gallery` — ver `src/assets/nexus/` e `src/assets/mare-estudos/`). Os demais projetos (Contabilidade Reformada, Gestão de Escalas, Sorria, IBR Maceió, IBR Maragogi, Supermercado Vital, `orla-corporativos`) ainda não têm foto real; os placeholders (`.project-card-thumb` na home, `.feature-shot` no case) são caixas vazias estilizadas, sem texto de tarefa — nenhum "TODO" deve aparecer renderizado (regra em [CLAUDE.md](CLAUDE.md)). A foto de `/sobre` já foi adicionada (`src/assets/perfil-alessandro.jpeg`).
 - Link ao vivo de Gestão de Escalas ainda aponta para o ambiente do Vercel (`gestaodeescalas-seven.vercel.app`); sem domínio próprio confirmado até o momento (ver [docs/CONTEUDO.md](docs/CONTEUDO.md)).
+- Três logos do marquee de clientes (Droga Raia, Papelzinho, FixInfra) seguem em texto — os arquivos recebidos falharam a validação de formato/duplicidade e estão em `_pending-assets/` (gitignorada) aguardando reenvio (ver [docs/CONTEUDO.md](docs/CONTEUDO.md)).
 
 ## Estratégia de branches
 
