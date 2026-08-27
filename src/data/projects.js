@@ -64,6 +64,12 @@ export const projects = [
       width: 1400,
       height: 1353,
     },
+    thumb: {
+      src: contabilidadeLogin,
+      alt: 'Tela de login do Contabilidade Reformada, com acesso ao painel financeiro da igreja',
+      width: 1400,
+      height: 1353,
+    },
     decisions: [
       {
         decision: 'Extrato lido e categorizado por IA, com prévia editável antes de gravar',
