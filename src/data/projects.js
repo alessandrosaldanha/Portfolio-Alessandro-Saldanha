@@ -256,6 +256,12 @@ export const createEscalasSlice = (set, get) => ({
       width: 1400,
       height: 938,
     },
+    thumb: {
+      src: mareExplore,
+      alt: 'Tela de Explorar do Maré de Estudos, com playlists curadas por categoria',
+      width: 1000,
+      height: 714,
+    },
     decisions: [
       {
         decision: 'Design system próprio em tokens antes das telas',
