@@ -227,19 +227,20 @@ alternativa válida.
 - O quiz gerado por IA é o diferencial do produto — não descrever como "progresso e anotações"
   genéricos.
 - Screenshots reais em `src/assets/mare-estudos/`: capa do case (`mare-login.webp`, tela de
-  login) e imagem em seis blocos de feature — "Explore o catálogo curado" (`mare-explore.webp`),
-  "Monte sua própria trilha" (`mare-trilha.webp`, tela de importar playlist por link ou buscar
-  vídeos), "Player com anotações lado a lado" (`mare-player-anotacoes.webp`), "Desempenho com
-  explicação de cada erro" (`mare-quiz-resultado.webp`, tela de resultado com pontuação e
-  explicação por questão), "Meus estudos" (`mare-meus-estudos.webp`) e "Roadmap de estudos"
-  (`mare-roadmap.webp`, calendário de sessões agendadas). Dois blocos originais foram divididos
-  em dois cada um porque cada metade tinha uma screenshot real e distinta: "Explore ou monte sua
-  trilha" virou "Explore o catálogo curado" + "Monte sua própria trilha"; "Conta e roadmap de
-  estudos" virou "Meus estudos" (que também ficou com a menção ao login) + "Roadmap de estudos".
-  Mesma lógica do merge EEA/DT do Nexus, só que ao contrário: dividir quando os fluxos são de
-  fato diferentes, nunca forçar duas imagens no mesmo bloco nem repetir uma imagem em dois. Só
-  "Quiz gerado por IA ao completar a trilha" continua sem imagem: não há screenshot real da tela
-  de geração/início do quiz, e não é para inventar uma.
+  login) e imagem em todos os sete blocos de feature — "Explore o catálogo curado"
+  (`mare-explore.webp`), "Monte sua própria trilha" (`mare-trilha.webp`, tela de importar
+  playlist por link ou buscar vídeos), "Player com anotações lado a lado"
+  (`mare-player-anotacoes.webp`), "Quiz gerado por IA ao completar a trilha"
+  (`mare-quiz-gerando.webp`, painel com o banco de perguntas gerado e tentativas anteriores),
+  "Desempenho com explicação de cada erro" (`mare-quiz-resultado.webp`, tela de resultado com
+  pontuação e explicação por questão), "Meus estudos" (`mare-meus-estudos.webp`) e "Roadmap de
+  estudos" (`mare-roadmap.webp`, calendário de sessões agendadas). Dois blocos originais foram
+  divididos em dois cada um porque cada metade tinha uma screenshot real e distinta: "Explore ou
+  monte sua trilha" virou "Explore o catálogo curado" + "Monte sua própria trilha"; "Conta e
+  roadmap de estudos" virou "Meus estudos" (que também ficou com a menção ao login) + "Roadmap de
+  estudos". Mesma lógica do merge EEA/DT do Nexus, só que ao contrário: dividir quando os fluxos
+  são de fato diferentes, nunca forçar duas imagens no mesmo bloco nem repetir uma imagem em
+  dois.
 
 ### Contabilidade Reformada
 - Tipo: produto próprio · solo. Status: no ar.
