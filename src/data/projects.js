@@ -121,7 +121,7 @@ export const projects = [
       {
         title: 'Trilha de auditoria',
         body: 'Registro de quem subiu, editou ou removeu cada lançamento.',
-        image: { src: contabilidadeAuditoria, alt: 'Tela de Trilha de Auditoria no Contabilidade Reformada, com histórico imutável de alterações', width: 1000, height: 990 },
+        image: { src: contabilidadeAuditoria, alt: 'Tela de Trilha de Auditoria no Contabilidade Reformada, com histórico imutável de alterações', width: 1000, height: 987 },
       },
       {
         title: 'Gestão de usuários por igreja',
