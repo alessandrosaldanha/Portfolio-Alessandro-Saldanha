@@ -15,8 +15,9 @@ export default function Home() {
         <h1 className="hero-title">Desenvolvedor full-stack. Do schema ao deploy.</h1>
         <p className="hero-lede">
           Construo SaaS com React, Next.js e PostgreSQL. Documento por que cada decisão foi
-          tomada, incluindo as que deram trabalho. Hoje na Orla.tech; à noite, dois produtos
-          próprios no ar.
+          tomada, incluindo as que deram trabalho. Três produtos próprios no ar: Maré de Estudos,
+          Contabilidade Reformada e Gestão de Escalas. Disponível para freelance, PJ ou CLT, em
+          Maceió ou remoto.
         </p>
         <div className="hero-actions">
           <Link to="/projetos" className="btn btn-primary">
