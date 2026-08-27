@@ -349,6 +349,12 @@ export const createEscalasSlice = (set, get) => ({
       width: 1400,
       height: 1328,
     },
+    thumb: {
+      src: wesafetySite,
+      alt: 'Página inicial do site institucional da WeSafety',
+      width: 1000,
+      height: 902,
+    },
     decisions: [],
     features: [
       {
