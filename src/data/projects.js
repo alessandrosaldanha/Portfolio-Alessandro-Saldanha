@@ -14,6 +14,8 @@ import escalaCenturiao from '../assets/escalas/escala-centuriao.webp'
 import escalaCozinha from '../assets/escalas/escala-cozinha.webp'
 import escalaEbd from '../assets/escalas/escala-ebd.webp'
 import escalaPresbiterio from '../assets/escalas/escala-presbiterio.webp'
+import escalaLoginGoogle from '../assets/escalas/escala-login-google.webp'
+import escalaEmailRedefinirSenha from '../assets/escalas/escala-email-redefinir-senha.webp'
 import nexusAcessoCpf from '../assets/nexus/nexus-acesso-cpf.webp'
 import nexusSelecaoTeste from '../assets/nexus/nexus-selecao-teste.webp'
 import nexusTesteFinalizado from '../assets/nexus/nexus-teste-finalizado.webp'
@@ -211,7 +213,11 @@ export const projects = [
         image: { src: escalaLouvor, alt: 'Tela de escala do ministério de Louvor, com cantores e instrumentistas por função', width: 1000, height: 718 },
       },
       { title: 'Convite e confirmação', body: 'Cada escalado recebe e-mail com link direto para confirmar ou recusar; o estado volta para a escala em tempo real.' },
-      { title: 'Login com Google', body: 'OAuth do Google elimina senha para um público que não quer criar mais uma conta.' },
+      {
+        title: 'Login com Google',
+        body: 'OAuth do Google elimina senha para um público que não quer criar mais uma conta.',
+        image: { src: escalaLoginGoogle, alt: 'Tela de login do Gestão de Escalas, com e-mail/senha e a opção Entrar com o Google', width: 700, height: 925 },
+      },
     ],
     challenge: {
       title: 'Quebrando uma store de 1160 linhas sem parar o produto',
@@ -242,6 +248,7 @@ export const createEscalasSlice = (set, get) => ({
       { src: escalaCozinha, alt: 'Escala do ministério de Cozinha, por grupo', width: 1000, height: 705 },
       { src: escalaEbd, alt: 'Escala do ministério de EBD', width: 1000, height: 736 },
       { src: escalaPresbiterio, alt: 'Escala do Presbitério, com carga de funções por pregador', width: 1000, height: 777 },
+      { src: escalaEmailRedefinirSenha, alt: 'E-mail transacional de redefinição de senha do Gestão de Escalas', width: 600, height: 656 },
     ],
   },
   {
