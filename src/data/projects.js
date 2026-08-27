@@ -11,12 +11,8 @@ import mareQuizResultado from '../assets/mare-estudos/mare-quiz-resultado.webp'
 import mareRoadmap from '../assets/mare-estudos/mare-roadmap.webp'
 import mareQuizGerando from '../assets/mare-estudos/mare-quiz-gerando.webp'
 import mareGalExplorarDesktopClaro from '../assets/mare-estudos/mare-gallery-explorar-desktop-claro.webp'
-import mareGalExplorarDesktopEscuro from '../assets/mare-estudos/mare-gallery-explorar-desktop-escuro.webp'
-import mareGalExplorarMobileEscuro from '../assets/mare-estudos/mare-gallery-explorar-mobile-escuro.webp'
 import mareGalExplorarMobileClaro from '../assets/mare-estudos/mare-gallery-explorar-mobile-claro.webp'
 import mareGalMenuMobileClaro from '../assets/mare-estudos/mare-gallery-menu-mobile-claro.webp'
-import mareGalMenuMobileEscuro from '../assets/mare-estudos/mare-gallery-menu-mobile-escuro.webp'
-import mareGalAulaMobileEscuro from '../assets/mare-estudos/mare-gallery-aula-mobile-escuro.webp'
 import mareGalAulaMobileClaro from '../assets/mare-estudos/mare-gallery-aula-mobile-claro.webp'
 
 export const projects = [
@@ -331,14 +327,10 @@ export const createEscalasSlice = (set, get) => ({
       'Aprendizado: token primeiro, componente depois. Inverter essa ordem custa retrabalho.',
     ],
     gallery: [
-      { src: mareGalExplorarDesktopClaro, alt: 'Explorar no desktop, tema claro', width: 1100, height: 920 },
-      { src: mareGalExplorarDesktopEscuro, alt: 'Explorar no desktop, tema escuro', width: 1100, height: 931 },
-      { src: mareGalExplorarMobileClaro, alt: 'Explorar no mobile, tema claro', width: 643, height: 1692 },
-      { src: mareGalExplorarMobileEscuro, alt: 'Explorar no mobile, tema escuro', width: 634, height: 1686 },
-      { src: mareGalMenuMobileClaro, alt: 'Menu de navegação no mobile, tema claro', width: 640, height: 1108 },
-      { src: mareGalMenuMobileEscuro, alt: 'Menu de navegação no mobile, tema escuro', width: 640, height: 1081 },
-      { src: mareGalAulaMobileClaro, alt: 'Tela de aula no mobile, tema claro', width: 639, height: 1666 },
-      { src: mareGalAulaMobileEscuro, alt: 'Tela de aula no mobile, tema escuro', width: 631, height: 1669 },
+      { src: mareGalExplorarDesktopClaro, alt: 'Explorar no desktop', width: 1100, height: 920 },
+      { src: mareGalExplorarMobileClaro, alt: 'Explorar no mobile', width: 643, height: 1692 },
+      { src: mareGalMenuMobileClaro, alt: 'Menu de navegação no mobile', width: 640, height: 1108 },
+      { src: mareGalAulaMobileClaro, alt: 'Tela de aula no mobile', width: 639, height: 1666 },
     ],
   },
   {
