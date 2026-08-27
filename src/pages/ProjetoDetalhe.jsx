@@ -1,9 +1,13 @@
+import { useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { getProject, projectNeighbours } from '../data/projects'
+import GalleryLightbox from '../components/GalleryLightbox'
 
 export default function ProjetoDetalhe() {
   const { slug } = useParams()
   const p = getProject(slug)
+  const [lightboxIndex, setLightboxIndex] = useState(null)
+  const lightboxTriggerRef = useRef(null)
 
   if (!p) {
     return (
@@ -22,6 +26,17 @@ export default function ProjetoDetalhe() {
   const hasChallenge = !!p.challenge
   const hasResults = p.results.length > 0
   const hasGallery = p.gallery.length > 0
+  const galleryImages = p.gallery.filter((g) => typeof g !== 'string')
+
+  const openLightbox = (image, event) => {
+    lightboxTriggerRef.current = event.currentTarget
+    setLightboxIndex(galleryImages.indexOf(image))
+  }
+
+  const closeLightbox = () => {
+    setLightboxIndex(null)
+    lightboxTriggerRef.current?.focus()
+  }
 
   return (
     <main>
@@ -205,15 +220,14 @@ export default function ProjetoDetalhe() {
                       {g}
                     </button>
                   ) : (
-                    <a
+                    <button
                       key={g.alt}
-                      href={g.src}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      type="button"
                       className="gallery-item gallery-item-img"
+                      onClick={(e) => openLightbox(g, e)}
                     >
                       <img src={g.src} alt={g.alt} loading="lazy" width={g.width} height={g.height} />
-                    </a>
+                    </button>
                   )
                 )}
               </div>
@@ -232,6 +246,10 @@ export default function ProjetoDetalhe() {
           <span className="detail-nav-name">{next.name}</span>
         </Link>
       </nav>
+
+      {lightboxIndex !== null && (
+        <GalleryLightbox images={galleryImages} startIndex={lightboxIndex} onClose={closeLightbox} />
+      )}
     </main>
   )
 }
