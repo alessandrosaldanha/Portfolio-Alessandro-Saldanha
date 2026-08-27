@@ -352,13 +352,8 @@ export const createEscalasSlice = (set, get) => ({
     decisions: [],
     features: [
       {
-        title: 'Instrumento EEA (Estado Emocional Atual)',
-        body: 'Teste diário. O motorista responde 20 questões distribuídas em 10 categorias, duas por categoria.',
-        image: { src: nexusSelecaoTeste, alt: 'Tela de seleção entre os testes Estado Emocional Atual (EEA) e Diagnóstico de Tendência (DT)', width: 1000, height: 951 },
-      },
-      {
-        title: 'Instrumento DT (Diagnóstico de Tendência)',
-        body: 'Teste periódico, de 150 questões. Também aplicado quando o motorista é reprovado no EEA.',
+        title: 'EEA (Estado Emocional Atual) e DT (Diagnóstico de Tendência)',
+        body: 'EEA: teste diário, 20 questões em 10 categorias, duas por categoria. DT: teste periódico, 150 questões, também aplicado quando o motorista é reprovado no EEA.',
         image: { src: nexusSelecaoTeste, alt: 'Tela de seleção entre os testes Estado Emocional Atual (EEA) e Diagnóstico de Tendência (DT)', width: 1000, height: 951 },
       },
       {
