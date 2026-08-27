@@ -4,6 +4,35 @@ import { useLayoutEffect, useRef, useState } from 'react'
 // from tokens/*.css (see CLAUDE.md note about spacing.css/effects.css being empty).
 const SPEED_PX_PER_SECOND = 70
 
+// Renders a client logo recolored to the marquee's current text color, regardless
+// of the source file's own colors — a plain <img> can't be recolored via CSS, so
+// the visible pixels come from a CSS mask (mask-image, works for SVG/PNG/WebP alike)
+// on a sibling span. The real <img> stays in the DOM (opacity: 0) purely so it keeps
+// its native loading="lazy", its alt text, and its onError — if the file 404s or
+// fails to decode, it falls back to the plain text wordmark, same as an entry with
+// no logo at all.
+function MarqueeLogo({ item }) {
+  const [failed, setFailed] = useState(false)
+  if (!item.logo || failed) {
+    return <span className="marquee-item">{item.name}</span>
+  }
+  return (
+    <span
+      className="marquee-logo"
+      style={{ '--marquee-logo-src': `url(${item.logo})`, height: item.logoHeight }}
+    >
+      <img
+        src={item.logo}
+        alt={item.name}
+        loading="lazy"
+        width={item.logoWidth}
+        height={item.logoHeightPx}
+        onError={() => setFailed(true)}
+      />
+    </span>
+  )
+}
+
 function renderGroup(items, groupIndex, setGroupRef) {
   const isReal = groupIndex === 0
   return (
@@ -15,7 +44,7 @@ function renderGroup(items, groupIndex, setGroupRef) {
     >
       {items.map((p, i) => (
         <li key={p.name} className="marquee-item-wrap">
-          <span className="marquee-item">{p.name}</span>
+          <MarqueeLogo item={p} />
           {i < items.length - 1 && (
             <span className="marquee-sep" aria-hidden="true">
               ·

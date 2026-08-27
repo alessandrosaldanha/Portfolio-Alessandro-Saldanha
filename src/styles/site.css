@@ -473,6 +473,29 @@ a.header-contact {
 .marquee-item:hover {
   color: var(--text-primary);
 }
+.marquee-logo {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: auto;
+  background-color: var(--text-secondary);
+  -webkit-mask-image: var(--marquee-logo-src);
+  mask-image: var(--marquee-logo-src);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  transition: background-color 0.2s ease;
+}
+.marquee-logo:hover {
+  background-color: var(--text-primary);
+}
+.marquee-logo img {
+  height: 100%;
+  width: auto;
+  opacity: 0;
+}
 .marquee-sep {
   flex: 0 0 auto;
   margin: 0 clamp(14px, 2.5vw, 28px);
