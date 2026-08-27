@@ -10,15 +10,17 @@ export default function Sobre() {
         <div>
           <h1 className="sobre-heading">Alessandro Saldanha</h1>
           <p className="detail-text" style={{ marginTop: 24 }}>
-            Sou desenvolvedor em Maceió. Comecei como estagiário de desenvolvimento na Orla.tech e
-            hoje atuo como desenvolvedor júnior, implementando features em produtos de clientes
-            como ANBIMA, RD Group e Conviva Hotelaria.
+            Sou desenvolvedor em Maceió. Entre maio de 2024 e agosto de 2026 trabalhei na
+            Orla.tech, primeiro como estagiário e depois como desenvolvedor júnior, construindo
+            produtos de clientes como ANBIMA, RD Group e Conviva Hotelaria, a maior parte do zero
+            à produção. Hoje estou disponível para freelance, PJ ou CLT, em Maceió ou remoto.
           </p>
           <p className="detail-text" style={{ marginTop: 18 }}>
-            Fora do expediente mantenho dois SaaS próprios no ar. São um de gestão financeira
-            para igrejas e outro de escalas de ministérios. É neles que eu erro à vontade: modelagem
-            multi-tenant, RLS, refatoração de estado, e-mail transacional. O que aprendo ali
-            costuma virar post.
+            Mantenho três produtos próprios no ar: Contabilidade Reformada (gestão financeira
+            para igrejas), Gestão de Escalas (escalas de ministérios) e Maré de Estudos (trilhas
+            de estudo a partir de playlists do YouTube). É neles que eu erro à vontade: modelagem
+            multi-tenant, RLS, refatoração de estado, e-mail transacional, internacionalização.
+            O que aprendo ali costuma virar post.
           </p>
         </div>
         <div className="sobre-photo">
