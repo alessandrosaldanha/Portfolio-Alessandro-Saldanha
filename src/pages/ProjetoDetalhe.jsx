@@ -121,7 +121,7 @@ export default function ProjetoDetalhe() {
                         Ver ao vivo →
                       </a>
                     ) : (
-                      <div className="feature-shot">TODO: screenshot</div>
+                      <div className="feature-shot" />
                     )}
                   </div>
                 ))}

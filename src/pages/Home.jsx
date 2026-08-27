@@ -43,7 +43,7 @@ export default function Home() {
         <div className="projects-grid">
           {featured.map((p) => (
             <Link key={p.slug} to={`/projetos/${p.slug}`} className="project-card">
-              <div className="project-card-thumb">TODO: thumbnail</div>
+              <div className="project-card-thumb" />
               <div className="project-card-body">
                 <span className="project-card-role">{p.role}</span>
                 <h3 className="project-card-name">{p.name}</h3>
