@@ -1,3 +1,7 @@
+import nexusAcessoCpf from '../assets/nexus/nexus-acesso-cpf.webp'
+import nexusSelecaoTeste from '../assets/nexus/nexus-selecao-teste.webp'
+import nexusTesteFinalizado from '../assets/nexus/nexus-teste-finalizado.webp'
+
 export const projects = [
   {
     slug: 'contabilidade-igreja',
@@ -338,11 +342,29 @@ export const createEscalasSlice = (set, get) => ({
       'WeSafety é um grupo da Águia Branca. Antes do Nexus, os motoristas passavam por um instrumento de avaliação anterior que nunca renovava o banco de questões: eram sempre as mesmas perguntas, ciclo após ciclo. Com o tempo, o motorista passou a responder no automático, e o teste deixou de medir aptidão para medir familiaridade com o próprio teste. Um acidente, em que o motorista avaliado havia sido aprovado na avaliação em uso até então, evidenciou que ela não estava mais cumprindo a função. O Nexus nasceu como uma plataforma de gestão e testes, criada primeiro para o grupo Águia Branca e depois estendida para venda a outras empresas do setor de transporte.',
     myRole:
       'Construí o Nexus em WeWeb.io, dentro da equipe da Orla.tech, e também o site institucional da WeSafety, no mesmo stack.',
+    coverImage: {
+      src: nexusAcessoCpf,
+      alt: 'Tela de acesso do Nexus, com campo de CPF do funcionário',
+      width: 1400,
+      height: 1328,
+    },
     decisions: [],
     features: [
-      { title: 'Instrumento EEA', body: 'O motorista responde 20 questões distribuídas em 10 categorias, duas por categoria.' },
-      { title: 'Instrumento DT', body: 'Teste mensal, de 150 questões. Também aplicado quando o motorista é reprovado no EEA.' },
-      { title: 'Recomendação de aptidão', body: 'O resultado de cada instrumento gera uma recomendação sobre a aptidão do motorista para dirigir. O produto entrega a recomendação, não a decisão: em caso de reprovação, cabe ao gestor local decidir o que fazer.' },
+      {
+        title: 'Instrumento EEA (Estado Emocional Atual)',
+        body: 'Teste diário. O motorista responde 20 questões distribuídas em 10 categorias, duas por categoria.',
+        image: { src: nexusSelecaoTeste, alt: 'Tela de seleção entre os testes Estado Emocional Atual (EEA) e Diagnóstico de Tendência (DT)', width: 1000, height: 951 },
+      },
+      {
+        title: 'Instrumento DT (Diagnóstico de Tendência)',
+        body: 'Teste periódico, de 150 questões. Também aplicado quando o motorista é reprovado no EEA.',
+        image: { src: nexusSelecaoTeste, alt: 'Tela de seleção entre os testes Estado Emocional Atual (EEA) e Diagnóstico de Tendência (DT)', width: 1000, height: 951 },
+      },
+      {
+        title: 'Recomendação de aptidão',
+        body: 'O resultado de cada instrumento gera uma recomendação sobre a aptidão do motorista para dirigir. O produto entrega a recomendação, não a decisão: em caso de reprovação, cabe ao gestor local decidir o que fazer.',
+        image: { src: nexusTesteFinalizado, alt: 'Tela de conclusão do teste no Nexus, confirmando o envio das respostas', width: 1000, height: 776 },
+      },
       { title: 'Site institucional da WeSafety', href: 'https://www.wesafety.com.br/', body: 'Também construído em WeWeb.io, no mesmo stack do Nexus.' },
     ],
     results: [],

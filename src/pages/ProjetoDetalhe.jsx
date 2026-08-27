@@ -56,6 +56,19 @@ export default function ProjetoDetalhe() {
         </div>
       </header>
 
+      {p.coverImage && (
+        <div className="container">
+          <img
+            className="detail-cover"
+            src={p.coverImage.src}
+            alt={p.coverImage.alt}
+            loading="lazy"
+            width={p.coverImage.width}
+            height={p.coverImage.height}
+          />
+        </div>
+      )}
+
       <div className="container detail-body">
         <aside className="overview-aside">
           {p.overview.map((o) => (
@@ -121,6 +134,15 @@ export default function ProjetoDetalhe() {
                       <a href={f.href} target="_blank" rel="noopener noreferrer" className="feature-shot-link">
                         Ver ao vivo →
                       </a>
+                    ) : f.image ? (
+                      <img
+                        className="feature-shot feature-shot-img"
+                        src={f.image.src}
+                        alt={f.image.alt}
+                        loading="lazy"
+                        width={f.image.width}
+                        height={f.image.height}
+                      />
                     ) : (
                       <div className="feature-shot" />
                     )}

@@ -1107,6 +1107,18 @@ a.header-contact {
   border-color: var(--orla-blue);
   background: var(--surface-card);
 }
+.feature-shot-img {
+  object-fit: cover;
+}
+.detail-cover {
+  display: block;
+  width: 100%;
+  max-height: 520px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid var(--border-subtle);
+  margin-top: clamp(28px, 4vw, 48px);
+}
 .feature-highlight {
   margin-left: 10px;
   vertical-align: middle;
