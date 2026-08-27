@@ -6,6 +6,12 @@ texto de projeto, trajetória ou stack, leia este arquivo. Não deduza feature a
 nem invente métrica, número ou resultado. Se um fato não estiver aqui, pergunte ao Alessandro em
 vez de assumir.
 
+**Nunca escrever contexto de origem** ("nasceu porque X", "o cliente não tinha Y", "a empresa
+enfrentava Z") sem que o Alessandro tenha fornecido esse contexto explicitamente. Se faltar
+informação para justificar por que um projeto existe, a descrição fica mais curta, não
+preenchida com uma suposição plausível. Essa regra existe porque descrições assim já foram
+escritas e precisaram ser removidas depois (ver "Projetos pessoais sem cliente" abaixo).
+
 Sempre que um fato mudar (saída de emprego, novo produto, nova feature, mudança de nome), atualize
 este arquivo primeiro e só depois o texto do site.
 
@@ -299,10 +305,29 @@ tela de CPF já cobre acesso de forma mais expressiva). Duas capturas que mostra
 (`Teste EEA.png`, `Teste DT.png`) foram recebidas e apagadas do projeto nesta rodada — não
 readicionar esse tipo de imagem no futuro.
 
-## Projetos de cliente/freelance (sem alteração nesta rodada)
+## Projetos pessoais sem cliente
 
-Dados já corretos em `src/data/projects.js`, mantidos aqui só como referência de onde estão:
-Sorria Clínicas Odontológicas, IBR Maceió, IBR Maragogi, Supermercado Vital.
+Sorria Clínicas Odontológicas, IBR Maceió, IBR Maragogi e Supermercado Vital **nunca tiveram
+cliente pagante** — são projetos pessoais do Alessandro, não freelance. `type`/`role`/`badges`
+usam "Projeto pessoal", não "Freelance" nem "Cliente" (isso também corrige o filtro de
+`/projetos`, que deriva os chips dos valores únicos de `type` — não há lista fixa no código).
+
+Essas descrições continham contexto de origem inventado (histórias de "o cliente não tinha X",
+decisões justificadas por "a equipe da igreja" ou "a liderança", resultados que afirmavam
+conclusão/operação real) que nunca foi fornecido pelo Alessandro. Foi tudo removido ou reescrito
+mais curto, seguindo a regra do topo deste arquivo. Não reintroduzir esse tipo de narrativa.
+
+- **Sorria Clínicas Odontológicas**: redesign de site institucional multi-página, projeto
+  pessoal. Sem detalhe de origem/negócio real.
+- **IBR Maceió** e **IBR Maragogi**: sites institucionais de igreja, projetos pessoais **ainda
+  não finalizados** — sem o conteúdo institucional real. O único conteúdo confirmado é a página
+  de EBD com estudos em PDF para download; é isso que `features` descreve, nada além. `decisions`
+  e `results` ficaram vazios (não há decisão técnica documentada nem resultado a reportar
+  enquanto o projeto não termina) — não preencher com suposição.
+- **Supermercado Vital**: e-commerce pessoal — login, carrinho, simulação de compra com endereço
+  de entrega, avaliações em produtos. Front-end integrado a uma API pronta em Xano. Nunca afirmar
+  região de atuação real (não é "entrega em Maceió") nem operação de negócio real (não "a loja
+  saiu do atendimento por WhatsApp").
 
 ## Regras de escrita (recap de CLAUDE.md)
 
@@ -313,3 +338,5 @@ Sorria Clínicas Odontológicas, IBR Maceió, IBR Maragogi, Supermercado Vital.
   visual e sem texto de tarefa — uma caixa vazia estilizada, não `TODO: algo`. Se faltar conteúdo
   real para preencher um espaço (resultado, métrica, screenshot), remova o item em vez de deixar
   um lembrete de tarefa visível para o visitante.
+- Nunca escrever contexto de origem sem que o Alessandro tenha fornecido. Se faltar informação,
+  a descrição fica mais curta, não preenchida com suposição.
