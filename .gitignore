@@ -25,3 +25,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Media assets belong under src/assets/<categoria>/ (imagens do app) or
+# public/ (arquivos servidos como-estão, ex. favicon), nunca soltos na raiz
+# do projeto. Escopado só à raiz (sem /**), então não afeta src/assets/**
+# nem public/**. Pasta de arquivos recebidos com problema, aguardando
+# reenvio — nunca versionada.
+/*.png
+/*.jpg
+/*.jpeg
+/*.webp
+/*.gif
+/*.svg
+/_pending-assets/

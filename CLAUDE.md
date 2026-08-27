@@ -28,6 +28,7 @@ There is no test runner configured yet. If tests are added later, document the r
 - Import alias: `@/` → `src/` is configured in `jsconfig.json` and `vite.config.js` (`resolve.alias`), reserved for imports that climb two or more directory levels. Nothing in the codebase currently needs it — every existing import is a sibling (`./Foo`) or one level up (`../data/x`); don't convert those to `@/` just for the sake of using the alias.
 - Bundler config: [vite.config.js](vite.config.js) uses `@vitejs/plugin-react` (Oxc-based, not the SWC variant); `server.watch.ignored` excludes `reference/**` so editing reference material doesn't trigger HMR.
 - `.claude/skills/` and `.claude/.agentes/` hold project-specific Claude Code skills and agent definitions.
+- **Media assets are never loose at the project root.** Logos live in `src/assets/logos/`, per-project case screenshots in `src/assets/<slug>/` (e.g. `src/assets/nexus/`), files served as-is (favicon) in `public/`. `.gitignore` has a root-scoped pattern (`/*.png`, `/*.jpg`, `/*.svg`, etc. — not `src/assets/**`) so a stray file dropped at the root isn't tracked until it's actually organized. A file received with a problem (wrong format, duplicate/mismatched content) goes to `_pending-assets/` at the repo root (gitignored, never committed) while waiting for a corrected version — see `docs/CONTEUDO.md` for what's pending and why.
 
 ## Reference material
 
