@@ -1,8 +1,8 @@
 export const projects = [
   {
     slug: 'contabilidade-igreja',
-    name: 'Contabilidade Igreja',
-    tagline: 'SaaS de gestão financeira para igrejas: lançamentos, relatórios e prestação de contas em multi-tenant.',
+    name: 'Contabilidade Reformada',
+    tagline: 'Tesoureiro de igreja lançava cada movimentação do extrato bancário à mão, uma por uma. A IA (Gemini) lê o extrato em CSV, Excel ou PDF, categoriza tudo e mostra uma prévia editável antes de gravar no livro caixa.',
     role: 'Produto próprio · solo',
     outcome: 'Isolamento por igreja resolvido no banco com RLS, sem camada de middleware.',
     badges: ['Papel: Solo, full-stack', 'Período: desde 2024', 'Tipo: Produto próprio'],
@@ -11,19 +11,25 @@ export const projects = [
     live: true,
     liveHref: 'https://contabilidadereformada.com.br',
     repo: null,
-    stack: ['React', 'Supabase', 'PostgreSQL', 'Tailwind', 'React Router'],
-    chips: ['React', 'Supabase', 'PostgreSQL', 'RLS'],
+    stack: ['React', 'Supabase', 'PostgreSQL', 'Tailwind', 'React Router', 'Gemini'],
+    chips: ['React', 'Supabase', 'Gemini', 'RLS'],
     overview: [
       { label: 'Cliente', value: 'Produto próprio' },
       { label: 'Duração', value: 'Desde 2024, em evolução' },
       { label: 'Time', value: 'Solo' },
-      { label: 'Stack', value: 'React, Supabase (Postgres, RLS, Auth, Storage, Edge Functions), Tailwind, React Router' },
+      { label: 'Stack', value: 'React, Supabase (Postgres, RLS, Auth, Storage, Edge Functions), Tailwind, React Router, Gemini (leitura e categorização de extrato)' },
     ],
     context:
-      'Igrejas pequenas costumam controlar caixa em planilhas compartilhadas por WhatsApp. Ninguém sabe qual é a versão vigente, o tesoureiro anterior leva o histórico embora e a prestação de contas para a assembleia vira uma noite de reconciliação manual. O problema não é contábil: é de acesso e de histórico confiável.',
+      'Igrejas pequenas costumam controlar caixa em planilhas compartilhadas por WhatsApp, e o tesoureiro lançava cada movimentação do extrato bancário à mão, uma por uma, categorizando no olho. Ninguém sabe qual é a versão vigente, o tesoureiro anterior leva o histórico embora e a prestação de contas para a assembleia vira uma noite de reconciliação manual. O problema não é só de acesso e histórico: é também o tempo gasto lançando o óbvio.',
     myRole:
-      'Fiz tudo: modelagem do banco, políticas de segurança, front-end, landing e deploy. É um produto meu, então não há aqui escopo de terceiros. Quando digo que decidi algo, decidi mesmo.',
+      'Fiz tudo: modelagem do banco, políticas de segurança, integração com a API do Gemini para leitura e categorização de extrato, front-end, landing e deploy. É um produto meu, então não há aqui escopo de terceiros. Quando digo que decidi algo, decidi mesmo.',
     decisions: [
+      {
+        decision: 'Extrato lido e categorizado por IA, com prévia editável antes de gravar',
+        alternatives: 'Lançamento manual movimentação por movimentação; importação automática direto para o livro caixa, sem revisão humana.',
+        why: 'O problema original era o tesoureiro lançando cada movimentação na mão. O Gemini lê o CSV, Excel ou PDF do banco e já categoriza, mas a prévia editável garante que nada entra no livro caixa sem o tesoureiro confirmar.',
+        tradeoff: 'A extração de IA erra categoria às vezes, principalmente em descrições de movimentação ambíguas. Por isso a prévia é editável e o arquivo original fica anexado na aba de importações, para conferência.',
+      },
       {
         decision: 'Isolamento multi-tenant via Row Level Security, não via camada de aplicação',
         alternatives: 'Um banco por igreja; filtro por tenant_id no cliente; um backend Node intermediando todas as queries.',
@@ -44,9 +50,11 @@ export const projects = [
       },
     ],
     features: [
-      { title: 'Lançamentos com categorias e anexos', body: 'Entradas e saídas com comprovante em Storage, categoria e centro de custo. O anexo herda a mesma política de acesso do lançamento.' },
-      { title: 'Relatórios de prestação de contas', body: 'Fechamento por período com totais por categoria, pronto para ler em assembleia ou exportar.' },
-      { title: 'Convite e papéis por igreja', body: 'Admin convida por e-mail e define o papel; o acesso é revogável sem tocar no histórico de quem lançou o quê.' },
+      { title: 'Multi-igreja com admin por igreja', body: 'Cada igreja tem cadastro próprio; o admin (pastor) gerencia a sua e cadastra os tesoureiros dela.' },
+      { title: 'Extrato bancário lido por IA', body: 'O tesoureiro sobe o extrato em CSV, Excel ou PDF; o arquivo fica anexado na aba de importações com data e hora. O Gemini extrai todas as movimentações e categoriza cada uma.' },
+      { title: 'Prévia editável antes de gravar', body: 'Antes de ir para o livro caixa, o tesoureiro vê uma prévia da importação e ajusta o que quiser. Nada é gravado sem confirmação.' },
+      { title: 'Livro caixa com filtros e dashboard', body: 'Filtros por entrada, saída, categoria e responsável, com visão mensal, e dashboard mensal, trimestral e anual.' },
+      { title: 'Trilha de auditoria', body: 'Registro de quem subiu, editou ou removeu cada lançamento, com gestão de usuários por igreja.' },
     ],
     challenge: {
       title: 'Um relatório vazio que só acontecia em igrejas novas',
@@ -77,7 +85,7 @@ export const projects = [
   {
     slug: 'gestao-de-escalas',
     name: 'Gestão de Escalas',
-    tagline: 'SaaS para montar e comunicar escalas de ministérios, com convites, confirmações e e-mails transacionais.',
+    tagline: 'Escala de ministério em grupo de WhatsApp não tem confirmação nem histórico confiável. SaaS de escalas com convites, confirmações e e-mails transacionais reais, cobrindo louvor, mídia, cozinha, pastoral, EBD, ceia, diaconato e outros ministérios.',
     role: 'Produto próprio · solo',
     outcome: 'Store Zustand de 1160 linhas quebrada em slices. A partir daí, a feature nova parou de doer.',
     badges: ['Papel: Solo, full-stack', 'Período: desde 2025', 'Tipo: Produto próprio'],
@@ -95,7 +103,7 @@ export const projects = [
       { label: 'Stack', value: 'Next.js (App Router), TypeScript, Zustand, Neon PostgreSQL, Google OAuth, Resend' },
     ],
     context:
-      'Escala de ministério vive em grupo de WhatsApp: alguém posta uma imagem, três pessoas respondem que não podem, e a versão final existe só na cabeça do líder. Faltava um lugar onde a escala fosse um estado, não uma mensagem.',
+      'Escala de ministério vive em grupo de WhatsApp: alguém posta uma imagem, três pessoas respondem que não podem, e a versão final existe só na cabeça do líder. Faltava um lugar onde a escala fosse um estado, não uma mensagem. Cobre louvor, mídia, cozinha, pastoral, EBD (inclusive EBD de novos membros), ceia e diaconato, entre outros ministérios, e cada membro só vê a escala em que foi designado; a liderança vê tudo.',
     myRole: 'Produto próprio, feito sozinho: modelagem, autenticação, front-end, disparo de e-mails e deploy.',
     decisions: [
       {
@@ -118,6 +126,7 @@ export const projects = [
       },
     ],
     features: [
+      { title: 'Escopo por ministério e visibilidade por papel', body: 'Cobre louvor, mídia, cozinha, pastoral, EBD, EBD de novos membros, ceia, diaconato e outros. Cada membro vê apenas a escala em que foi designado; a liderança vê tudo.' },
       { title: 'Montagem de escala por ministério', body: 'Líder monta a escala do mês por função e vê conflitos de disponibilidade antes de publicar.' },
       { title: 'Convite e confirmação', body: 'Cada escalado recebe e-mail com link direto para confirmar ou recusar; o estado volta para a escala em tempo real.' },
       { title: 'Login com Google', body: 'OAuth do Google elimina senha para um público que não quer criar mais uma conta.' },
@@ -209,18 +218,18 @@ export const createEscalasSlice = (set, get) => ({
     live: true,
     liveHref: 'https://mare-de-estudos.vercel.app/explorar',
     repo: null,
-    stack: ['React 19', 'TypeScript', 'Vite', 'Supabase', 'React Router 7', 'Tailwind', 'i18next'],
-    chips: ['React 19', 'TypeScript', 'Supabase', 'i18next'],
+    stack: ['React 19', 'TypeScript', 'Vite', 'Supabase', 'React Router 7', 'Tailwind', 'i18next', 'Gemini'],
+    chips: ['React 19', 'TypeScript', 'Supabase', 'Gemini'],
     overview: [
       { label: 'Cliente', value: 'Produto próprio' },
       { label: 'Duração', value: '2025' },
       { label: 'Time', value: 'Solo' },
-      { label: 'Stack', value: 'React 19, TypeScript, Vite, Supabase (Postgres, Auth, Storage, RLS), React Router 7, Tailwind, i18next' },
+      { label: 'Stack', value: 'React 19, TypeScript, Vite, Supabase (Postgres, Auth, Storage, RLS), React Router 7, Tailwind, i18next, Gemini (geração e correção do quiz)' },
     ],
     context:
-      'Boa aula no YouTube existe de sobra; o que falta é ordem. A plataforma sugere o próximo vídeo pelo que prende atenção, não pelo que faz sentido estudar depois. Importar playlist e organizar aula por aula na mão não escala, então a curadoria precisava de um catálogo com importação estruturada, não de trabalho repetido.',
+      'Boa aula no YouTube existe de sobra; o que falta é ordem. A plataforma sugere o próximo vídeo pelo que prende atenção, não pelo que faz sentido estudar depois, e organizar playlist em trilha na mão não escala. O produto resolve isso com um Explore de playlists já catalogadas (ou a opção de montar a própria trilha), progresso de 0 a 100% por trilha, e a validação de que o conteúdo entrou vem de um quiz gerado por IA que só libera na conclusão.',
     myRole:
-      'Produto próprio, solo. Modelagem do banco com RLS em todas as tabelas, importação de playlists pela YouTube Data API, front-end, design system e internacionalização da interface.',
+      'Produto próprio, solo. Modelagem do banco com RLS em todas as tabelas, importação de playlists pela YouTube Data API, integração com a API do Gemini para gerar e corrigir o quiz de cada trilha, front-end, design system e internacionalização da interface.',
     decisions: [
       {
         decision: 'Design system próprio em tokens antes das telas',
@@ -240,11 +249,19 @@ export const createEscalasSlice = (set, get) => ({
         why: 'A API oficial devolve metadado estruturado (título, duração, thumbnail) e não quebra a cada mudança de layout do YouTube.',
         tradeoff: 'Cota de uso da API limita quantas playlists dá pra importar por dia.',
       },
+      {
+        decision: 'Quiz gerado por IA a partir do conteúdo assistido, não banco de perguntas fixo',
+        alternatives: 'Banco de perguntas cadastradas manualmente por trilha; quiz genérico de múltipla escolha sem relação direta com o vídeo.',
+        why: 'O quiz só libera depois que a trilha chega a 100%, e cada trilha tem um conteúdo diferente. Gerar as perguntas com o Gemini a partir do material estudado permite o usuário escolher entre 10 e 100 questões sem manter um banco de perguntas por trilha.',
+        tradeoff: 'A qualidade da pergunta depende do prompt e do conteúdo da aula. Por isso o quiz também explica cada erro no fim, não só corrige, para o resultado servir de estudo mesmo quando uma questão sai fraca.',
+      },
     ],
     features: [
-      { title: 'Trilhas ordenadas', body: 'Playlists organizadas em ordem de estudo, não em ordem de publicação.' },
-      { title: 'Progresso por aula', body: 'O player marca o que já foi assistido, então dá pra parar e retomar de onde ficou.' },
-      { title: 'Anotações com autosave', body: 'Anotação por aula salva sozinha enquanto o usuário digita, sem botão de salvar.' },
+      { title: 'Explore ou monte sua trilha', body: 'Trilhas de estudo já catalogadas para explorar, ou montagem da própria trilha escolhendo os vídeos.' },
+      { title: 'Player com anotações lado a lado', body: 'O vídeo roda no player do YouTube com um campo de anotações ao lado, para o usuário construir o próprio material de estudo.' },
+      { title: 'Quiz gerado por IA ao completar a trilha', body: 'Ao chegar a 100% de progresso, um quiz de 10 a 100 questões (à escolha do usuário) é gerado pelo Gemini a partir do conteúdo estudado.' },
+      { title: 'Desempenho com explicação de cada erro', body: 'Ao final do quiz, mostra o desempenho e explica cada questão errada, não só corrige.' },
+      { title: 'Conta e roadmap de estudos', body: 'Login próprio ou com Google, com "Meus estudos" reunindo todas as trilhas e um roadmap/calendário de estudo.' },
     ],
     results: [
       'Base de componentes reaproveitada depois em outros projetos pessoais.',
@@ -256,32 +273,32 @@ export const createEscalasSlice = (set, get) => ({
   {
     slug: 'orla-corporativos',
     name: 'Projetos corporativos na Orla.tech',
-    tagline: 'Implementação de features em produtos de clientes da Orla.tech: ANBIMA, RD Group (Droga Raia/Drogasil) e Conviva Hotelaria.',
+    tagline: 'Produtos de clientes construídos na Orla.tech: sites da Droga Raia e Drogasil, ANBIMA Summit, ANBIMA Insights/EDU, WeSafety, Conviva Hotelaria, Papelzinho e FixInfra, a maioria do zero à produção.',
     role: 'Estagiário → dev júnior',
-    outcome: 'Entregas em bases grandes e já existentes, sob padrões e revisão de time.',
-    badges: ['Papel: Estagiário → Desenvolvedor júnior', 'Período: desde 2024', 'Tipo: Cliente (via Orla.tech)'],
+    outcome: 'Maior parte construída do zero à produção; a exceção foi o ANBIMA Internacional, que comecei em manutenção e depois reformulei por completo.',
+    badges: ['Papel: Estagiário → Desenvolvedor júnior', 'Período: 2024–2026', 'Tipo: Cliente (via Orla.tech)'],
     type: 'Cliente',
     featured: false,
     live: false,
     liveHref: '#',
     repo: null,
-    stack: ['React', 'TypeScript', 'Next.js', 'No-code/Low-code'],
+    stack: ['React', 'TypeScript', 'Next.js', 'Framer', 'Webflow', 'No-code/Low-code'],
     chips: ['React', 'TypeScript', 'Next.js'],
     overview: [
-      { label: 'Cliente', value: 'ANBIMA, RD Group, Conviva Hotelaria (via Orla.tech)' },
-      { label: 'Duração', value: 'Desde 2024' },
+      { label: 'Cliente', value: 'ANBIMA, RD Group, WeSafety, Conviva Hotelaria, Papelzinho, FixInfra (via Orla.tech)' },
+      { label: 'Duração', value: '2024–2026' },
       { label: 'Time', value: 'Equipe da Orla.tech' },
-      { label: 'Stack', value: 'React, TypeScript, Next.js e ferramentas low-code, conforme o produto' },
+      { label: 'Stack', value: 'React, TypeScript, Next.js, Framer, WeWeb, WordPress/Oxygen e Webflow, conforme o produto e a necessidade de autonomia do cliente pós-entrega' },
     ],
     context:
       'São produtos de clientes cobertos por acordo de confidencialidade. Descrevo aqui apenas o tipo de trabalho e o meu escopo (sem telas, dados de negócio ou detalhes de arquitetura do cliente).',
     myRole:
-      'Entrei como estagiário de desenvolvimento e hoje atuo como desenvolvedor júnior. Meu escopo é implementação de features e correções sobre bases já existentes, seguindo a arquitetura definida pelo time e passando por code review. Não fui responsável pelas decisões de arquitetura desses produtos, e não vou reivindicá-las aqui.',
+      'Trabalhei na Orla.tech de maio de 2024 a agosto de 2026, primeiro como estagiário e depois como desenvolvedor júnior. A maior parte dos produtos abaixo eu construí do zero à produção, incluindo a escolha de stack, sempre pensando na autonomia do cliente depois da entrega (CMS estruturado, prazo curto). O ANBIMA Internacional foi diferente: comecei em manutenção sobre uma base existente e depois liderei a reformulação completa, com integração via API. Em todos, passei por code review dentro da arquitetura e dos padrões definidos pelo time.',
     decisions: [],
     features: [],
     results: [
-      'Prática diária em base grande, com padrão de código, review e ambiente de homologação (coisa que projeto pessoal não ensina).',
-      'Aprendizado: em código de outra pessoa, ler antes de propor economiza o dobro do tempo depois.',
+      'Do zero à produção sob prazo e processo de time: padrão de código, review e ambiente de homologação, em produtos que hoje estão no ar para os clientes.',
+      'A experiência de manutenção (ANBIMA Internacional) ensinou o oposto do que os produtos próprios ensinam: ler antes de propor economiza o dobro do tempo depois.',
     ],
     gallery: [],
   },
