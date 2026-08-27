@@ -25,7 +25,8 @@ Critério de escolha de stack em todos os projetos de cliente: autonomia do clie
 abaixo são públicos e podem ser nomeados e linkados normalmente; a confidencialidade cobre
 processo interno, dado de negócio e arquitetura do cliente, não a existência do site.
 
-Construídos do zero à produção, entrega solo:
+Construídos do zero à produção (sem afirmação de solo/dupla; o Alessandro só confirmou "do zero
+à produção" para estes dois, não "sozinho"):
 - **Drogasil Manipulação** ([manipulacao.drogasil.com.br](https://manipulacao.drogasil.com.br/))
   e **Droga Raia Manipulação** ([manipulacao.raia.com.br](https://manipulacao.raia.com.br/)) —
   dois sites completos, um por marca, para desvincular o conteúdo de medicamentos manipulados dos
@@ -34,6 +35,8 @@ Construídos do zero à produção, entrega solo:
   adversas, formas farmacêuticas e referências bibliográficas, índice alfabético e paginação),
   diretório de laboratórios parceiros, blog de artigos com comentários, fale conosco e fluxo de
   envio de receita para orçamento de manipulação.
+
+Construído do zero à produção, entrega solo (o único explicitamente confirmado como solo):
 - **ANBIMA Summit 2025** ([anbimasummit.com.br](https://anbimasummit.com.br/)) — **entrega mais
   forte na Orla.tech.** Site do evento do zero à produção, feito sozinho, com venda de ingressos e
   programação completa, no ar antes da data do evento. Um único componente (a tabela de
@@ -49,7 +52,8 @@ tal):
 Manutenção e melhorias (não reformulação, não liderança do projeto):
 - **ANBIMA Internacional** ([international.anbima.com.br](https://international.anbima.com.br/))
   — atuação em manutenção e melhorias sobre uma base já existente. **Nunca escrever que "liderou
-  a reformulação completa"** — isso é incorreto.
+  a reformulação completa"** — isso é incorreto. E não descrever no site o que ele **não** fez
+  (ex.: "não fiz a arquitetura original") — o portfólio descreve o que foi feito, não o negativo.
 
 Outros:
 - **Conviva Hotelaria** ([convivastay.com.br](https://convivastay.com.br/)) — site institucional e
@@ -68,13 +72,25 @@ Outros:
 
 - **"Contabilidade Reformada"** — nunca "Contabilidade Igreja". Domínio:
   contabilidadereformada.com.br.
-- **"Maré de Estudos"** — no ar em mareestudos.com.br. *Pendente:* o campo `liveHref` do projeto
-  em `src/data/projects.js` ainda aponta para `https://mare-de-estudos.vercel.app/explorar`;
-  confirmar com o Alessandro antes de trocar pelo domínio próprio.
+- **"Maré de Estudos"** — no ar em mareestudos.com.br. `liveHref` em `src/data/projects.js`
+  aponta para o domínio de produção.
 - **"Gestão de Escalas"** — sem domínio próprio confirmado; `liveHref` atual aponta para
   `https://gestaodeescalas-seven.vercel.app`.
 - **"Orla.tech"** — sempre no passado ao descrever o vínculo empregatício (período fechado,
   mai/2024–ago/2026). Nunca tratar como emprego atual.
+
+### Domínios de produção
+
+| Produto | Domínio de produção | Observação |
+|---|---|---|
+| Maré de Estudos | mareestudos.com.br | Antes apontava para `mare-de-estudos.vercel.app`, que é o ambiente de **homologação** (branch `hmg`). Corrigido. |
+| Contabilidade Reformada | contabilidadereformada.com.br | Já estava correto. |
+| Gestão de Escalas | sem domínio próprio confirmado | `liveHref` aponta para `gestaodeescalas-seven.vercel.app`; sem indicação de que seja ambiente de homologação. |
+
+**Regra**: nunca usar uma URL `.vercel.app` de homologação como link público "ver ao vivo" de um
+produto que tenha domínio de produção confirmado nesta tabela. Se aparecer um link `.vercel.app`
+para Maré de Estudos ou Contabilidade Reformada em qualquer lugar do site, é bug, não é
+alternativa válida.
 
 ## Projetos próprios
 
@@ -158,3 +174,7 @@ Sorria Clínicas Odontológicas, IBR Maceió, IBR Maragogi, Supermercado Vital.
 - Nunca usar travessão (—) em texto voltado ao usuário.
 - Frases curtas e diretas; evitar aberturas como "além disso" e adjetivos em fileira de três.
 - Não inventar métrica, número ou resultado que o Alessandro não tenha fornecido.
+- Nenhum TODO deve chegar ao HTML renderizado. Placeholder de imagem (thumbnail, screenshot) é
+  visual e sem texto de tarefa — uma caixa vazia estilizada, não `TODO: algo`. Se faltar conteúdo
+  real para preencher um espaço (resultado, métrica, screenshot), remova o item em vez de deixar
+  um lembrete de tarefa visível para o visitante.
