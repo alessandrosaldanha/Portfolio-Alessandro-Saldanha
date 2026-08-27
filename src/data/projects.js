@@ -1,3 +1,12 @@
+import contabilidadeLogin from '../assets/contabilidade-reformada/contabilidade-login.webp'
+import contabilidadeDetalhesIgreja from '../assets/contabilidade-reformada/contabilidade-detalhes-igreja.webp'
+import contabilidadeExtratoIa from '../assets/contabilidade-reformada/contabilidade-extrato-ia.webp'
+import contabilidadeLivroCaixa from '../assets/contabilidade-reformada/contabilidade-livro-caixa.webp'
+import contabilidadeDashboard from '../assets/contabilidade-reformada/contabilidade-dashboard.webp'
+import contabilidadeAuditoria from '../assets/contabilidade-reformada/contabilidade-auditoria.webp'
+import contabilidadeUsuarios from '../assets/contabilidade-reformada/contabilidade-usuarios.webp'
+import contabilidadeDashboardMobile from '../assets/contabilidade-reformada/contabilidade-dashboard-mobile.webp'
+import contabilidadeAuditoriaMobile from '../assets/contabilidade-reformada/contabilidade-auditoria-mobile.webp'
 import escalaVisaoGeral from '../assets/escalas/escala-visao-geral.webp'
 import escalaMembros from '../assets/escalas/escala-membros.webp'
 import escalaLouvor from '../assets/escalas/escala-louvor.webp'
@@ -47,6 +56,12 @@ export const projects = [
       'Igrejas pequenas costumam controlar caixa em planilhas compartilhadas por WhatsApp, e o tesoureiro lançava cada movimentação do extrato bancário à mão, uma por uma, categorizando no olho. Ninguém sabe qual é a versão vigente, o tesoureiro anterior leva o histórico embora e a prestação de contas para a assembleia vira uma noite de reconciliação manual. O problema não é só de acesso e histórico: é também o tempo gasto lançando o óbvio.',
     myRole:
       'Fiz tudo: modelagem do banco, políticas de segurança, integração com a API do Gemini para leitura e categorização de extrato, front-end, landing e deploy. É um produto meu, então não há aqui escopo de terceiros. Quando digo que decidi algo, decidi mesmo.',
+    coverImage: {
+      src: contabilidadeLogin,
+      alt: 'Tela de login do Contabilidade Reformada, com acesso ao painel financeiro da igreja',
+      width: 1400,
+      height: 1353,
+    },
     decisions: [
       {
         decision: 'Extrato lido e categorizado por IA, com prévia editável antes de gravar',
@@ -74,11 +89,37 @@ export const projects = [
       },
     ],
     features: [
-      { title: 'Multi-igreja com admin por igreja', body: 'Cada igreja tem cadastro próprio; o admin (pastor) gerencia a sua e cadastra os tesoureiros dela.' },
-      { title: 'Extrato bancário lido por IA', body: 'O tesoureiro sobe o extrato em CSV, Excel ou PDF; o arquivo fica anexado na aba de importações com data e hora. O Gemini extrai todas as movimentações e categoriza cada uma.' },
+      {
+        title: 'Multi-igreja com admin por igreja',
+        body: 'Cada igreja tem cadastro próprio; o admin (pastor) gerencia a sua e cadastra os tesoureiros dela.',
+        image: { src: contabilidadeDetalhesIgreja, alt: 'Tela de Detalhes da Igreja no Contabilidade Reformada, com dados cadastrais e membros/admins', width: 1000, height: 994 },
+      },
+      {
+        title: 'Extrato bancário lido por IA',
+        body: 'O tesoureiro sobe o extrato em CSV, Excel ou PDF; o arquivo fica anexado na aba de importações com data e hora. O Gemini extrai todas as movimentações e categoriza cada uma.',
+        image: { src: contabilidadeExtratoIa, alt: 'Tela de Extratos e Importação IA no Contabilidade Reformada, com upload de extrato e categorização por IA', width: 1000, height: 996 },
+      },
       { title: 'Prévia editável antes de gravar', body: 'Antes de ir para o livro caixa, o tesoureiro vê uma prévia da importação e ajusta o que quiser. Nada é gravado sem confirmação.' },
-      { title: 'Livro caixa com filtros e dashboard', body: 'Filtros por entrada, saída, categoria e responsável, com visão mensal, e dashboard mensal, trimestral e anual.' },
-      { title: 'Trilha de auditoria', body: 'Registro de quem subiu, editou ou removeu cada lançamento, com gestão de usuários por igreja.' },
+      {
+        title: 'Livro caixa com filtros',
+        body: 'Filtros por entrada, saída, categoria e responsável, com visão mensal.',
+        image: { src: contabilidadeLivroCaixa, alt: 'Tela de Livro Caixa no Contabilidade Reformada, com lançamentos filtrados por mês', width: 1000, height: 987 },
+      },
+      {
+        title: 'Dashboard mensal, trimestral e anual',
+        body: 'Totais de entradas, saídas e saldo em caixa, com gráfico por período.',
+        image: { src: contabilidadeDashboard, alt: 'Dashboard Executivo do Contabilidade Reformada, com totais de entradas, saídas e saldo em caixa', width: 1000, height: 992 },
+      },
+      {
+        title: 'Trilha de auditoria',
+        body: 'Registro de quem subiu, editou ou removeu cada lançamento.',
+        image: { src: contabilidadeAuditoria, alt: 'Tela de Trilha de Auditoria no Contabilidade Reformada, com histórico imutável de alterações', width: 1000, height: 990 },
+      },
+      {
+        title: 'Gestão de usuários por igreja',
+        body: 'Convite de usuário com papel definido (Admin, Tesoureiro, Auditor) e status de acesso por igreja.',
+        image: { src: contabilidadeUsuarios, alt: 'Tela de Governança e Usuários no Contabilidade Reformada, com papéis e status de acesso por igreja', width: 1000, height: 987 },
+      },
     ],
     challenge: {
       title: 'Um relatório vazio que só acontecia em igrejas novas',
@@ -104,7 +145,10 @@ export const projects = [
       'Mudança de preço na landing deixou de exigir deploy. Agora é uma linha no banco.',
       'Aprendizado principal: RLS é ótima como fonte da verdade, mas exige um harness de teste próprio; sem ele você está confiando na leitura do código.',
     ],
-    gallery: ['Dashboard', 'Lançamentos', 'Relatório'],
+    gallery: [
+      { src: contabilidadeDashboardMobile, alt: 'Dashboard Executivo no mobile, com totais de entradas, saídas e saldo em caixa', width: 700, height: 1684 },
+      { src: contabilidadeAuditoriaMobile, alt: 'Trilha de Auditoria no mobile, com histórico de alterações', width: 694, height: 1681 },
+    ],
   },
   {
     slug: 'gestao-de-escalas',
