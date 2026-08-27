@@ -63,6 +63,7 @@ Left un-silenced, on purpose:
 - Evitar "não apenas X, mas também Y", "além disso" como abertura de frase, e adjetivos em fileira de três ("robusto, escalável e eficiente").
 - Frases curtas e diretas. Se uma frase precisa de vírgula pra encaixar duas ideias, considerar quebrar em duas frases.
 - Antes de qualquer commit que adicione ou edite texto voltado ao usuário, rodar `grep -rn "—" src/` e confirmar que retorna vazio. Comentários técnicos em CSS/JS (ex.: `src/styles/tokens/*.css`, `src/components/OrlaMarquee.jsx`) são exceção esperada e não texto de usuário — se o grep só pegar esses, revise manualmente antes de assumir que há uma pendência real.
+- Nunca escrever contexto de origem ("nasceu porque X", "o cliente não tinha Y", "a empresa enfrentava Z") sem que o Alessandro tenha fornecido esse contexto explicitamente. Se faltar informação para justificar por que um projeto existe, deixar a descrição mais curta em vez de preencher o vazio com uma suposição plausível.
 
 ## Conteúdo do portfólio
 
