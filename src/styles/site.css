@@ -1059,6 +1059,28 @@ a.header-contact {
   font-size: 11px;
   color: var(--text-tertiary);
 }
+.feature-shot-link {
+  aspect-ratio: 16 / 10;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-sunken);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--orla-blue);
+  text-decoration: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.feature-shot-link:hover {
+  border-color: var(--orla-blue);
+  background: var(--surface-card);
+}
+.feature-highlight {
+  margin-left: 10px;
+  vertical-align: middle;
+}
 
 .challenge-title {
   font-family: var(--font-display);

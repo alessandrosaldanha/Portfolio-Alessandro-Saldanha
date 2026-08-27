@@ -105,15 +105,24 @@ export default function ProjetoDetalhe() {
 
           {hasFeatures && (
             <section>
-              <p className="detail-eyebrow">Funcionalidades principais</p>
+              <p className="detail-eyebrow">{p.featuresLabel || 'Funcionalidades principais'}</p>
               <div className="features-list">
                 {p.features.map((f) => (
                   <div key={f.title} className="feature-row">
                     <div>
-                      <h3 className="feature-title">{f.title}</h3>
+                      <h3 className="feature-title">
+                        {f.title}
+                        {f.highlight && <span className="chip feature-highlight">{f.highlight}</span>}
+                      </h3>
                       <p className="feature-body">{f.body}</p>
                     </div>
-                    <div className="feature-shot">TODO: screenshot</div>
+                    {f.href ? (
+                      <a href={f.href} target="_blank" rel="noopener noreferrer" className="feature-shot-link">
+                        Ver ao vivo →
+                      </a>
+                    ) : (
+                      <div className="feature-shot">TODO: screenshot</div>
+                    )}
                   </div>
                 ))}
               </div>
