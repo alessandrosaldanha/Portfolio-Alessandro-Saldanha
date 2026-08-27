@@ -99,6 +99,61 @@ explorar o produto. Para não frustrar essa expectativa, o projeto tem um campo 
 projeto realmente tem essa barreira; os demais projetos não têm `accessNote` e não renderizam
 nada.
 
+## Marquee de clientes (logos)
+
+`src/data/companies.js` alimenta o marquee (`src/components/OrlaMarquee.jsx`) na home. Cada
+entrada é `{ name, logo?, logoHeight?, logoWidth?, logoHeightPx? }` — `logo` e as três dimensões
+são opcionais; sem `logo`, o item renderiza como o nome em texto puro (comportamento original).
+
+**Formato aceito**: SVG, PNG ou WebP. JPEG não é aceito, mesmo que o arquivo seja uma imagem
+válida — sem canal alfa, não dá para recortar o fundo e deixar monocromático sem edição manual
+da imagem.
+
+**Antes de adicionar um logo novo**: validar o arquivo de verdade (`file <arquivo>` no shell, não
+confiar só na extensão) e, se houver mais de um arquivo novo na mesma leva, comparar os hashes
+(`md5sum`) para garantir que não são cópias trocadas entre marcas diferentes. Se o arquivo falhar
+a validação, não incluir e avisar qual falhou e por quê; a marca fica em texto até o arquivo
+correto chegar.
+
+**Tratamento monocromático**: os logos nunca aparecem com a cor original da marca. A técnica é
+CSS `mask-image` (não `filter`): um elemento decorativo (`.marquee-logo`) recebe
+`background-color: var(--text-secondary)` mascarado pelo próprio arquivo do logo — isso recolore
+qualquer formato (SVG multicor, PNG, WebP) para a cor sólida do tema, sem depender das cores
+internas do arquivo. Um `<img>` real fica no DOM ao lado (invisível, `opacity: 0`) só para carregar
+`alt`, `loading="lazy"`, `width`/`height` reais (evita layout shift) e o fallback `onError` — se o
+arquivo não carregar, o item cai para o nome em texto, igual a uma entrada sem `logo`. Hover troca
+`var(--text-secondary)` → `var(--text-primary)`, o mesmo mecanismo que o texto do marquee já usa.
+
+**Equalização por altura óptica**: `logoHeight` é o valor renderizado (px), calibrado caso a caso
+por peso visual, não pela altura real do arquivo — dois logos com a mesma altura em pixels não
+necessariamente pesam igual aos olhos (depende de quanto espaço em branco cada arquivo tem dentro
+do próprio viewBox/canvas). `logoWidth`/`logoHeightPx` são as dimensões intrínsecas reais do
+arquivo (não o valor renderizado), usadas só como atributos HTML `width`/`height` do `<img>` para
+reservar o aspect ratio antes do carregamento.
+
+**Estado atual** (calibrado por análise estrutural, não verificado visualmente ao vivo — conferir
+e ajustar `logoHeight` em `companies.js` se algum logo parecer maior ou menor que os outros):
+
+| Marca | Logo | logoHeight |
+|---|---|---|
+| ANBIMA | `src/assets/logos/anbima.svg` | 26px |
+| Drogasil | `src/assets/logos/drogasil.svg` | 20px |
+| Conviva Hotelaria | `src/assets/logos/conviva-hotelaria.svg` | 20px |
+| WeSafety | `src/assets/logos/wesafety.webp` | 30px |
+| Droga Raia | texto (sem logo) | — |
+| Papelzinho | texto (sem logo) | — |
+| FixInfra | texto (sem logo) | — |
+
+**Por que Droga Raia e Papelzinho ainda estão em texto**: os arquivos enviados
+(`DrogaRaia.svg` e `Papelzinho.svg`, na raiz do projeto, não usados) são **byte a byte idênticos**
+entre si (mesmo MD5) — pelo menos um dos dois está com o arquivo trocado, e não é possível saber
+qual sem confirmação visual do Alessandro. Não usar nenhum dos dois até chegar um arquivo correto
+e distinto para cada marca.
+
+**Por que FixInfra ainda está em texto**: o arquivo enviado (`fixinfra.jpg`, na raiz do projeto,
+não usado) é um JPEG de verdade, mas JPEG não é formato aceito (ver acima) e não tem canal alfa.
+Precisa de um SVG, PNG ou WebP com fundo transparente.
+
 ## Vocabulário padronizado
 
 - **"Contabilidade Reformada"** — nunca "Contabilidade Igreja". Domínio:
