@@ -1,5 +1,5 @@
 import contabilidadeLogin from '../assets/contabilidade-reformada/contabilidade-login.webp'
-import contabilidadeDetalhesIgreja from '../assets/contabilidade-reformada/contabilidade-detalhes-igreja.webp'
+import contabilidadeMultiIgreja from '../assets/contabilidade-reformada/contabilidade-multi-igreja.webp'
 import contabilidadeExtratoIa from '../assets/contabilidade-reformada/contabilidade-extrato-ia.webp'
 import contabilidadeLivroCaixa from '../assets/contabilidade-reformada/contabilidade-livro-caixa.webp'
 import contabilidadeDashboard from '../assets/contabilidade-reformada/contabilidade-dashboard.webp'
@@ -94,7 +94,7 @@ export const projects = [
       {
         title: 'Multi-igreja com admin por igreja',
         body: 'Cada igreja tem cadastro próprio; o admin (pastor) gerencia a sua e cadastra os tesoureiros dela.',
-        image: { src: contabilidadeDetalhesIgreja, alt: 'Tela de Detalhes da Igreja no Contabilidade Reformada, com dados cadastrais e membros/admins', width: 1000, height: 994 },
+        image: { src: contabilidadeMultiIgreja, alt: 'Tela de Detalhes da Igreja no Contabilidade Reformada, com o seletor de igrejas mostrando várias cadastradas', width: 1400, height: 663 },
       },
       {
         title: 'Extrato bancário lido por IA',
