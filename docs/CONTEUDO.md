@@ -21,25 +21,48 @@ este arquivo primeiro e só depois o texto do site.
 ### O que foi feito na Orla.tech (2024–2026)
 
 Critério de escolha de stack em todos os projetos de cliente: autonomia do cliente pós-entrega
-(CMS estruturado que o time do cliente consegue publicar sozinho) e prazo curto.
+(CMS estruturado que o time do cliente consegue publicar sozinho) e prazo curto. Todos os sites
+abaixo são públicos e podem ser nomeados e linkados normalmente; a confidencialidade cobre
+processo interno, dado de negócio e arquitetura do cliente, não a existência do site.
 
-Construídos do zero à produção:
-- **Grupo RD (Drogasil e Droga Raia)** — sites de medicamentos manipulados das duas marcas.
-  Busca de princípios ativos de A a Z com página por ativo, diretório de laboratórios e blog com
-  comentários.
-- **ANBIMA Summit 2025** — site do evento, com venda de ingressos e programação, entregue antes
-  da data do evento.
-- **ANBIMA Insights e ANBIMA EDU** — dois portais em Framer, com CMS estruturado para o time do
-  cliente publicar sem depender de dev.
-- **WeSafety** — produto Nexus e o site institucional, em WeWeb.io.
-- **Conviva Hotelaria** — site institucional e de agendamento, em WordPress/Oxygen, substituindo
-  um site lento e desorganizado.
-- **FixInfra** — site em Webflow.
-- **Papelzinho** — features no app de sorteios e o site do produto (não construído do zero).
+Construídos do zero à produção, entrega solo:
+- **Drogasil Manipulação** ([manipulacao.drogasil.com.br](https://manipulacao.drogasil.com.br/))
+  e **Droga Raia Manipulação** ([manipulacao.raia.com.br](https://manipulacao.raia.com.br/)) —
+  dois sites completos, um por marca, para desvincular o conteúdo de medicamentos manipulados dos
+  e-commerces principais do Grupo RD. Cada um tem: catálogo de princípios ativos de A a Z
+  (centenas de ativos, página dedicada por ativo com descrição, indicações, posologia, reações
+  adversas, formas farmacêuticas e referências bibliográficas, índice alfabético e paginação),
+  diretório de laboratórios parceiros, blog de artigos com comentários, fale conosco e fluxo de
+  envio de receita para orçamento de manipulação.
+- **ANBIMA Summit 2025** ([anbimasummit.com.br](https://anbimasummit.com.br/)) — **entrega mais
+  forte na Orla.tech.** Site do evento do zero à produção, feito sozinho, com venda de ingressos e
+  programação completa, no ar antes da data do evento. Um único componente (a tabela de
+  programação, em React) teve ajuda de outro desenvolvedor.
 
-Manutenção, depois reformulação completa (exceção à lista acima):
-- **ANBIMA Internacional** — começou como manutenção sobre uma base existente; depois
-  reformulação completa, com integração via API para sincronizar dados institucionais.
+Construídos do zero à produção, em dupla com outro desenvolvedor (não solo — não descrever como
+tal):
+- **ANBIMA Global Insights** ([anbimaglobalinsights.com.br](https://anbimaglobalinsights.com.br/))
+  e **ANBIMA EDU** ([anbimaedu.com.br](https://anbimaedu.com.br/)) — dois portais em Framer, com
+  CMS estruturado para o time do cliente publicar sem depender de dev. Papel: executar as partes
+  principais e mais complexas; peça fundamental para colocar os dois no ar.
+
+Manutenção e melhorias (não reformulação, não liderança do projeto):
+- **ANBIMA Internacional** ([international.anbima.com.br](https://international.anbima.com.br/))
+  — atuação em manutenção e melhorias sobre uma base já existente. **Nunca escrever que "liderou
+  a reformulação completa"** — isso é incorreto.
+
+Outros:
+- **Conviva Hotelaria** ([convivastay.com.br](https://convivastay.com.br/)) — site institucional e
+  de agendamento do zero à produção, em WordPress com Oxygen, substituindo um site antigo, lento e
+  desorganizado.
+- **Nexus (WeSafety)** — ver seção própria abaixo, em "Projetos de cliente via Orla.tech".
+- **Site institucional da Orla** ([orla.tech](https://www.orla.tech/)) — alterações e edições
+  pontuais em Webflow.
+- **Papelzinho** ([papelzinho.com/pt-br](https://papelzinho.com/pt-br/)) — app de amigo secreto,
+  produto da própria Orla. Participação pequena, como estagiário, ao longo de cerca de 4 meses:
+  alguns commits e features menores. Manter modesto, não inflar.
+- **FixInfra** — site em Webflow, construído do zero. **Está fora do ar hoje: nunca linkar,
+  mencionar sem link.**
 
 ## Vocabulário padronizado
 
@@ -110,11 +133,25 @@ Manutenção, depois reformulação completa (exceção à lista acima):
 - Stack real: Next.js (App Router), TypeScript, Zustand, Neon PostgreSQL, Google OAuth, Resend.
 - Não usa IA — não adicionar Gemini à stack deste projeto.
 
+## Projetos de cliente via Orla.tech
+
+### Nexus (WeSafety)
+- Tipo: cliente, via Orla.tech. Status: no ar.
+- WeSafety é um grupo da Águia Branca.
+- O que é: Nexus ([nexus.wesafety.com.br](https://nexus.wesafety.com.br/)) é a plataforma
+  psicossocial do grupo para o setor de transporte, com login.
+- Fluxo: o motorista responde o EEA, um instrumento de 20 questões distribuídas em 10 categorias,
+  duas por categoria. O resultado gera uma recomendação sobre a aptidão do motorista para dirigir.
+  O produto entrega a recomendação, não a decisão: em caso de reprovação, cabe ao gestor local
+  decidir o que fazer.
+- Construído em WeWeb.io. O site institucional da WeSafety
+  ([wesafety.com.br](https://www.wesafety.com.br/)) também foi feito por mim, no mesmo stack.
+- Nenhum resultado, métrica ou decisão técnica foi fornecido para este projeto — não inventar.
+
 ## Projetos de cliente/freelance (sem alteração nesta rodada)
 
 Dados já corretos em `src/data/projects.js`, mantidos aqui só como referência de onde estão:
-Sorria Clínicas Odontológicas, Projetos corporativos na Orla.tech (ver seção acima), IBR Maceió,
-IBR Maragogi, Supermercado Vital.
+Sorria Clínicas Odontológicas, IBR Maceió, IBR Maragogi, Supermercado Vital.
 
 ## Regras de escrita (recap de CLAUDE.md)
 
