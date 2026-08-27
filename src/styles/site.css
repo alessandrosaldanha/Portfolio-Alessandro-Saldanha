@@ -1061,18 +1061,9 @@ a.header-contact {
 }
 .feature-row {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
   align-items: start;
-}
-@media (min-width: 640px) {
-  .feature-row {
-    /* Image column has a capped max width (not an even 1fr split) so a short
-       paragraph next to it doesn't get stranded in a tall, mostly-empty box —
-       the image is sized to the content, not the other way around. */
-    grid-template-columns: minmax(0, 1fr) minmax(160px, 220px);
-    gap: 24px;
-  }
 }
 .feature-title {
   font-family: var(--font-display);
@@ -1119,6 +1110,10 @@ a.header-contact {
 }
 .feature-shot-img {
   object-fit: cover;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  max-width: 100%;
 }
 .detail-cover {
   display: block;
