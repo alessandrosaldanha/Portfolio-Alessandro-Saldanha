@@ -1,3 +1,10 @@
+import escalaVisaoGeral from '../assets/escalas/escala-visao-geral.webp'
+import escalaMembros from '../assets/escalas/escala-membros.webp'
+import escalaLouvor from '../assets/escalas/escala-louvor.webp'
+import escalaCenturiao from '../assets/escalas/escala-centuriao.webp'
+import escalaCozinha from '../assets/escalas/escala-cozinha.webp'
+import escalaEbd from '../assets/escalas/escala-ebd.webp'
+import escalaPresbiterio from '../assets/escalas/escala-presbiterio.webp'
 import nexusAcessoCpf from '../assets/nexus/nexus-acesso-cpf.webp'
 import nexusSelecaoTeste from '../assets/nexus/nexus-selecao-teste.webp'
 import nexusTesteFinalizado from '../assets/nexus/nexus-teste-finalizado.webp'
@@ -122,6 +129,12 @@ export const projects = [
     context:
       'Escala de ministério vive em grupo de WhatsApp: alguém posta uma imagem, três pessoas respondem que não podem, e a versão final existe só na cabeça do líder. Faltava um lugar onde a escala fosse um estado, não uma mensagem. Cobre louvor, mídia, cozinha, pastoral, EBD (inclusive EBD de novos membros), ceia e diaconato, entre outros ministérios, e cada membro só vê a escala em que foi designado; a liderança vê tudo.',
     myRole: 'Produto próprio, feito sozinho: modelagem, autenticação, front-end, disparo de e-mails e deploy.',
+    coverImage: {
+      src: escalaVisaoGeral,
+      alt: 'Painel Visão geral do Gestão de Escalas, com o sorteio do mês, conflitos e aprovações',
+      width: 1400,
+      height: 1134,
+    },
     decisions: [
       {
         decision: 'Zustand em slices por domínio, com a store composta na raiz',
@@ -143,8 +156,16 @@ export const projects = [
       },
     ],
     features: [
-      { title: 'Escopo por ministério e visibilidade por papel', body: 'Cobre louvor, mídia, cozinha, pastoral, EBD, EBD de novos membros, ceia, diaconato e outros. Cada membro vê apenas a escala em que foi designado; a liderança vê tudo.' },
-      { title: 'Montagem de escala por ministério', body: 'Líder monta a escala do mês por função e vê conflitos de disponibilidade antes de publicar.' },
+      {
+        title: 'Escopo por ministério e visibilidade por papel',
+        body: 'Cobre louvor, mídia, cozinha, pastoral, EBD, EBD de novos membros, ceia, diaconato e outros. Cada membro vê apenas a escala em que foi designado; a liderança vê tudo.',
+        image: { src: escalaMembros, alt: 'Tela de Membros do Gestão de Escalas, com voluntários e os ministérios de cada um', width: 1000, height: 773 },
+      },
+      {
+        title: 'Montagem de escala por ministério',
+        body: 'Líder monta a escala do mês por função e vê conflitos de disponibilidade antes de publicar.',
+        image: { src: escalaLouvor, alt: 'Tela de escala do ministério de Louvor, com cantores e instrumentistas por função', width: 1000, height: 718 },
+      },
       { title: 'Convite e confirmação', body: 'Cada escalado recebe e-mail com link direto para confirmar ou recusar; o estado volta para a escala em tempo real.' },
       { title: 'Login com Google', body: 'OAuth do Google elimina senha para um público que não quer criar mais uma conta.' },
     ],
@@ -172,7 +193,12 @@ export const createEscalasSlice = (set, get) => ({
       'Onboarding de feature nova caiu para um arquivo de slice + um componente, sem tocar no resto.',
       'Aprendizado: o problema não era Zustand, era consumir estado sem seletor. Refatorar mantendo a API pública permitiu migrar sem branch longa.',
     ],
-    gallery: ['Escala do mês', 'Convite por e-mail', 'Painel do líder'],
+    gallery: [
+      { src: escalaCenturiao, alt: 'Escala do ministério de Centurião', width: 1000, height: 759 },
+      { src: escalaCozinha, alt: 'Escala do ministério de Cozinha, por grupo', width: 1000, height: 705 },
+      { src: escalaEbd, alt: 'Escala do ministério de EBD', width: 1000, height: 736 },
+      { src: escalaPresbiterio, alt: 'Escala do Presbitério, com carga de funções por pregador', width: 1000, height: 777 },
+    ],
   },
   {
     slug: 'sorria-clinicas',
