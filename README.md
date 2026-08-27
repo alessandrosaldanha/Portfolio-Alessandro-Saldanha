@@ -32,6 +32,7 @@ src/
 reference/              # material do Claude Design, fora do build — ver seção abaixo
 docs/
   AUDITORIA-ESTRUTURA.md # auditoria da estrutura do projeto e histórico da migração
+  CONTEUDO.md            # fonte da verdade do conteúdo (trajetória, projetos próprios, stack real) — ler antes de editar texto
 ```
 
 Convenção de imports: existe o alias `@/` → `src/` (configurado em `jsconfig.json` e `vite.config.js`), reservado para imports que sobem dois níveis ou mais. Imports de irmão direto (`./Foo`) e de um nível (`../data/x`) continuam relativos — é o que existe hoje em todo o projeto.
@@ -46,13 +47,16 @@ Material extraído do Claude Design ao iniciar este projeto — **não faz parte
 
 ## Adicionar um projeto novo
 
+Antes de escrever qualquer texto de projeto (contexto, papel, features), confira [docs/CONTEUDO.md](docs/CONTEUDO.md) — é a fonte da verdade dos fatos (trajetória, produtos próprios, escopo real de cada cliente). Não deduza feature a partir do código nem invente métrica ou resultado; se um fato não estiver lá, é melhor perguntar do que assumir.
+
 1. Adicione uma entrada em `src/data/projects.js`, seguindo o formato dos projetos existentes (`slug`, `name`, `tagline`, `overview`, `decisions`, `features`, `challenge`, `results`, `gallery` — os últimos quatro são opcionais e cada seção só renderiza se tiver conteúdo).
-2. Marque `featured: true` se quiser que apareça na home.
-3. Pronto — a listagem em `/projetos`, os filtros, a navegação anterior/próximo e a home se atualizam sozinhos. Nenhuma mudança de layout é necessária.
+2. Cada item de `features` aceita `href` opcional (troca o placeholder de screenshot por um link "Ver ao vivo") e `highlight` opcional (uma tag curta ao lado do título, ex. "Entrega solo"). O título da seção "Funcionalidades principais" pode ser sobrescrito com `featuresLabel`, útil quando os itens são na verdade projetos distintos (ver o case `orla-corporativos`).
+3. Marque `featured: true` se quiser que apareça na home.
+4. Pronto — a listagem em `/projetos`, os filtros, a navegação anterior/próximo e a home se atualizam sozinhos. Nenhuma mudança de layout é necessária.
 
 ## Adicionar um post novo
 
-1. Adicione uma entrada em `src/data/posts.js` com `slug`, `title`, `excerpt`, `date`, `read`, `tags` e `body` (array de blocos `{ kind: 'text' | 'heading' | 'code' | 'callout' | 'todo', text }`).
+1. Adicione uma entrada em `src/data/posts.js` com `slug`, `title`, `excerpt`, `date`, `read`, `tags` e `body` (array de blocos `{ kind: 'text' | 'heading' | 'code' | 'callout', text }`). O renderer também aceita `kind: 'todo'` por compatibilidade, mas não use: nenhum texto de tarefa (ex. "TODO: continuar...") pode chegar ao HTML renderizado.
 2. Pronto — o post entra em `/blog`, nos filtros de tag, e o sumário (TOC) da página do post é gerado automaticamente a partir dos blocos `heading`.
 
 ## Adicionar uma empresa/projeto no carrossel da home
@@ -65,7 +69,8 @@ Texto voltado ao usuário (bio, cards de projeto, posts, meta description, alt t
 
 ## Pontos de preenchimento pendentes
 
-- Fotos e screenshots reais de projetos e galeria (hoje `"TODO: thumbnail"` / `"TODO: screenshot"`). A foto de `/sobre` já foi adicionada (`src/assets/perfil-alessandro.jpeg`).
+- Fotos e screenshots reais de projetos e galeria. Enquanto não existem, os placeholders (`.project-card-thumb` na home, `.feature-shot` no case) são caixas vazias estilizadas, sem texto de tarefa — nenhum "TODO" deve aparecer renderizado (regra em [CLAUDE.md](CLAUDE.md)). A foto de `/sobre` já foi adicionada (`src/assets/perfil-alessandro.jpeg`).
+- Link ao vivo de Gestão de Escalas ainda aponta para o ambiente do Vercel (`gestaodeescalas-seven.vercel.app`); sem domínio próprio confirmado até o momento (ver [docs/CONTEUDO.md](docs/CONTEUDO.md)).
 
 ## Estratégia de branches
 
