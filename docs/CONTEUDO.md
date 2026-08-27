@@ -241,6 +241,12 @@ alternativa válida.
   estudos". Mesma lógica do merge EEA/DT do Nexus, só que ao contrário: dividir quando os fluxos
   são de fato diferentes, nunca forçar duas imagens no mesmo bloco nem repetir uma imagem em
   dois.
+- Galeria (`gallery`) com 8 screenshots reais, demonstrando responsividade e os dois temas do
+  produto: Explorar (desktop claro/escuro, mobile claro/escuro), menu de navegação mobile
+  (claro/escuro) e tela de aula mobile (claro/escuro). `gallery` agora aceita
+  `{ src, alt, width, height }` além da string simples original — item com objeto vira thumbnail
+  clicável (abre a imagem original em nova aba), item string continua um botão de texto inerte
+  (comportamento antigo, ainda usado pelos projetos sem screenshot de galeria real).
 
 ### Contabilidade Reformada
 - Tipo: produto próprio · solo. Status: no ar.
