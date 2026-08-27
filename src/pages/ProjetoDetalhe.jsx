@@ -199,11 +199,23 @@ export default function ProjetoDetalhe() {
             <section>
               <p className="detail-eyebrow">Galeria</p>
               <div className="gallery-grid">
-                {p.gallery.map((g) => (
-                  <button key={g} type="button" className="gallery-item">
-                    {g}
-                  </button>
-                ))}
+                {p.gallery.map((g) =>
+                  typeof g === 'string' ? (
+                    <button key={g} type="button" className="gallery-item">
+                      {g}
+                    </button>
+                  ) : (
+                    <a
+                      key={g.alt}
+                      href={g.src}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="gallery-item gallery-item-img"
+                    >
+                      <img src={g.src} alt={g.alt} loading="lazy" width={g.width} height={g.height} />
+                    </a>
+                  )
+                )}
               </div>
             </section>
           )}
