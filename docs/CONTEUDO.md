@@ -154,10 +154,23 @@ alternativa válida.
 ### Nexus (WeSafety)
 - Tipo: cliente, via Orla.tech. Status: no ar.
 - WeSafety é um grupo da Águia Branca.
-- O que é: Nexus ([nexus.wesafety.com.br](https://nexus.wesafety.com.br/)) é a plataforma
-  psicossocial do grupo para o setor de transporte, com login.
-- Fluxo: o motorista responde o EEA, um instrumento de 20 questões distribuídas em 10 categorias,
-  duas por categoria. O resultado gera uma recomendação sobre a aptidão do motorista para dirigir.
+- Por que existe: antes do Nexus, os motoristas passavam por um instrumento de avaliação
+  anterior que nunca renovava o banco de questões (sempre as mesmas perguntas, ciclo após ciclo).
+  Com o tempo, o motorista passou a responder no automático, e o teste deixou de medir aptidão
+  para medir familiaridade com o próprio teste. Um acidente, em que o motorista avaliado havia
+  sido aprovado na avaliação em uso até então, evidenciou que ela não cumpria mais a função. O
+  Nexus nasceu como plataforma de gestão e testes, criada primeiro para o grupo Águia Branca e
+  depois estendida para venda a outras empresas do setor de transporte.
+- **Regra de texto**: nunca citar o nome do instrumento/produto anterior. Referir-se a ele só
+  como "o instrumento anterior" ou "a avaliação em uso até então" — não nomear produto de
+  terceiro em contexto negativo. Sobre o acidente: mencionar que houve um acidente que motivou a
+  revisão, sem detalhe (sem causa, sem consequência, sem dado de pessoa envolvida).
+- O que é: Nexus ([nexus.wesafety.com.br](https://nexus.wesafety.com.br/)) é uma plataforma de
+  gestão e avaliação psicossocial para o setor de transporte, com login.
+- Dois instrumentos, não um só:
+  - **EEA**: 20 questões distribuídas em 10 categorias, duas por categoria.
+  - **DT**: teste mensal, 150 questões. Também aplicado quando o motorista é reprovado no EEA.
+- O resultado de cada instrumento gera uma recomendação sobre a aptidão do motorista para dirigir.
   O produto entrega a recomendação, não a decisão: em caso de reprovação, cabe ao gestor local
   decidir o que fazer.
 - Construído em WeWeb.io. O site institucional da WeSafety
