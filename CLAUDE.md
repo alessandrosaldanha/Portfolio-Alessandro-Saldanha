@@ -69,6 +69,9 @@ trajetória ou stack, leia `docs/CONTEUDO.md`. Nunca deduza feature a partir do 
 invente métrica, número ou resultado. Se um fato não estiver em `docs/CONTEUDO.md`, pergunte em
 vez de assumir.
 
+Nenhum TODO deve chegar ao HTML renderizado. Placeholder de imagem é visual e sem texto de
+tarefa.
+
 ## Branches and releases
 
 - `main` is production; `hmg` is homologation/staging. Land features in `hmg` before merging to `main`.
