@@ -1279,6 +1279,7 @@ a.header-contact {
   position: absolute;
   top: -44px;
   right: 0;
+  z-index: 2;
   width: 36px;
   height: 36px;
   border-radius: 999px;
@@ -1298,6 +1299,7 @@ a.header-contact {
 .lightbox-nav {
   position: absolute;
   top: 50%;
+  z-index: 2;
   transform: translateY(-50%);
   width: 44px;
   height: 44px;
@@ -1316,10 +1318,10 @@ a.header-contact {
   background: rgba(255, 255, 255, 0.16);
 }
 .lightbox-prev {
-  left: clamp(-8px, -4vw, 8px);
+  left: -8px;
 }
 .lightbox-next {
-  right: clamp(-8px, -4vw, 8px);
+  right: -8px;
 }
 .lightbox-figure {
   margin: 0;
