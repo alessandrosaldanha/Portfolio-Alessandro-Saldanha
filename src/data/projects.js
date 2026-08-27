@@ -202,7 +202,6 @@ export const createEscalasSlice = (set, get) => ({
     results: [
       'Estrutura pronta para busca por procedimento, que antes não existia.',
       'Carregamento estável em conexão móvel (sem salto de layout nas fotos).',
-      'TODO: preencher com números reais de Search Console / Lighthouse depois de 90 dias no ar.',
     ],
     gallery: ['Home', 'Página de especialidade', 'Mobile'],
   },
@@ -216,7 +215,7 @@ export const createEscalasSlice = (set, get) => ({
     type: 'Produto próprio',
     featured: false,
     live: true,
-    liveHref: 'https://mare-de-estudos.vercel.app/explorar',
+    liveHref: 'https://mareestudos.com.br',
     repo: null,
     stack: ['React 19', 'TypeScript', 'Vite', 'Supabase', 'React Router 7', 'Tailwind', 'i18next', 'Gemini'],
     chips: ['React 19', 'TypeScript', 'Supabase', 'Gemini'],
@@ -293,7 +292,7 @@ export const createEscalasSlice = (set, get) => ({
     context:
       'São produtos de clientes da Orla.tech, todos públicos e no ar. O que fica de fora é processo interno, dado de negócio e arquitetura do cliente, cobertos por confidencialidade, não a existência do site. Os links de cada um estão nos blocos abaixo.',
     myRole:
-      'Trabalhei na Orla.tech de maio de 2024 a agosto de 2026, primeiro como estagiário e depois como desenvolvedor júnior. Os dois sites do Grupo RD e o ANBIMA Summit 2025 foram entregas solo, do zero à produção (no Summit, outro desenvolvedor ajudou num único componente, a tabela de programação, em React). ANBIMA Global Insights e ANBIMA EDU foram construídos em dupla com outro desenvolvedor: executei as partes principais e mais complexas e fui peça fundamental para colocar os dois no ar. No ANBIMA Internacional atuei em manutenção e melhorias sobre uma base existente, não em reformulação. Também fiz o site institucional da Conviva Hotelaria, features no Papelzinho como estagiário, e alterações pontuais no site institucional da própria Orla. A escolha de stack (Framer, WordPress/Oxygen, Webflow) sempre pensou na autonomia do cliente depois da entrega, e em tudo isso passei por code review dentro da arquitetura e dos padrões definidos pelo time.',
+      'Trabalhei na Orla.tech de maio de 2024 a agosto de 2026, primeiro como estagiário e depois como desenvolvedor júnior. Os dois sites do Grupo RD foram construídos do zero à produção. O ANBIMA Summit 2025 foi entrega solo, também do zero à produção, com ajuda de outro desenvolvedor em um único componente (a tabela de programação, em React). ANBIMA Global Insights e ANBIMA EDU foram construídos em dupla com outro desenvolvedor: executei as partes principais e mais complexas e fui peça fundamental para colocar os dois no ar. No ANBIMA Internacional atuei em manutenção e melhorias sobre uma base existente, não em reformulação. Também fiz o site institucional da Conviva Hotelaria, features no Papelzinho como estagiário, e alterações pontuais no site institucional da própria Orla. A escolha de stack (Framer, WordPress/Oxygen, Webflow) sempre pensou na autonomia do cliente depois da entrega, e em tudo isso passei por code review dentro da arquitetura e dos padrões definidos pelo time.',
     decisions: [],
     featuresLabel: 'Projetos entregues',
     features: [
@@ -302,7 +301,7 @@ export const createEscalasSlice = (set, get) => ({
       { title: 'ANBIMA Summit 2025', highlight: 'Entrega solo', href: 'https://anbimasummit.com.br/', body: 'Site do evento do zero à produção, feito sozinho e no ar antes da data do evento, com venda de ingressos e programação completa. Um único componente, a tabela de programação em React, teve ajuda de outro desenvolvedor. Minha entrega mais forte na Orla.tech.' },
       { title: 'ANBIMA Global Insights', href: 'https://anbimaglobalinsights.com.br/', body: 'Portal em Framer construído do zero à produção em dupla com outro desenvolvedor, com CMS estruturado para o time do cliente publicar sem depender de dev. Executei as partes principais e mais complexas.' },
       { title: 'ANBIMA EDU', href: 'https://anbimaedu.com.br/', body: 'Mesmo formato do Global Insights: portal em Framer construído em dupla, CMS estruturado para publicação autônoma do time do cliente.' },
-      { title: 'ANBIMA Internacional', href: 'https://international.anbima.com.br/', body: 'Manutenção e melhorias sobre uma base já existente. Não fiz a arquitetura original nem liderei reformulação alguma.' },
+      { title: 'ANBIMA Internacional', href: 'https://international.anbima.com.br/', body: 'Manutenção e melhorias sobre uma base já existente.' },
       { title: 'Conviva Hotelaria', href: 'https://convivastay.com.br/', body: 'Site institucional e de agendamento do zero à produção, em WordPress com Oxygen, substituindo um site antigo, lento e desorganizado.' },
       { title: 'Papelzinho', href: 'https://papelzinho.com/pt-br/', body: 'App de amigo secreto, produto da própria Orla. Participação pequena, como estagiário, ao longo de cerca de 4 meses: alguns commits e features menores.' },
       { title: 'Site institucional da Orla', href: 'https://www.orla.tech/', body: 'Alterações e edições pontuais em Webflow.' },
@@ -385,7 +384,6 @@ export const createEscalasSlice = (set, get) => ({
     ],
     results: [
       'Site publicado e no ar, reduzindo a dependência exclusiva de redes sociais.',
-      'TODO: preencher com número de acessos ou contatos gerados depois de alguns meses no ar.',
     ],
     gallery: ['Home', 'Contato'],
   },
@@ -428,7 +426,6 @@ export const createEscalasSlice = (set, get) => ({
     ],
     results: [
       'Site publicado, com toda informação essencial reunida num único lugar permanente.',
-      'TODO: preencher com retorno da liderança sobre uso do site pelos visitantes.',
     ],
     gallery: ['Home', 'Horários', 'FAQ'],
   },
@@ -478,7 +475,6 @@ export const createEscalasSlice = (set, get) => ({
     ],
     results: [
       'Loja saiu do atendimento manual por WhatsApp para um catálogo self-service.',
-      'TODO: preencher com número de pedidos ou taxa de conversão depois de alguns meses no ar.',
     ],
     gallery: ['Catálogo', 'Carrinho', 'Checkout'],
   },
