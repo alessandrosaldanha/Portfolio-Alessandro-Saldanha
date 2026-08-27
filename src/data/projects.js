@@ -397,7 +397,7 @@ export const createEscalasSlice = (set, get) => ({
     type: 'Freelance',
     featured: false,
     live: true,
-    liveHref: 'https://projeto-opal-iota.vercel.app/',
+    liveHref: 'https://ibrmaragogi.vercel.app/',
     repo: null,
     stack: ['React', 'TypeScript', 'Next.js', 'Tailwind'],
     chips: ['React', 'TypeScript', 'Next.js', 'Tailwind'],
