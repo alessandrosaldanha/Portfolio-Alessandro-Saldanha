@@ -208,7 +208,7 @@ export const createEscalasSlice = (set, get) => ({
   {
     slug: 'mare-de-estudos',
     name: 'Maré de Estudos',
-    tagline: 'Transforma playlists do YouTube em trilhas de estudo estruturadas, com progresso por aula e anotações.',
+    tagline: 'Vídeo-aula solta no YouTube não vira trilha de estudo sozinha. Ao concluir 100% de uma trilha, libera um quiz gerado por IA (Gemini), com explicação de cada erro no final.',
     role: 'Produto próprio · solo',
     outcome: 'Projeto onde levei design system, RLS e internacionalização a sério antes de ter um usuário sequer.',
     badges: ['Papel: Solo, full-stack', 'Período: 2025', 'Tipo: Produto próprio'],
