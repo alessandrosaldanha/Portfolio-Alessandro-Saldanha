@@ -99,6 +99,22 @@ explorar o produto. Para não frustrar essa expectativa, o projeto tem um campo 
 projeto realmente tem essa barreira; os demais projetos não têm `accessNote` e não renderizam
 nada.
 
+## Organização de assets
+
+Nenhum arquivo de mídia (logo, screenshot, foto) fica solto na raiz do projeto — a raiz é só
+para receber um arquivo temporariamente antes de organizar (e nem isso: `.gitignore` tem um
+padrão restrito à raiz que impede o Git de rastrear imagem solta ali, forçando o arquivo a ser
+movido pro lugar certo antes de virar parte do projeto). Convenção:
+
+- `src/assets/logos/` — logos de marca (marquee de clientes hoje; qualquer outro uso futuro de
+  logo entra aqui também).
+- `src/assets/<slug-do-projeto>/` — screenshots de case, um diretório por projeto (ex.
+  `src/assets/nexus/`). Nome de arquivo em minúsculas, sem acento, sem espaço, com hífen.
+- `public/` — arquivos servidos como estão, sem passar pelo bundler (hoje só `favicon.svg`).
+- `_pending-assets/` (raiz do repo, gitignorada) — arquivos recebidos com problema (formato
+  errado, conteúdo duplicado/trocado), aguardando reenvio. Nunca comitada: publicar arquivo
+  quebrado ou duplicado no histórico de um repo público não tem valor nenhum.
+
 ## Marquee de clientes (logos)
 
 `src/data/companies.js` alimenta o marquee (`src/components/OrlaMarquee.jsx`) na home. Cada
@@ -145,14 +161,19 @@ e ajustar `logoHeight` em `companies.js` se algum logo parecer maior ou menor qu
 | FixInfra | texto (sem logo) | — |
 
 **Por que Droga Raia e Papelzinho ainda estão em texto**: os arquivos enviados
-(`DrogaRaia.svg` e `Papelzinho.svg`, na raiz do projeto, não usados) são **byte a byte idênticos**
-entre si (mesmo MD5) — pelo menos um dos dois está com o arquivo trocado, e não é possível saber
-qual sem confirmação visual do Alessandro. Não usar nenhum dos dois até chegar um arquivo correto
-e distinto para cada marca.
+(`DrogaRaia.svg` e `Papelzinho.svg`, movidos para `_pending-assets/` na raiz do repo, não usados
+nem versionados) são **byte a byte idênticos** entre si (mesmo MD5) — pelo menos um dos dois está
+com o arquivo trocado, e não é possível saber qual sem confirmação visual do Alessandro. Não usar
+nenhum dos dois até chegar um arquivo correto e distinto para cada marca.
 
-**Por que FixInfra ainda está em texto**: o arquivo enviado (`fixinfra.jpg`, na raiz do projeto,
-não usado) é um JPEG de verdade, mas JPEG não é formato aceito (ver acima) e não tem canal alfa.
-Precisa de um SVG, PNG ou WebP com fundo transparente.
+**Por que FixInfra ainda está em texto**: o arquivo enviado (`fixinfra.jpg`, também em
+`_pending-assets/`) é um JPEG de verdade, mas JPEG não é formato aceito (ver acima) e não tem
+canal alfa. Precisa de um SVG, PNG ou WebP com fundo transparente.
+
+**`orla.svg`**: recebido e validado (SVG legítimo), organizado em `src/assets/logos/orla.svg`,
+mas sem uso por decisão do Alessandro — "Orla" não é um cliente, não faz sentido no marquee de
+"projetos entregues durante a passagem pela Orla.tech". Disponível para uso futuro (ex.: se um dia
+o case `orla-corporativos` ganhar imagem no bloco "Site institucional da Orla").
 
 ## Vocabulário padronizado
 
@@ -264,6 +285,8 @@ alternativa válida.
   decidir o que fazer.
 - Construído em WeWeb.io. O site institucional da WeSafety
   ([wesafety.com.br](https://www.wesafety.com.br/)) também foi feito por mim, no mesmo stack.
+  Diferente das telas internas do produto (login, testes), a screenshot desse bloco é de site
+  público — sem restrição de conteúdo, pode mostrar a página inteira.
 - Nenhum resultado, métrica ou decisão técnica foi fornecido para este projeto — não inventar.
 
 **Regra de imagem — nunca publicar as questões dos instrumentos**: capturas de tela do EEA e do
