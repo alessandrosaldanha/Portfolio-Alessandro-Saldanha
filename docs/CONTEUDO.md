@@ -253,15 +253,28 @@ alternativa válida.
   revisão, sem detalhe (sem causa, sem consequência, sem dado de pessoa envolvida).
 - O que é: Nexus ([nexus.wesafety.com.br](https://nexus.wesafety.com.br/)) é uma plataforma de
   gestão e avaliação psicossocial para o setor de transporte, com login.
-- Dois instrumentos, não um só:
-  - **EEA**: 20 questões distribuídas em 10 categorias, duas por categoria.
-  - **DT**: teste mensal, 150 questões. Também aplicado quando o motorista é reprovado no EEA.
+- Dois instrumentos, não um só, com nome por extenso (confirmado pelas próprias telas do produto):
+  - **EEA — Estado Emocional Atual**: teste diário. 20 questões distribuídas em 10 categorias,
+    duas por categoria.
+  - **DT — Diagnóstico de Tendência**: teste **periódico** (nunca "mensal" — a tela do produto
+    diz "Teste periódico", não define a cadência exata). 150 questões. Também aplicado quando o
+    motorista é reprovado no EEA.
 - O resultado de cada instrumento gera uma recomendação sobre a aptidão do motorista para dirigir.
   O produto entrega a recomendação, não a decisão: em caso de reprovação, cabe ao gestor local
   decidir o que fazer.
 - Construído em WeWeb.io. O site institucional da WeSafety
   ([wesafety.com.br](https://www.wesafety.com.br/)) também foi feito por mim, no mesmo stack.
 - Nenhum resultado, métrica ou decisão técnica foi fornecido para este projeto — não inventar.
+
+**Regra de imagem — nunca publicar as questões dos instrumentos**: capturas de tela do EEA e do
+DT mostrando as perguntas reais são conteúdo do cliente e não podem aparecer no portfólio, em
+nenhuma resolução ou crop. Só usar telas de navegação/fluxo do produto (acesso, seleção de teste,
+confirmação de envio) — nunca a tela de uma questão sendo respondida. `src/assets/nexus/` guarda
+só imagens já aprovadas nesse critério (`nexus-acesso-cpf.webp`, `nexus-selecao-teste.webp`,
+`nexus-teste-finalizado.webp`, mais `nexus-login.webp`, guardado mas não usado no case porque a
+tela de CPF já cobre acesso de forma mais expressiva). Duas capturas que mostravam as questões
+(`Teste EEA.png`, `Teste DT.png`) foram recebidas e apagadas do projeto nesta rodada — não
+readicionar esse tipo de imagem no futuro.
 
 ## Projetos de cliente/freelance (sem alteração nesta rodada)
 
