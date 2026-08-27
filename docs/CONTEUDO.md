@@ -282,6 +282,17 @@ alternativa válida.
 - Convites, confirmações e e-mails transacionais funcionam de verdade (Resend, Google OAuth).
 - Stack real: Next.js (App Router), TypeScript, Zustand, Neon PostgreSQL, Google OAuth, Resend.
 - Não usa IA — não adicionar Gemini à stack deste projeto.
+- Screenshots reais em `src/assets/escalas/`: capa do case (`escala-visao-geral.webp`, painel
+  com sorteio do mês, conflitos e aprovações), imagem em dois blocos de feature — "Escopo por
+  ministério e visibilidade por papel" (`escala-membros.webp`) e "Montagem de escala por
+  ministério" (`escala-louvor.webp`, escala do Louvor com cantores e instrumentistas por função)
+  — e galeria com `escala-centuriao.webp`, `escala-cozinha.webp`, `escala-ebd.webp` e
+  `escala-presbiterio.webp`. "Convite e confirmação" e "Login com Google" continuam sem imagem:
+  nenhuma screenshot recebida mostra esses dois fluxos especificamente, e não é para inventar.
+  Quatro PNGs recebidos ficaram fora do repositório (sem conversão, só locais): duas eram a mesma
+  tela "Visão geral" já usada como capa (uma em dark, outra repetida em light) e duas eram
+  variantes mobile da mesma tela — redundantes com a capa, mesma lógica de não duplicar imagem
+  nem manter light/dark da mesma tela.
 
 ## Projetos de cliente via Orla.tech
 
