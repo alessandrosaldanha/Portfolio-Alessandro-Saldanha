@@ -41,7 +41,10 @@ export default function Projetos() {
         {filtered.map((p) => (
           <Link key={p.slug} to={`/projetos/${p.slug}`} className="row-item">
             <div className="row-item-head">
-              <h2 className="row-item-name">{p.name}</h2>
+              <h2 className="row-item-name">
+                {p.name}
+                {p.accessNote && <span className="chip access-note">🔒 {p.accessNote}</span>}
+              </h2>
               <span className="row-item-badge">
                 {p.role} · {p.badges[1].replace('Período: ', '')}
               </span>

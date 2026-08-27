@@ -52,6 +52,7 @@ export default function ProjetoDetalhe() {
               Código
             </a>
           )}
+          {p.accessNote && <span className="chip access-note">🔒 {p.accessNote}</span>}
         </div>
       </header>
 

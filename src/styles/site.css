@@ -586,6 +586,12 @@ a.header-contact {
   color: var(--text-secondary);
   white-space: nowrap;
 }
+.access-note {
+  display: inline-block;
+  margin-left: 8px;
+  vertical-align: middle;
+  font-size: 11px;
+}
 
 /* ── Stack grid ── */
 
@@ -918,6 +924,7 @@ a.header-contact {
 .detail-actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 12px;
   margin-top: 30px;
 }
