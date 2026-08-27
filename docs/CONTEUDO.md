@@ -68,6 +68,37 @@ Outros:
 - **FixInfra** — site em Webflow, construído do zero. **Está fora do ar hoje: nunca linkar,
   mencionar sem link.**
 
+## Projetos em destaque na home
+
+`featured: true` em `src/data/projects.js` controla quem aparece em "Projetos em destaque" na
+home; a ordem segue a ordem do array (não há campo de ordenação separado). Estado atual, definido
+por decisão explícita do Alessandro:
+
+1. **Contabilidade Reformada** — produto próprio, no ar, domínio próprio, explorável por
+   qualquer visitante.
+2. **Maré de Estudos** — produto próprio, no ar, domínio próprio, explorável por qualquer
+   visitante.
+3. **Nexus (WeSafety)** — entrega de produto em cliente corporativo; exige login, não é
+   explorável livremente.
+
+Critério: o que dá para explorar sem barreira vem antes do que exige login. Por isso os dois
+produtos próprios vêm antes do Nexus.
+
+Gestão de Escalas e Sorria Clínicas Odontológicas saíram do destaque (ficaram com
+`featured: false`) mas continuam normalmente listados em `/projetos` — não foram removidos do
+portfólio, só do destaque da home. Não reordenar nem trocar o destaque numa sessão futura sem um
+motivo explícito do Alessandro; se parecer que faz sentido mudar, perguntar primeiro.
+
+### Selo de acesso restrito (`accessNote`)
+
+O Nexus exige login: quem clica em "Ver ao vivo" cai numa tela de autenticação e não consegue
+explorar o produto. Para não frustrar essa expectativa, o projeto tem um campo opcional
+`accessNote: 'Acesso restrito'` em `src/data/projects.js`, renderizado como um chip discreto
+("🔒 Acesso restrito") em três lugares: o card de destaque na home, a linha da listagem em
+`/projetos`, e ao lado do botão "Ver ao vivo" no case. Campo opcional — só é preenchido quando o
+projeto realmente tem essa barreira; os demais projetos não têm `accessNote` e não renderizam
+nada.
+
 ## Vocabulário padronizado
 
 - **"Contabilidade Reformada"** — nunca "Contabilidade Igreja". Domínio:
