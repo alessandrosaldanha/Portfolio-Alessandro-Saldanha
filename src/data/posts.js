@@ -22,7 +22,6 @@ create policy "membro_le_sua_igreja"
   ));` },
       { kind: 'heading', text: 'O que isso cobra em troca' },
       { kind: 'text', text: 'Erro de política não grita. Ele devolve zero linhas, como se o dado não existisse. Isso é ótimo para segurança e péssimo para debug. A saída foi um harness de teste que roda o mesmo conjunto de queries assumindo cada papel e falha quando o resultado diverge do esperado.' },
-      { kind: 'todo', text: 'TODO: continuar com a seção sobre funções STABLE e custo de planner, e o script de teste por papel.' },
     ],
   },
   {
@@ -50,7 +49,6 @@ export const useAppStore = create((...a) => ({
   ...createMembrosSlice(...a),
   ...createUiSlice(...a)
 }));` },
-      { kind: 'todo', text: 'TODO: continuar com a comparação rasa, ações que cruzam slices e como medi o ganho no profiler.' },
     ],
   },
   {
@@ -66,7 +64,6 @@ export const useAppStore = create((...a) => ({
       { kind: 'text', text: 'Com RLS, "sem permissão" e "sem dado" chegam ao cliente do mesmo jeito. Rodar a mesma query com um papel privilegiado foi o que separou as duas hipóteses em cinco minutos: o dado estava lá.' },
       { kind: 'heading', text: 'Estado inicial é feature' },
       { kind: 'text', text: 'A política dependia de um registro de configuração que só nascia junto do primeiro lançamento. Ou seja: o sistema só funcionava depois de usado. Movi a criação para a transação de cadastro e passei a testar toda tela com uma conta zerada.' },
-      { kind: 'todo', text: 'TODO: continuar com o checklist de estado vazio que passei a rodar antes de cada release.' },
     ],
   },
 ]
