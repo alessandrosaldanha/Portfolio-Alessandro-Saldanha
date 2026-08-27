@@ -2,6 +2,12 @@ import nexusAcessoCpf from '../assets/nexus/nexus-acesso-cpf.webp'
 import nexusSelecaoTeste from '../assets/nexus/nexus-selecao-teste.webp'
 import nexusTesteFinalizado from '../assets/nexus/nexus-teste-finalizado.webp'
 import wesafetySite from '../assets/nexus/wesafety-site.webp'
+import mareLogin from '../assets/mare-estudos/mare-login.webp'
+import mareExplore from '../assets/mare-estudos/mare-explore.webp'
+import mareTrilha from '../assets/mare-estudos/mare-trilha.webp'
+import marePlayerAnotacoes from '../assets/mare-estudos/mare-player-anotacoes.webp'
+import mareMeusEstudos from '../assets/mare-estudos/mare-meus-estudos.webp'
+import mareQuizResultado from '../assets/mare-estudos/mare-quiz-resultado.webp'
 
 export const projects = [
   {
@@ -234,6 +240,12 @@ export const createEscalasSlice = (set, get) => ({
       'Boa aula no YouTube existe de sobra; o que falta é ordem. A plataforma sugere o próximo vídeo pelo que prende atenção, não pelo que faz sentido estudar depois, e organizar playlist em trilha na mão não escala. O produto resolve isso com um Explore de playlists já catalogadas (ou a opção de montar a própria trilha), progresso de 0 a 100% por trilha, e a validação de que o conteúdo entrou vem de um quiz gerado por IA que só libera na conclusão.',
     myRole:
       'Produto próprio, solo. Modelagem do banco com RLS em todas as tabelas, importação de playlists pela YouTube Data API, integração com a API do Gemini para gerar e corrigir o quiz de cada trilha, front-end, design system e internacionalização da interface.',
+    coverImage: {
+      src: mareLogin,
+      alt: 'Tela de login do Maré de Estudos, com opções de e-mail/senha e Google',
+      width: 1400,
+      height: 938,
+    },
     decisions: [
       {
         decision: 'Design system próprio em tokens antes das telas',
@@ -261,11 +273,32 @@ export const createEscalasSlice = (set, get) => ({
       },
     ],
     features: [
-      { title: 'Explore ou monte sua trilha', body: 'Trilhas de estudo já catalogadas para explorar, ou montagem da própria trilha escolhendo os vídeos.' },
-      { title: 'Player com anotações lado a lado', body: 'O vídeo roda no player do YouTube com um campo de anotações ao lado, para o usuário construir o próprio material de estudo.' },
+      {
+        title: 'Explore o catálogo curado',
+        body: 'Trilhas de estudo já catalogadas por categoria, prontas pra começar a estudar.',
+        image: { src: mareExplore, alt: 'Tela de Explorar do Maré de Estudos, com playlists curadas por categoria', width: 1000, height: 714 },
+      },
+      {
+        title: 'Monte sua própria trilha',
+        body: 'Importe qualquer playlist pública do YouTube pelo link, ou busque vídeos individuais pra montar uma trilha personalizada.',
+        image: { src: mareTrilha, alt: 'Tela de Trilhas personalizadas do Maré de Estudos, com opção de colar link ou buscar vídeos', width: 1000, height: 664 },
+      },
+      {
+        title: 'Player com anotações lado a lado',
+        body: 'O vídeo roda no player do YouTube com um campo de anotações ao lado, para o usuário construir o próprio material de estudo.',
+        image: { src: marePlayerAnotacoes, alt: 'Tela de aula do Maré de Estudos, com o player do YouTube e o painel de anotações ao lado', width: 1000, height: 649 },
+      },
       { title: 'Quiz gerado por IA ao completar a trilha', body: 'Ao chegar a 100% de progresso, um quiz de 10 a 100 questões (à escolha do usuário) é gerado pelo Gemini a partir do conteúdo estudado.' },
-      { title: 'Desempenho com explicação de cada erro', body: 'Ao final do quiz, mostra o desempenho e explica cada questão errada, não só corrige.' },
-      { title: 'Conta e roadmap de estudos', body: 'Login próprio ou com Google, com "Meus estudos" reunindo todas as trilhas e um roadmap/calendário de estudo.' },
+      {
+        title: 'Desempenho com explicação de cada erro',
+        body: 'Ao final do quiz, mostra o desempenho e explica cada questão errada, não só corrige.',
+        image: { src: mareQuizResultado, alt: 'Resultado do quiz no Maré de Estudos, com a pontuação e a explicação de cada questão', width: 1000, height: 754 },
+      },
+      {
+        title: 'Conta e roadmap de estudos',
+        body: 'Login próprio ou com Google, com "Meus estudos" reunindo todas as trilhas e um roadmap/calendário de estudo.',
+        image: { src: mareMeusEstudos, alt: 'Tela de Meus estudos do Maré de Estudos, com as trilhas do usuário e o progresso de cada uma', width: 1000, height: 714 },
+      },
     ],
     results: [
       'Base de componentes reaproveitada depois em outros projetos pessoais.',
