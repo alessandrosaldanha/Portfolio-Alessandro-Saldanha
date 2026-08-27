@@ -29,6 +29,7 @@ There is no test runner configured yet. If tests are added later, document the r
 - Bundler config: [vite.config.js](vite.config.js) uses `@vitejs/plugin-react` (Oxc-based, not the SWC variant); `server.watch.ignored` excludes `reference/**` so editing reference material doesn't trigger HMR.
 - `.claude/skills/` and `.claude/.agentes/` hold project-specific Claude Code skills and agent definitions.
 - **Media assets are never loose at the project root.** Logos live in `src/assets/logos/`, per-project case screenshots in `src/assets/<slug>/` (e.g. `src/assets/nexus/`), files served as-is (favicon) in `public/`. `.gitignore` has a root-scoped pattern (`/*.png`, `/*.jpg`, `/*.svg`, etc. — not `src/assets/**`) so a stray file dropped at the root isn't tracked until it's actually organized. A file received with a problem (wrong format, duplicate/mismatched content) goes to `_pending-assets/` at the repo root (gitignored, never committed) while waiting for a corrected version — see `docs/CONTEUDO.md` for what's pending and why.
+- **Never reuse the same image across different feature blocks in a project case** ([src/pages/ProjetoDetalhe.jsx](src/pages/ProjetoDetalhe.jsx)'s `features` rendering, data in [src/data/projects.js](src/data/projects.js)). Two adjacent blocks showing the identical screenshot reads as a mistake, not a design choice. If two blocks would share the same illustration, that's a signal they're one block, not two — merge the text and use one image.
 
 ## Reference material
 
