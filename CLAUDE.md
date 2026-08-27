@@ -35,7 +35,7 @@ There is no test runner configured yet. If tests are added later, document the r
 
 - `reference/mockup/Portfolio Alessandro.dc.html` + `support.js` + `thumbnail.webp` — the original visual mockup/prototype (a declarative template with `{{ }}` bindings and `<sc-if>`/`<sc-for>` custom elements, not runnable as-is; opens correctly via `file://` if you need to check it — its relative asset paths were fixed after the folder move). `src/pages/` + `src/styles/site.css` are a hand-built React port of the sections that exist; check the mockup before assuming a section is fully covered.
 - `reference/design-system/` — the Orla design system the mockup is built on (full token set, bundled components, `readme.md`). `src/styles/tokens/` started as a copy of `tokens/*.css` from here, then was trimmed to what's actually used (see Architecture above).
-- `reference/handoff-proposal/README.md` — a *proposed* alternative architecture (Next.js 14 App Router + TypeScript strict + Tailwind + MDX) that was **not** taken; the site was built directly into the existing Vite + JS setup instead. Its `data/*.ts` scaffold files were deleted (empty/never populated) — the real content is in `src/data/*.js`.
+- `reference/handoff-proposal/README.md` — a _proposed_ alternative architecture (Next.js 14 App Router + TypeScript strict + Tailwind + MDX) that was **not** taken; the site was built directly into the existing Vite + JS setup instead. Its `data/*.ts` scaffold files were deleted (empty/never populated) — the real content is in `src/data/*.js`.
 
 This folder is the design system of Orla (orla.tech), the user's employer — used here as the visual foundation for the portfolio, not to be reused outside this project without checking, and worth keeping in mind since this repo is public.
 
@@ -50,6 +50,7 @@ Most Problems-panel items in this repo (previously ~240, mostly on `src/styles/s
 `webhint` has no per-folder/per-file scoping (no `overrides`, no inline disable comments — confirmed against its docs and issue tracker), so `.hintrc` is necessarily project-wide. In practice this only mutes real noise: `compat-api/css` (browser-support warnings for `text-wrap: balance/pretty`, which degrade gracefully by design), `compat-api/html`, `no-inline-styles`, and `button-type` (the last two only ever fired on the generated `reference/mockup/*.dc.html`, which uses inline-style template bindings and non-interactive `<button>`s by construction — `index.html` and the JSX components already satisfy these hints natively).
 
 Left un-silenced, on purpose:
+
 - The "`transform`/`opacity` triggers Composite/Paint inside `@keyframes`" performance hints — inherent to any translate/opacity-based CSS animation (used by the marquee, rise-in, and mobile-nav-in animations); no webhint hint ID or documented VS Code setting was found to disable this specific check, and it's informational only (no build/runtime impact).
 - A handful of HTML best-practice hints on `reference/mockup/*.dc.html` (`<title>`, `lang` attribute, `sc-for`/`sc-if` custom elements inside `<ul>`) — that file is a frozen, generated Figma/dc-runtime artifact (see above), not hand-authored markup, so it isn't rewritten to satisfy a validator.
 
@@ -60,7 +61,27 @@ Left un-silenced, on purpose:
 - Frases curtas e diretas. Se uma frase precisa de vírgula pra encaixar duas ideias, considerar quebrar em duas frases.
 - Antes de qualquer commit que adicione ou edite texto voltado ao usuário, rodar `grep -rn "—" src/` e confirmar que retorna vazio. Comentários técnicos em CSS/JS (ex.: `src/styles/tokens/*.css`, `src/components/OrlaMarquee.jsx`) são exceção esperada e não texto de usuário — se o grep só pegar esses, revise manualmente antes de assumir que há uma pendência real.
 
+## Conteúdo do portfólio
+
+[docs/CONTEUDO.md](docs/CONTEUDO.md) é a fonte da verdade do conteúdo do portfólio (trajetória,
+projetos próprios, stack real). Antes de escrever ou alterar qualquer texto de projeto,
+trajetória ou stack, leia `docs/CONTEUDO.md`. Nunca deduza feature a partir do código nem
+invente métrica, número ou resultado. Se um fato não estiver em `docs/CONTEUDO.md`, pergunte em
+vez de assumir.
+
 ## Branches and releases
 
 - `main` is production; `hmg` is homologation/staging. Land features in `hmg` before merging to `main`.
 - Releases on `main` are automated by release-please ([.github/workflows/release-please.yml](.github/workflows/release-please.yml), [release-please-config.json](release-please-config.json)) — it parses Conventional Commits to bump the version and generate `CHANGELOG.md`. Commit messages must follow `feat:`, `fix:`, `chore:`, etc. for this to work correctly.
+
+## Custom Commands
+
+### /cleanup
+
+Quando eu digitar /cleanup, faça o seguinte:
+
+1. Analise todos os arquivos da pasta raiz e subpastas.
+2. Identifique arquivos HTML/CSS/JS soltos ou mal posicionados.
+3. Sugira uma estrutura limpa de diretórios (ex: /src, /public, /components).
+4. Identifique trechos de código acumulados ou desnecessários.
+5. Apresente um resumo e peça minha autorização antes de mover ou deletar arquivos.
