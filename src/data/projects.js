@@ -1,6 +1,7 @@
 import nexusAcessoCpf from '../assets/nexus/nexus-acesso-cpf.webp'
 import nexusSelecaoTeste from '../assets/nexus/nexus-selecao-teste.webp'
 import nexusTesteFinalizado from '../assets/nexus/nexus-teste-finalizado.webp'
+import wesafetySite from '../assets/nexus/wesafety-site.webp'
 
 export const projects = [
   {
@@ -365,7 +366,12 @@ export const createEscalasSlice = (set, get) => ({
         body: 'O resultado de cada instrumento gera uma recomendação sobre a aptidão do motorista para dirigir. O produto entrega a recomendação, não a decisão: em caso de reprovação, cabe ao gestor local decidir o que fazer.',
         image: { src: nexusTesteFinalizado, alt: 'Tela de conclusão do teste no Nexus, confirmando o envio das respostas', width: 1000, height: 776 },
       },
-      { title: 'Site institucional da WeSafety', href: 'https://www.wesafety.com.br/', body: 'Também construído em WeWeb.io, no mesmo stack do Nexus.' },
+      {
+        title: 'Site institucional da WeSafety',
+        href: 'https://www.wesafety.com.br/',
+        body: 'Também construído em WeWeb.io, no mesmo stack do Nexus.',
+        image: { src: wesafetySite, alt: 'Página inicial do site institucional da WeSafety, com a seção "Para quem?" e a lista de clientes atendidos', width: 1000, height: 902 },
+      },
     ],
     results: [],
     gallery: [],

@@ -130,19 +130,32 @@ export default function ProjetoDetalhe() {
                       </h3>
                       <p className="feature-body">{f.body}</p>
                     </div>
-                    {f.href ? (
+                    {f.image ? (
+                      f.href ? (
+                        <a href={f.href} target="_blank" rel="noopener noreferrer">
+                          <img
+                            className="feature-shot feature-shot-img"
+                            src={f.image.src}
+                            alt={f.image.alt}
+                            loading="lazy"
+                            width={f.image.width}
+                            height={f.image.height}
+                          />
+                        </a>
+                      ) : (
+                        <img
+                          className="feature-shot feature-shot-img"
+                          src={f.image.src}
+                          alt={f.image.alt}
+                          loading="lazy"
+                          width={f.image.width}
+                          height={f.image.height}
+                        />
+                      )
+                    ) : f.href ? (
                       <a href={f.href} target="_blank" rel="noopener noreferrer" className="feature-shot-link">
                         Ver ao vivo →
                       </a>
-                    ) : f.image ? (
-                      <img
-                        className="feature-shot feature-shot-img"
-                        src={f.image.src}
-                        alt={f.image.alt}
-                        loading="lazy"
-                        width={f.image.width}
-                        height={f.image.height}
-                      />
                     ) : (
                       <div className="feature-shot" />
                     )}
