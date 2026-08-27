@@ -8,6 +8,7 @@ import mareTrilha from '../assets/mare-estudos/mare-trilha.webp'
 import marePlayerAnotacoes from '../assets/mare-estudos/mare-player-anotacoes.webp'
 import mareMeusEstudos from '../assets/mare-estudos/mare-meus-estudos.webp'
 import mareQuizResultado from '../assets/mare-estudos/mare-quiz-resultado.webp'
+import mareRoadmap from '../assets/mare-estudos/mare-roadmap.webp'
 
 export const projects = [
   {
@@ -295,9 +296,14 @@ export const createEscalasSlice = (set, get) => ({
         image: { src: mareQuizResultado, alt: 'Resultado do quiz no Maré de Estudos, com a pontuação e a explicação de cada questão', width: 1000, height: 754 },
       },
       {
-        title: 'Conta e roadmap de estudos',
-        body: 'Login próprio ou com Google, com "Meus estudos" reunindo todas as trilhas e um roadmap/calendário de estudo.',
+        title: 'Meus estudos',
+        body: 'Login próprio ou com Google. "Meus estudos" reúne todas as trilhas do usuário, com o progresso de cada uma.',
         image: { src: mareMeusEstudos, alt: 'Tela de Meus estudos do Maré de Estudos, com as trilhas do usuário e o progresso de cada uma', width: 1000, height: 714 },
+      },
+      {
+        title: 'Roadmap de estudos',
+        body: 'Calendário com as sessões de estudo agendadas, organizadas por data.',
+        image: { src: mareRoadmap, alt: 'Tela de Roadmap de estudos do Maré de Estudos, com sessões de estudo agendadas por data', width: 1000, height: 733 },
       },
     ],
     results: [
