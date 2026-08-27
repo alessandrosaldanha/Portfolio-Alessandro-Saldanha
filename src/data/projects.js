@@ -9,6 +9,7 @@ import marePlayerAnotacoes from '../assets/mare-estudos/mare-player-anotacoes.we
 import mareMeusEstudos from '../assets/mare-estudos/mare-meus-estudos.webp'
 import mareQuizResultado from '../assets/mare-estudos/mare-quiz-resultado.webp'
 import mareRoadmap from '../assets/mare-estudos/mare-roadmap.webp'
+import mareQuizGerando from '../assets/mare-estudos/mare-quiz-gerando.webp'
 
 export const projects = [
   {
@@ -289,7 +290,11 @@ export const createEscalasSlice = (set, get) => ({
         body: 'O vídeo roda no player do YouTube com um campo de anotações ao lado, para o usuário construir o próprio material de estudo.',
         image: { src: marePlayerAnotacoes, alt: 'Tela de aula do Maré de Estudos, com o player do YouTube e o painel de anotações ao lado', width: 1000, height: 649 },
       },
-      { title: 'Quiz gerado por IA ao completar a trilha', body: 'Ao chegar a 100% de progresso, um quiz de 10 a 100 questões (à escolha do usuário) é gerado pelo Gemini a partir do conteúdo estudado.' },
+      {
+        title: 'Quiz gerado por IA ao completar a trilha',
+        body: 'Ao chegar a 100% de progresso, um quiz de 10 a 100 questões (à escolha do usuário) é gerado pelo Gemini a partir do conteúdo estudado.',
+        image: { src: mareQuizGerando, alt: 'Painel de quiz do Maré de Estudos, com o banco de perguntas gerado, tentativas anteriores e opção de gerar um banco maior', width: 559, height: 817 },
+      },
       {
         title: 'Desempenho com explicação de cada erro',
         body: 'Ao final do quiz, mostra o desempenho e explica cada questão errada, não só corrige.',
