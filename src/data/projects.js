@@ -316,9 +316,9 @@ export const createEscalasSlice = (set, get) => ({
   {
     slug: 'nexus-wesafety',
     name: 'Nexus (WeSafety)',
-    tagline: 'Plataforma psicossocial para o setor de transporte, com login: o motorista responde um instrumento de 20 questões e recebe uma recomendação de aptidão para dirigir.',
+    tagline: 'Plataforma de gestão e avaliação psicossocial para o setor de transporte: o motorista faz dois instrumentos, EEA e DT, e o resultado gera uma recomendação de aptidão para dirigir.',
     role: 'Cliente · via Orla.tech',
-    outcome: 'Plataforma psicossocial do grupo Águia Branca no ar, com o instrumento EEA orientando a decisão dos gestores locais.',
+    outcome: 'Plataforma de gestão e avaliação psicossocial do grupo Águia Branca no ar, com os instrumentos EEA e DT orientando (não decidindo) a aptidão do motorista.',
     badges: ['Papel: Desenvolvedor (Orla.tech)', 'Período: 2024–2026', 'Tipo: Cliente (via Orla.tech)'],
     type: 'Cliente',
     featured: false,
@@ -334,13 +334,14 @@ export const createEscalasSlice = (set, get) => ({
       { label: 'Stack', value: 'WeWeb.io' },
     ],
     context:
-      'WeSafety é um grupo da Águia Branca. O Nexus é a plataforma psicossocial do grupo para o setor de transporte: o motorista faz login e responde o EEA, um instrumento de 20 questões distribuídas em 10 categorias, duas por categoria.',
+      'WeSafety é um grupo da Águia Branca. Antes do Nexus, os motoristas passavam por um instrumento de avaliação anterior que nunca renovava o banco de questões: eram sempre as mesmas perguntas, ciclo após ciclo. Com o tempo, o motorista passou a responder no automático, e o teste deixou de medir aptidão para medir familiaridade com o próprio teste. Um acidente, em que o motorista avaliado havia sido aprovado na avaliação em uso até então, evidenciou que ela não estava mais cumprindo a função. O Nexus nasceu como uma plataforma de gestão e testes, criada primeiro para o grupo Águia Branca e depois estendida para venda a outras empresas do setor de transporte.',
     myRole:
       'Construí o Nexus em WeWeb.io, dentro da equipe da Orla.tech, e também o site institucional da WeSafety, no mesmo stack.',
     decisions: [],
     features: [
       { title: 'Instrumento EEA', body: 'O motorista responde 20 questões distribuídas em 10 categorias, duas por categoria.' },
-      { title: 'Recomendação de aptidão', body: 'O resultado gera uma recomendação sobre a aptidão do motorista para dirigir. O produto entrega a recomendação, não a decisão: em caso de reprovação, cabe ao gestor local decidir o que fazer.' },
+      { title: 'Instrumento DT', body: 'Teste mensal, de 150 questões. Também aplicado quando o motorista é reprovado no EEA.' },
+      { title: 'Recomendação de aptidão', body: 'O resultado de cada instrumento gera uma recomendação sobre a aptidão do motorista para dirigir. O produto entrega a recomendação, não a decisão: em caso de reprovação, cabe ao gestor local decidir o que fazer.' },
       { title: 'Site institucional da WeSafety', href: 'https://www.wesafety.com.br/', body: 'Também construído em WeWeb.io, no mesmo stack do Nexus.' },
     ],
     results: [],
