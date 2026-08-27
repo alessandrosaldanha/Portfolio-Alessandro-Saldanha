@@ -3,7 +3,7 @@ export const posts = [
     slug: 'rls-supabase-multi-tenancy',
     title: 'RLS no Supabase: multi-tenancy sem middleware',
     excerpt:
-      'Como deixei o Postgres ser a autoridade de acesso do Contabilidade Igreja, e o que isso cobra em troca na hora de debugar.',
+      'Como deixei o Postgres ser a autoridade de acesso do Contabilidade Reformada, e o que isso cobra em troca na hora de debugar.',
     date: '12 de março de 2026',
     read: '9 min',
     tags: ['Supabase', 'PostgreSQL', 'Arquitetura'],
