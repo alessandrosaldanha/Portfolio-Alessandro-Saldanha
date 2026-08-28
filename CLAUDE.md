@@ -64,10 +64,10 @@ Left un-silenced, on purpose:
 
 ## Convenções de escrita
 
-- Nunca usar travessão (—) em textos voltados ao usuário. Preferir ponto final, vírgula, ou reformular a frase.
+- **Regra permanente, sem exceção**: nenhum texto voltado ao usuário usa travessão (—). Nenhuma página, nenhum case, nenhum post, nenhuma tagline, nenhuma meta tag, nenhum JSON-LD. Onde o travessão apareceria, usar vírgula, dois-pontos, ponto final, ou reescrever a frase.
 - Evitar "não apenas X, mas também Y", "além disso" como abertura de frase, e adjetivos em fileira de três ("robusto, escalável e eficiente").
 - Frases curtas e diretas. Se uma frase precisa de vírgula pra encaixar duas ideias, considerar quebrar em duas frases.
-- Antes de qualquer commit que adicione ou edite texto voltado ao usuário, rodar `grep -rn "—" src/` e confirmar que retorna vazio. Comentários técnicos em CSS/JS (ex.: `src/styles/tokens/*.css`, `src/components/OrlaMarquee.jsx`) são exceção esperada e não texto de usuário — se o grep só pegar esses, revise manualmente antes de assumir que há uma pendência real.
+- Antes de qualquer commit que adicione ou edite texto voltado ao usuário, rodar `grep -rn "—" src/ index.html` e confirmar que retorna vazio. O `index.html` da raiz entra porque carrega texto de usuário de verdade (`<title>`, meta description) fora de `src/`; qualquer outro arquivo de marcação na raiz que ganhe texto de usuário no futuro entra na mesma checagem. Comentários técnicos em CSS/JS (ex.: `src/styles/tokens/*.css`, `src/components/OrlaMarquee.jsx`) são exceção esperada e não texto de usuário — se o grep só pegar esses, revise manualmente antes de assumir que há uma pendência real. `docs/CONTEUDO.md`, este arquivo e o `README.md` são documentação interna, não texto do site, e ficam fora dessa checagem.
 - Nunca escrever contexto de origem ("nasceu porque X", "o cliente não tinha Y", "a empresa enfrentava Z") sem que o Alessandro tenha fornecido esse contexto explicitamente. Se faltar informação para justificar por que um projeto existe, deixar a descrição mais curta em vez de preencher o vazio com uma suposição plausível.
 
 ## Conteúdo do portfólio
