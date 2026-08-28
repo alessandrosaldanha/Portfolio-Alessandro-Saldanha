@@ -33,6 +33,12 @@ import mareGalExplorarDesktopClaro from '../assets/mare-estudos/mare-gallery-exp
 import mareGalExplorarMobileClaro from '../assets/mare-estudos/mare-gallery-explorar-mobile-claro.webp'
 import mareGalMenuMobileClaro from '../assets/mare-estudos/mare-gallery-menu-mobile-claro.webp'
 import mareGalAulaMobileClaro from '../assets/mare-estudos/mare-gallery-aula-mobile-claro.webp'
+import sorriaHome from '../assets/sorria-clinicas/sorria-home.webp'
+import sorriaEspecialidades from '../assets/sorria-clinicas/sorria-especialidades.webp'
+import sorriaUnidades from '../assets/sorria-clinicas/sorria-unidades.webp'
+import sorriaAgendamento from '../assets/sorria-clinicas/sorria-agendamento.webp'
+import sorriaFaq from '../assets/sorria-clinicas/sorria-faq.webp'
+import sorriaAvaliacoes from '../assets/sorria-clinicas/sorria-avaliacoes.webp'
 
 export const projects = [
   {
@@ -286,6 +292,12 @@ export const createEscalasSlice = (set, get) => ({
       'Projeto pessoal: redesign de site institucional multi-página, com foco em SEO local e Core Web Vitals.',
     myRole:
       'Projeto pessoal, solo: arquitetura de páginas, implementação e publicação.',
+    coverImage: {
+      src: sorriaHome,
+      alt: 'Página inicial do Sorria Clínicas Odontológicas, com chamada para agendar avaliação e avaliações no Google',
+      width: 1812,
+      height: 1824,
+    },
     decisions: [
       {
         decision: 'Uma página por especialidade em vez de âncoras numa home longa',
@@ -301,14 +313,26 @@ export const createEscalasSlice = (set, get) => ({
       },
     ],
     features: [
-      { title: 'Páginas por especialidade', body: 'Cada procedimento tem página própria com conteúdo, dúvidas frequentes e chamada para agendamento no WhatsApp.' },
-      { title: 'Dados de negócio local', body: 'Endereço, horários e mapa estruturados para aparecer corretamente em busca e mapas.' },
+      {
+        title: 'Páginas por especialidade',
+        body: 'Cada procedimento tem página própria com conteúdo, dúvidas frequentes e chamada para agendamento no WhatsApp.',
+        image: { src: sorriaEspecialidades, alt: 'Grade de especialidades do Sorria Clínicas Odontológicas, com uma página própria por procedimento', width: 1836, height: 1699 },
+      },
+      {
+        title: 'Dados de negócio local',
+        body: 'Endereço, horários e mapa estruturados para aparecer corretamente em busca e mapas.',
+        image: { src: sorriaUnidades, alt: 'Lista de unidades do Sorria Clínicas Odontológicas, com endereço, horário e contato de cada uma', width: 1755, height: 1537 },
+      },
     ],
     results: [
       'Estrutura pronta para busca por procedimento, que antes não existia.',
       'Carregamento estável em conexão móvel (sem salto de layout nas fotos).',
     ],
-    gallery: ['Home', 'Página de especialidade', 'Mobile'],
+    gallery: [
+      { src: sorriaAgendamento, alt: 'Formulário de agendamento do Sorria Clínicas Odontológicas, por unidade e especialidade', width: 1812, height: 1113 },
+      { src: sorriaFaq, alt: 'Perguntas frequentes do Sorria Clínicas Odontológicas', width: 1636, height: 1651 },
+      { src: sorriaAvaliacoes, alt: 'Avaliações de pacientes no Google exibidas no site do Sorria Clínicas Odontológicas', width: 1785, height: 1120 },
+    ],
   },
   {
     slug: 'mare-de-estudos',

@@ -440,6 +440,18 @@ mais curto, seguindo a regra do topo deste arquivo. Não reintroduzir esse tipo 
 
 - **Sorria Clínicas Odontológicas**: redesign de site institucional multi-página, projeto
   pessoal. Sem detalhe de origem/negócio real.
+  - Screenshots reais em `src/assets/sorria-clinicas/` (pasta renomeada de
+    `sorria-clinicas-odontológicas/`, que tinha acento e espaço no nome, para bater com o slug do
+    projeto e a convenção de nome de arquivo; PNGs originais convertidos para WebP): capa do case
+    (`sorria-home.webp`, home com chamada para agendar avaliação e avaliações no Google), imagem
+    nos dois blocos de feature — "Páginas por especialidade" (`sorria-especialidades.webp`) e
+    "Dados de negócio local" (`sorria-unidades.webp`, lista de unidades com endereço, horário e
+    telefone) — e galeria com `sorria-agendamento.webp` (formulário de agendamento por unidade e
+    especialidade), `sorria-faq.webp` (perguntas frequentes) e `sorria-avaliacoes.webp`
+    (avaliações de pacientes no Google exibidas no site). `sorria-avaliacoes.webp` mostra nome e
+    comentário de pacientes reais, mas é conteúdo público (widget de avaliações do Google já
+    exibido no site ao vivo), não uma tela interna/admin — não se aplica a checagem de dado
+    pessoal privado.
 - **Supermercado Vital**: e-commerce pessoal — login, carrinho, simulação de compra com endereço
   de entrega, avaliações em produtos. Front-end integrado a uma API pronta em Xano. Nunca afirmar
   região de atuação real (não é "entrega em Maceió") nem operação de negócio real (não "a loja
