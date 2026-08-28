@@ -456,6 +456,23 @@ mais curto, seguindo a regra do topo deste arquivo. Não reintroduzir esse tipo 
   de entrega, avaliações em produtos. Front-end integrado a uma API pronta em Xano. Nunca afirmar
   região de atuação real (não é "entrega em Maceió") nem operação de negócio real (não "a loja
   saiu do atendimento por WhatsApp").
+  - Screenshots reais em `src/assets/supermercado-vital/`, convertidos de PNG para WebP: capa do
+    case (`vital-home.webp`, home com "colhido hoje"), imagem nos quatro blocos de feature —
+    "Catálogo paginado" (`vital-catalogo.webp`), "Avaliações de produto" (`vital-avaliacoes.webp`,
+    avaliação real do próprio Alessandro em produto de teste), "Carrinho e checkout em três
+    etapas" (`vital-carrinho-checkout.webp`) e "Histórico de pedidos"
+    (`vital-historico-pedidos.webp`) — e galeria com `vital-gallery-catalogo.webp` (catálogo com
+    paginação real), `vital-gallery-checkout-entrega.webp` (etapa de endereço do checkout) e
+    `vital-gallery-checkout-pagamento.webp` (etapa de pagamento, Pix em ambiente de teste).
+  - Nomes de produto (Tyler Gomez, Rebecca Allen, Danielle Henry etc.) e nomes de fruta/verdura
+    inventados (rambutan lettuce, soursop sapote etc.) são dado seed do Xano, não gente real.
+  - **Endereço de entrega confirmado pelo Alessandro como fictício** (28/ago/2026): a tela de
+    checkout usada em `vital-gallery-checkout-entrega.webp` mostra "Alessandro Saldanha, Rua
+    Rosalvo Lima dos Santos, 45, Cidade Universitária, Maceió, CEP: 57072020" como endereço de
+    teste, não seu endereço real. Perguntado antes de usar a imagem, por ser exatamente o tipo de
+    dado sensível que a checagem de screenshot existe pra pegar.
+  - O rodapé de algumas telas mostra o telefone (82) 98127-3619, que já é o WhatsApp público
+    publicado em `src/data/social.js`/`/contato` — não é exposição nova.
 
 **IBR Maceió e IBR Maragogi foram removidos do portfólio** (a pedido do Alessandro, projetos
 ainda sem conteúdo institucional finalizado). Não recriar essas entradas em `projects.js` sem

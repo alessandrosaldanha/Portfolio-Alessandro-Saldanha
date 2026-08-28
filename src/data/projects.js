@@ -39,6 +39,14 @@ import sorriaUnidades from '../assets/sorria-clinicas/sorria-unidades.webp'
 import sorriaAgendamento from '../assets/sorria-clinicas/sorria-agendamento.webp'
 import sorriaFaq from '../assets/sorria-clinicas/sorria-faq.webp'
 import sorriaAvaliacoes from '../assets/sorria-clinicas/sorria-avaliacoes.webp'
+import vitalHome from '../assets/supermercado-vital/vital-home.webp'
+import vitalCatalogo from '../assets/supermercado-vital/vital-catalogo.webp'
+import vitalAvaliacoes from '../assets/supermercado-vital/vital-avaliacoes.webp'
+import vitalCarrinhoCheckout from '../assets/supermercado-vital/vital-carrinho-checkout.webp'
+import vitalHistoricoPedidos from '../assets/supermercado-vital/vital-historico-pedidos.webp'
+import vitalGalleryCatalogo from '../assets/supermercado-vital/vital-gallery-catalogo.webp'
+import vitalGalleryCheckoutEntrega from '../assets/supermercado-vital/vital-gallery-checkout-entrega.webp'
+import vitalGalleryCheckoutPagamento from '../assets/supermercado-vital/vital-gallery-checkout-pagamento.webp'
 
 export const projects = [
   {
@@ -568,6 +576,12 @@ export const createEscalasSlice = (set, get) => ({
       'Projeto pessoal de e-commerce: login, carrinho, simulação de compra com endereço de entrega e avaliações em produtos.',
     myRole:
       'Projeto pessoal, solo, só front-end, integrado a uma API pronta em Xano. Implementei a interface: catálogo, carrinho, checkout e histórico de pedidos.',
+    coverImage: {
+      src: vitalHome,
+      alt: 'Página inicial do Supermercado Vital, com chamada para os produtos colhidos no dia',
+      width: 2164,
+      height: 1813,
+    },
     decisions: [
       {
         decision: 'Xano como back-end pronto, em vez de API própria',
@@ -583,15 +597,35 @@ export const createEscalasSlice = (set, get) => ({
       },
     ],
     features: [
-      { title: 'Catálogo paginado', body: 'Lista de produtos carregada em páginas, sem travar com o catálogo inteiro de uma vez.' },
-      { title: 'Avaliações de produto', body: 'Cliente vê e deixa avaliação por produto antes de decidir a compra.' },
-      { title: 'Carrinho e checkout em três etapas', body: 'Endereço, pagamento e revisão como passos separados, com o carrinho preservado entre eles.' },
-      { title: 'Histórico de pedidos', body: 'Cliente consulta pedidos anteriores sem precisar perguntar status por WhatsApp.' },
+      {
+        title: 'Catálogo paginado',
+        body: 'Lista de produtos carregada em páginas, sem travar com o catálogo inteiro de uma vez.',
+        image: { src: vitalCatalogo, alt: 'Catálogo de produtos do Supermercado Vital, em destaque na home', width: 2170, height: 1255 },
+      },
+      {
+        title: 'Avaliações de produto',
+        body: 'Cliente vê e deixa avaliação por produto antes de decidir a compra.',
+        image: { src: vitalAvaliacoes, alt: 'Página de produto do Supermercado Vital, com avaliação por estrelas e comentário', width: 2098, height: 1684 },
+      },
+      {
+        title: 'Carrinho e checkout em três etapas',
+        body: 'Endereço, pagamento e revisão como passos separados, com o carrinho preservado entre eles.',
+        image: { src: vitalCarrinhoCheckout, alt: 'Carrinho do Supermercado Vital, com os itens e o total da compra antes de seguir para o checkout', width: 2095, height: 1503 },
+      },
+      {
+        title: 'Histórico de pedidos',
+        body: 'Cliente consulta pedidos anteriores sem precisar perguntar status por WhatsApp.',
+        image: { src: vitalHistoricoPedidos, alt: 'Tela Minhas Compras do Supermercado Vital, com pedidos anteriores e status de cada um', width: 2080, height: 1825 },
+      },
     ],
     results: [
       'Fluxo completo de e-commerce (catálogo, carrinho, checkout, histórico de pedidos) rodando integrado a uma API pronta, sem backend próprio pra manter.',
     ],
-    gallery: ['Catálogo', 'Carrinho', 'Checkout'],
+    gallery: [
+      { src: vitalGalleryCatalogo, alt: 'Ofertas em destaque do Supermercado Vital, com paginação real do catálogo', width: 2137, height: 1588 },
+      { src: vitalGalleryCheckoutEntrega, alt: 'Etapa de entrega do checkout do Supermercado Vital, com confirmação de endereço', width: 2116, height: 1215 },
+      { src: vitalGalleryCheckoutPagamento, alt: 'Etapa de pagamento do checkout do Supermercado Vital, com Pix em ambiente de teste', width: 2095, height: 1803 },
+    ],
   },
 ]
 
