@@ -1,6 +1,7 @@
 import contabilidadeLogin from '../assets/contabilidade-reformada/contabilidade-login.webp'
 import contabilidadeMultiIgreja from '../assets/contabilidade-reformada/contabilidade-multi-igreja.webp'
 import contabilidadeExtratoIa from '../assets/contabilidade-reformada/contabilidade-extrato-ia.webp'
+import contabilidadePreviaEditavel from '../assets/contabilidade-reformada/contabilidade-previa-editavel.webp'
 import contabilidadeLivroCaixa from '../assets/contabilidade-reformada/contabilidade-livro-caixa.webp'
 import contabilidadeDashboard from '../assets/contabilidade-reformada/contabilidade-dashboard.webp'
 import contabilidadeAuditoria from '../assets/contabilidade-reformada/contabilidade-auditoria.webp'
@@ -99,14 +100,18 @@ export const projects = [
       {
         title: 'Multi-igreja com admin por igreja',
         body: 'Cada igreja tem cadastro próprio; o admin (pastor) gerencia a sua e cadastra os tesoureiros dela.',
-        image: { src: contabilidadeMultiIgreja, alt: 'Tela de Detalhes da Igreja no Contabilidade Reformada, com o seletor de igrejas mostrando várias cadastradas', width: 1400, height: 663 },
+        image: { src: contabilidadeMultiIgreja, alt: 'Tela de Governança do Contabilidade Reformada, com a lista de igrejas cadastradas na plataforma, status e plano de cada uma', width: 1400, height: 1169 },
       },
       {
         title: 'Extrato bancário lido por IA',
         body: 'O tesoureiro sobe o extrato em CSV, Excel ou PDF; o arquivo fica anexado na aba de importações com data e hora. O Gemini extrai todas as movimentações e categoriza cada uma.',
         image: { src: contabilidadeExtratoIa, alt: 'Tela de Extratos e Importação IA no Contabilidade Reformada, com upload de extrato e categorização por IA', width: 1000, height: 996 },
       },
-      { title: 'Prévia editável antes de gravar', body: 'Antes de ir para o livro caixa, o tesoureiro vê uma prévia da importação e ajusta o que quiser. Nada é gravado sem confirmação.' },
+      {
+        title: 'Prévia editável antes de gravar',
+        body: 'Antes de ir para o livro caixa, o tesoureiro vê uma prévia da importação e ajusta o que quiser. Nada é gravado sem confirmação.',
+        image: { src: contabilidadePreviaEditavel, alt: 'Pré-visualização de lançamentos importados no Contabilidade Reformada, com totais e lançamentos pendentes de revisão antes de confirmar', width: 1000, height: 916 },
+      },
       {
         title: 'Livro caixa com filtros',
         body: 'Filtros por entrada, saída, categoria e responsável, com visão mensal.',

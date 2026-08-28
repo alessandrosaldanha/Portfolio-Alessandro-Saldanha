@@ -271,27 +271,32 @@ alternativa válida.
 - A importação por IA que elimina o lançamento manual é o diferencial do produto — não descrever
   como "lançamentos, relatórios e prestação de contas" genéricos.
 - Screenshots reais em `src/assets/contabilidade-reformada/`: capa do case
-  (`contabilidade-login.webp`) e imagem em seis dos sete blocos de feature — "Multi-igreja com
-  admin por igreja" (`contabilidade-multi-igreja.webp`, tela de Detalhes da Igreja com o seletor
-  de igrejas aberto mostrando várias cadastradas), "Extrato bancário lido por IA"
-  (`contabilidade-extrato-ia.webp`), "Livro caixa com filtros" (`contabilidade-livro-caixa.webp`),
-  "Dashboard mensal, trimestral e anual" (`contabilidade-dashboard.webp`), "Trilha de auditoria"
+  (`contabilidade-login.webp`) e imagem nos sete blocos de feature (todos) — "Multi-igreja com
+  admin por igreja" (`contabilidade-multi-igreja.webp`, tela de Governança "Admin Master" com a
+  lista de igrejas cadastradas na plataforma, status e plano de cada uma; trocada uma vez, a
+  versão atual não é mais a tela de Detalhes da Igreja com seletor aberto), "Extrato bancário
+  lido por IA" (`contabilidade-extrato-ia.webp`, estado vazio, "Envie um extrato para ver a
+  pré-visualização"), "Prévia editável antes de gravar" (`contabilidade-previa-editavel.webp`,
+  mesma tela populada com 50 lançamentos e o agente de IA de categorização, estado depois do
+  upload), "Livro caixa com filtros" (`contabilidade-livro-caixa.webp`), "Dashboard mensal,
+  trimestral e anual" (`contabilidade-dashboard.webp`), "Trilha de auditoria"
   (`contabilidade-auditoria.webp`) e "Gestão de usuários por igreja"
   (`contabilidade-usuarios.webp`). "Livro caixa com filtros e dashboard" e "Trilha de auditoria"
   (que também mencionava "gestão de usuários") foram divididos em dois blocos cada, mesma lógica
   de sempre: havia screenshot real e distinta para cada metade do texto original, então cada
-  metade virou seu próprio bloco. "Prévia editável antes de gravar" continua sem imagem: a
-  screenshot recebida da tela de importação mostra o estado vazio ("Envie um extrato para ver a
-  pré-visualização"), não uma prévia populada, então não ilustra o bloco de verdade. Galeria com
-  2 imagens mobile (`contabilidade-dashboard-mobile.webp`, `contabilidade-auditoria-mobile.webp`).
+  metade virou seu próprio bloco. Galeria com 2 imagens mobile (`contabilidade-dashboard-mobile.webp`,
+  `contabilidade-auditoria-mobile.webp`).
 - **A interface do produto ainda mostra "Contabilidade Igreja"** na tela de login (nome antigo,
   não atualizado no app). O texto do portfólio já foi corrigido para "Contabilidade Reformada";
   o screenshot de capa foi usado mesmo assim, por decisão explícita do Alessandro — mas se o
   app for renomeado, essa captura de tela precisa ser atualizada.
-- As telas de "Detalhes da Igreja", "Governança e Usuários" e "Livro Caixa" mostram nomes,
-  e-mails, um CPF e valores financeiros — **confirmado pelo Alessandro que são dados de teste**,
-  não de pessoas reais. Se um projeto futuro reenviar screenshot com esse tipo de dado sem
-  confirmação prévia, perguntar antes de publicar (CPF é dado sensível pela LGPD).
+- As telas de "Detalhes da Igreja", "Governança e Usuários", "Livro Caixa", a tela de Governança
+  "Admin Master" (`contabilidade-multi-igreja.webp`, e-mails reais incluindo o do Alessandro) e a
+  tela de Extratos e Importação IA populada (`contabilidade-previa-editavel.webp`, lançamentos de
+  cartão com nome de estabelecimento) mostram nomes, e-mails, um CPF e valores financeiros —
+  **confirmado pelo Alessandro que são dados de teste**, não de pessoas reais. Se um projeto
+  futuro reenviar screenshot com esse tipo de dado sem confirmação prévia, perguntar antes de
+  publicar (CPF é dado sensível pela LGPD).
 
 ### Gestão de Escalas
 - Tipo: produto próprio · solo. Status: em uso real.
