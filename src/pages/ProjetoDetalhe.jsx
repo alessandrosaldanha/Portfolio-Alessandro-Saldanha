@@ -8,6 +8,8 @@ export default function ProjetoDetalhe() {
   const p = getProject(slug)
   const [lightboxIndex, setLightboxIndex] = useState(null)
   const lightboxTriggerRef = useRef(null)
+  const [featureLightboxIndex, setFeatureLightboxIndex] = useState(null)
+  const featureLightboxTriggerRef = useRef(null)
 
   if (!p) {
     return (
@@ -27,6 +29,7 @@ export default function ProjetoDetalhe() {
   const hasResults = p.results.length > 0
   const hasGallery = p.gallery.length > 0
   const galleryImages = p.gallery.filter((g) => typeof g !== 'string')
+  const featureImages = p.features.filter((f) => f.image).map((f) => f.image)
 
   const openLightbox = (image, event) => {
     lightboxTriggerRef.current = event.currentTarget
@@ -36,6 +39,19 @@ export default function ProjetoDetalhe() {
   const closeLightbox = () => {
     setLightboxIndex(null)
     lightboxTriggerRef.current?.focus()
+  }
+
+  // Separate lightbox instance/state from the gallery's: its own image set
+  // (feature screenshots only) and its own index, so opening one never
+  // touches the other's position or count.
+  const openFeatureLightbox = (image, event) => {
+    featureLightboxTriggerRef.current = event.currentTarget
+    setFeatureLightboxIndex(featureImages.indexOf(image))
+  }
+
+  const closeFeatureLightbox = () => {
+    setFeatureLightboxIndex(null)
+    featureLightboxTriggerRef.current?.focus()
   }
 
   return (
@@ -146,27 +162,27 @@ export default function ProjetoDetalhe() {
                       <p className="feature-body">{f.body}</p>
                     </div>
                     {f.image ? (
-                      f.href ? (
-                        <a href={f.href} target="_blank" rel="noopener noreferrer">
+                      <div className="feature-shot-wrap">
+                        <button
+                          type="button"
+                          className="feature-shot feature-shot-btn"
+                          onClick={(e) => openFeatureLightbox(f.image, e)}
+                        >
                           <img
-                            className="feature-shot feature-shot-img"
+                            className="feature-shot-img"
                             src={f.image.src}
                             alt={f.image.alt}
                             loading="lazy"
                             width={f.image.width}
                             height={f.image.height}
                           />
-                        </a>
-                      ) : (
-                        <img
-                          className="feature-shot feature-shot-img"
-                          src={f.image.src}
-                          alt={f.image.alt}
-                          loading="lazy"
-                          width={f.image.width}
-                          height={f.image.height}
-                        />
-                      )
+                        </button>
+                        {f.href && (
+                          <a href={f.href} target="_blank" rel="noopener noreferrer" className="feature-shot-live-link">
+                            Ver ao vivo →
+                          </a>
+                        )}
+                      </div>
                     ) : f.href ? (
                       <a href={f.href} target="_blank" rel="noopener noreferrer" className="feature-shot-link">
                         Ver ao vivo →
@@ -249,6 +265,9 @@ export default function ProjetoDetalhe() {
 
       {lightboxIndex !== null && (
         <GalleryLightbox images={galleryImages} startIndex={lightboxIndex} onClose={closeLightbox} />
+      )}
+      {featureLightboxIndex !== null && (
+        <GalleryLightbox images={featureImages} startIndex={featureLightboxIndex} onClose={closeFeatureLightbox} />
       )}
     </main>
   )

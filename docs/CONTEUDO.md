@@ -466,6 +466,15 @@ mais curto, seguindo a regra do topo deste arquivo. Não reintroduzir esse tipo 
     `vital-gallery-checkout-pagamento.webp` (etapa de pagamento, Pix em ambiente de teste).
   - Nomes de produto (Tyler Gomez, Rebecca Allen, Danielle Henry etc.) e nomes de fruta/verdura
     inventados (rambutan lettuce, soursop sapote etc.) são dado seed do Xano, não gente real.
+  - **Pendente: recapturar 3 das 4 screenshots de feature depois que o seed do Xano for
+    corrigido.** `vital-catalogo.webp`, `vital-avaliacoes.webp` e `vital-carrinho-checkout.webp`
+    mostram cards de produto de supermercado com NOME DE PESSOA no lugar do nome do produto
+    (ex.: "Tyler Gomez", "Rebecca Allen", "Juan Patel", "Danielle Henry", "Lori Kim", "Philip
+    Herrera", com preço e descrição de pano de microfibra). Também aparece um placeholder roxo
+    liso com "POWERED BY XANO NOCODE BACKEND" no lugar da foto do produto. Isso não é bug de
+    layout do portfólio, é dado ruim no app em si (seed/nome de campo trocado no Xano). Não
+    editar as imagens para mascarar isso; trocar os três arquivos assim que o Alessandro corrigir
+    o seed e mandar screenshots novas.
   - **Endereço de entrega confirmado pelo Alessandro como fictício** (28/ago/2026): a tela de
     checkout usada em `vital-gallery-checkout-entrega.webp` mostra "Alessandro Saldanha, Rua
     Rosalvo Lima dos Santos, 45, Cidade Universitária, Maceió, CEP: 57072020" como endereço de
