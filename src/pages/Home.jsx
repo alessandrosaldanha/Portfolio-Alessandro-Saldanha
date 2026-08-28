@@ -43,18 +43,18 @@ export default function Home() {
         <div className="projects-grid">
           {featured.map((p) => (
             <Link key={p.slug} to={`/projetos/${p.slug}`} className="project-card">
-              {p.thumb ? (
-                <img
-                  className="project-card-thumb"
-                  src={p.thumb.src}
-                  alt={p.thumb.alt}
-                  loading="lazy"
-                  width={p.thumb.width}
-                  height={p.thumb.height}
-                />
-              ) : (
-                <div className="project-card-thumb" />
-              )}
+              <div className="project-card-thumb">
+                {p.thumb && (
+                  <img
+                    className="project-card-thumb-img"
+                    src={p.thumb.src}
+                    alt={p.thumb.alt}
+                    loading="lazy"
+                    width={p.thumb.width}
+                    height={p.thumb.height}
+                  />
+                )}
+              </div>
               <div className="project-card-body">
                 <span className="project-card-role">{p.role}</span>
                 <h3 className="project-card-name">
