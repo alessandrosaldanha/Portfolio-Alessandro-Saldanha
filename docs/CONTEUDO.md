@@ -365,18 +365,23 @@ alternativa válida.
 - Stack real: Next.js (App Router), TypeScript, Zustand, Neon PostgreSQL, Google OAuth, Resend.
 - Não usa IA — não adicionar Gemini à stack deste projeto.
 - Screenshots reais em `src/assets/escalas/`: capa do case (`escala-visao-geral.webp`, painel
-  com sorteio do mês, conflitos e aprovações), imagem em três blocos de feature — "Escopo por
+  com sorteio do mês, conflitos e aprovações), imagem em quatro blocos de feature — "Escopo por
   ministério e visibilidade por papel" (`escala-membros.webp`), "Montagem de escala por
-  ministério" (`escala-louvor.webp`, escala do Louvor com cantores e instrumentistas por função)
-  e "Login com Google" (`escala-login-google.webp`) — e galeria com `escala-centuriao.webp`,
-  `escala-cozinha.webp`, `escala-ebd.webp`, `escala-presbiterio.webp` e
-  `escala-email-redefinir-senha.webp`. "Convite e confirmação" continua sem imagem: o arquivo
-  recebido para esse bloco mostra na verdade um e-mail de redefinição de senha, não o e-mail de
-  convite/confirmação de escala descrito no texto — conteúdo não bate, então foi pra galeria com
-  legenda honesta em vez de forçado no bloco errado. Quatro PNGs recebidos ficaram fora do
+  ministério" (`escala-louvor.webp`, escala do Louvor com cantores e instrumentistas por função),
+  "Convite e confirmação" (`escala-email-redefinir-senha.webp`) e "Login com Google"
+  (`escala-login-google.webp`) — e galeria com `escala-centuriao.webp`, `escala-cozinha.webp`,
+  `escala-ebd.webp` e `escala-presbiterio.webp`. Quatro PNGs recebidos ficaram fora do
   repositório (sem conversão, só locais): duas eram a mesma tela "Visão geral" já usada como capa
   (uma em dark, outra repetida em light) e duas eram variantes mobile da mesma tela — redundantes
   com a capa, mesma lógica de não duplicar imagem nem manter light/dark da mesma tela.
+- **Inconsistência conhecida e aceita em "Convite e confirmação"**: o arquivo
+  `escala-email-redefinir-senha.webp` mostra de fato um e-mail de redefinição de senha, não o
+  e-mail de convite/confirmação de escala que o texto do bloco descreve. Estava na galeria com
+  legenda honesta por causa dessa divergência; o Alessandro pediu explicitamente para movê-lo
+  para o bloco "Convite e confirmação" mesmo assim (28/ago/2026), ciente do descompasso entre
+  texto e imagem. O `alt` da imagem no bloco continua descrevendo o conteúdo real ("E-mail
+  transacional de redefinição de senha"), não o texto do bloco. Se um screenshot real do e-mail
+  de convite/confirmação chegar no futuro, ele deve substituir este.
 
 ## Projetos de cliente via Orla.tech
 

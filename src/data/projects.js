@@ -221,7 +221,11 @@ export const projects = [
         body: 'Líder monta a escala do mês por função e vê conflitos de disponibilidade antes de publicar.',
         image: { src: escalaLouvor, alt: 'Tela de escala do ministério de Louvor, com cantores e instrumentistas por função', width: 1000, height: 718 },
       },
-      { title: 'Convite e confirmação', body: 'Cada escalado recebe e-mail com link direto para confirmar ou recusar; o estado volta para a escala em tempo real.' },
+      {
+        title: 'Convite e confirmação',
+        body: 'Cada escalado recebe e-mail com link direto para confirmar ou recusar; o estado volta para a escala em tempo real.',
+        image: { src: escalaEmailRedefinirSenha, alt: 'E-mail transacional de redefinição de senha do Gestão de Escalas', width: 600, height: 656 },
+      },
       {
         title: 'Login com Google',
         body: 'OAuth do Google elimina senha para um público que não quer criar mais uma conta.',
@@ -257,7 +261,6 @@ export const createEscalasSlice = (set, get) => ({
       { src: escalaCozinha, alt: 'Escala do ministério de Cozinha, por grupo', width: 1000, height: 705 },
       { src: escalaEbd, alt: 'Escala do ministério de EBD', width: 1000, height: 736 },
       { src: escalaPresbiterio, alt: 'Escala do Presbitério, com carga de funções por pregador', width: 1000, height: 777 },
-      { src: escalaEmailRedefinirSenha, alt: 'E-mail transacional de redefinição de senha do Gestão de Escalas', width: 600, height: 656 },
     ],
   },
   {
