@@ -74,6 +74,27 @@ Outros:
 - **FixInfra** — site em Webflow, construído do zero. **Está fora do ar hoje: nunca linkar,
   mencionar sem link.**
 
+## Home — Hero
+
+Texto canônico do hero da home ([src/pages/Home.jsx](../src/pages/Home.jsx)), definido pelo
+Alessandro como copy final, não rascunho. Não reescrever sem instrução explícita dele.
+
+- **Título**: "Escrevo por que cada decisão foi tomada. Inclusive as que deram errado."
+- **Parágrafo**: "Desenvolvedor full-stack em Maceió. Três produtos próprios no ar, construídos
+  do schema ao deploy, e um blog onde documento os trade-offs de cada um. React, Next.js,
+  PostgreSQL. Disponível para freelance, PJ ou CLT."
+
+Substituiu a versão anterior ("Desenvolvedor full-stack. Do schema ao deploy." + parágrafo
+"Construo SaaS com React, Next.js e PostgreSQL...") porque o título antigo descrevia uma
+categoria genérica em vez do autor, e a frase mais forte do parágrafo antigo ("documento por que
+cada decisão foi tomada") estava enterrada no meio do texto em vez de ser a manchete.
+
+Verificado visualmente via Playwright em 1440px, 768px e 375px de largura: o título (4 linhas,
+`text-wrap: balance`) quebra sem viúva e sem estourar o container em nenhuma das três larguras,
+sem precisar de ajuste em `max-width`/`font-size` de `.hero-title` (site.css). Nenhum outro lugar
+do código (título/meta description em `index.html`, ou qualquer `og:description`/JSON-LD) repetia
+o texto antigo — não existe `og:description` nem JSON-LD no projeto hoje.
+
 ## Projetos em destaque na home
 
 `featured: true` em `src/data/projects.js` controla quem aparece em "Projetos em destaque" na

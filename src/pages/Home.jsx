@@ -12,12 +12,11 @@ export default function Home() {
     <main>
       <section className="container hero" data-rise>
         <p className="eyebrow">Maceió · AL · remoto para o Brasil</p>
-        <h1 className="hero-title">Desenvolvedor full-stack. Do schema ao deploy.</h1>
+        <h1 className="hero-title">Escrevo por que cada decisão foi tomada. Inclusive as que deram errado.</h1>
         <p className="hero-lede">
-          Construo SaaS com React, Next.js e PostgreSQL. Documento por que cada decisão foi
-          tomada, incluindo as que deram trabalho. Três produtos próprios no ar: Maré de Estudos,
-          Contabilidade Reformada e Gestão de Escalas. Disponível para freelance, PJ ou CLT, em
-          Maceió ou remoto.
+          Desenvolvedor full-stack em Maceió. Três produtos próprios no ar, construídos do schema
+          ao deploy, e um blog onde documento os trade-offs de cada um. React, Next.js, PostgreSQL.
+          Disponível para freelance, PJ ou CLT.
         </p>
         <div className="hero-actions">
           <Link to="/projetos" className="btn btn-primary">
