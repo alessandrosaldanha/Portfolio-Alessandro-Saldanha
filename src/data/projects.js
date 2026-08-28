@@ -47,6 +47,15 @@ import vitalHistoricoPedidos from '../assets/supermercado-vital/vital-historico-
 import vitalGalleryCatalogo from '../assets/supermercado-vital/vital-gallery-catalogo.webp'
 import vitalGalleryCheckoutEntrega from '../assets/supermercado-vital/vital-gallery-checkout-entrega.webp'
 import vitalGalleryCheckoutPagamento from '../assets/supermercado-vital/vital-gallery-checkout-pagamento.webp'
+import orlaDrogasil from '../assets/orla-corporativos/drogasil.webp'
+import orlaDrogaraia from '../assets/orla-corporativos/drogaraia.webp'
+import orlaAnbimaSummit from '../assets/orla-corporativos/anbima-summit-2025.webp'
+import orlaAnbimaInsights from '../assets/orla-corporativos/anbima-insights.webp'
+import orlaAnbimaEdu from '../assets/orla-corporativos/anbima-edu.webp'
+import orlaAnbimaInternacional from '../assets/orla-corporativos/anbima-internacional.webp'
+import orlaConvivaHotelaria from '../assets/orla-corporativos/conviva-hotelaria.webp'
+import orlaPapelzinho from '../assets/orla-corporativos/papelzinho.webp'
+import orlaTech from '../assets/orla-corporativos/orla-tech.webp'
 
 export const projects = [
   {
@@ -466,7 +475,7 @@ export const createEscalasSlice = (set, get) => ({
     stack: ['React', 'TypeScript', 'Next.js', 'Framer', 'WordPress', 'Webflow'],
     chips: ['React', 'TypeScript', 'Next.js'],
     overview: [
-      { label: 'Cliente', value: 'Grupo RD (Drogasil e Raia), ANBIMA (Summit, Global Insights, EDU, Internacional), Conviva Hotelaria, Papelzinho, Orla.tech, FixInfra (via Orla.tech)' },
+      { label: 'Cliente', value: 'Grupo RD (Drogasil e Raia), ANBIMA (Summit, Global Insights, EDU, Internacional), Conviva Hotelaria, Papelzinho, Orla.tech' },
       { label: 'Duração', value: '2024–2026' },
       { label: 'Time', value: 'Solo ou em dupla, conforme o projeto (equipe da Orla.tech)' },
       { label: 'Stack', value: 'React, TypeScript, Next.js, Framer, WordPress/Oxygen e Webflow, conforme o produto e a necessidade de autonomia do cliente pós-entrega' },
@@ -477,17 +486,63 @@ export const createEscalasSlice = (set, get) => ({
       'Trabalhei na Orla.tech de maio de 2024 a agosto de 2026, primeiro como estagiário e depois como desenvolvedor júnior. Os dois sites do Grupo RD foram construídos do zero à produção. O ANBIMA Summit 2025 foi entrega solo, também do zero à produção, com ajuda de outro desenvolvedor em um único componente (a tabela de programação, em React). ANBIMA Global Insights e ANBIMA EDU foram construídos em dupla com outro desenvolvedor: executei as partes principais e mais complexas e fui peça fundamental para colocar os dois no ar. No ANBIMA Internacional atuei em manutenção e melhorias sobre uma base existente, não em reformulação. Também fiz o site institucional da Conviva Hotelaria, features no Papelzinho como estagiário, e alterações pontuais no site institucional da própria Orla. A escolha de stack (Framer, WordPress/Oxygen, Webflow) sempre pensou na autonomia do cliente depois da entrega, e em tudo isso passei por code review dentro da arquitetura e dos padrões definidos pelo time.',
     decisions: [],
     featuresLabel: 'Projetos entregues',
+    coverImage: {
+      src: orlaAnbimaInternacional,
+      alt: 'Página inicial do site institucional da ANBIMA Internacional',
+      width: 1581,
+      height: 1801,
+    },
     features: [
-      { title: 'Drogasil Manipulação', href: 'https://manipulacao.drogasil.com.br/', body: 'Site completo do zero à produção para desvincular o conteúdo de medicamentos manipulados do e-commerce principal da marca: catálogo de princípios ativos de A a Z (centenas de ativos, página dedicada por ativo, índice alfabético e paginação), diretório de laboratórios parceiros, blog de artigos com comentários, fale conosco e fluxo de envio de receita para orçamento.' },
-      { title: 'Droga Raia Manipulação', href: 'https://manipulacao.raia.com.br/', body: 'Mesmo escopo do site da Drogasil, construído do zero à produção para a marca Droga Raia.' },
-      { title: 'ANBIMA Summit 2025', highlight: 'Entrega solo', href: 'https://anbimasummit.com.br/', body: 'Site do evento do zero à produção, feito sozinho e no ar antes da data do evento, com venda de ingressos e programação completa. Um único componente, a tabela de programação em React, teve ajuda de outro desenvolvedor. Minha entrega mais forte na Orla.tech.' },
-      { title: 'ANBIMA Global Insights', href: 'https://anbimaglobalinsights.com.br/', body: 'Portal em Framer construído do zero à produção em dupla com outro desenvolvedor, com CMS estruturado para o time do cliente publicar sem depender de dev. Executei as partes principais e mais complexas.' },
-      { title: 'ANBIMA EDU', href: 'https://anbimaedu.com.br/', body: 'Mesmo formato do Global Insights: portal em Framer construído em dupla, CMS estruturado para publicação autônoma do time do cliente.' },
+      {
+        title: 'Drogasil Manipulação',
+        href: 'https://manipulacao.drogasil.com.br/',
+        body: 'Site completo do zero à produção para desvincular o conteúdo de medicamentos manipulados do e-commerce principal da marca: catálogo de princípios ativos de A a Z (centenas de ativos, página dedicada por ativo, índice alfabético e paginação), diretório de laboratórios parceiros, blog de artigos com comentários, fale conosco e fluxo de envio de receita para orçamento.',
+        image: { src: orlaDrogasil, alt: 'Página inicial do site institucional da Drogasil Manipulação', width: 1918, height: 1723 },
+      },
+      {
+        title: 'Droga Raia Manipulação',
+        href: 'https://manipulacao.raia.com.br/',
+        body: 'Mesmo escopo do site da Drogasil, construído do zero à produção para a marca Droga Raia.',
+        image: { src: orlaDrogaraia, alt: 'Página inicial do site institucional da Droga Raia Manipulação', width: 1819, height: 1816 },
+      },
+      {
+        title: 'ANBIMA Summit 2025',
+        highlight: 'Entrega solo',
+        href: 'https://anbimasummit.com.br/',
+        body: 'Site do evento do zero à produção, feito sozinho e no ar antes da data do evento, com venda de ingressos e programação completa. Um único componente, a tabela de programação em React, teve ajuda de outro desenvolvedor. Minha entrega mais forte na Orla.tech.',
+        image: { src: orlaAnbimaSummit, alt: 'Página inicial do site do evento ANBIMA Summit 2025', width: 1573, height: 1818 },
+      },
+      {
+        title: 'ANBIMA Global Insights',
+        href: 'https://anbimaglobalinsights.com.br/',
+        body: 'Portal em Framer construído do zero à produção em dupla com outro desenvolvedor, com CMS estruturado para o time do cliente publicar sem depender de dev. Executei as partes principais e mais complexas.',
+        image: { src: orlaAnbimaInsights, alt: 'Página inicial do site do evento ANBIMA Global Insights', width: 1563, height: 1827 },
+      },
+      {
+        title: 'ANBIMA EDU',
+        href: 'https://anbimaedu.com.br/',
+        body: 'Mesmo formato do Global Insights: portal em Framer construído em dupla, CMS estruturado para publicação autônoma do time do cliente.',
+        image: { src: orlaAnbimaEdu, alt: 'Página inicial da plataforma ANBIMA Edu, com trilha de certificação', width: 1575, height: 1747 },
+      },
       { title: 'ANBIMA Internacional', href: 'https://international.anbima.com.br/', body: 'Manutenção e melhorias sobre uma base já existente.' },
-      { title: 'Conviva Hotelaria', href: 'https://convivastay.com.br/', body: 'Site institucional e de agendamento do zero à produção, em WordPress com Oxygen, substituindo um site antigo, lento e desorganizado.' },
-      { title: 'Papelzinho', href: 'https://papelzinho.com/pt-br/', body: 'App de amigo secreto, produto da própria Orla. Participação pequena, como estagiário, ao longo de cerca de 4 meses: alguns commits e features menores.' },
-      { title: 'Site institucional da Orla', href: 'https://www.orla.tech/', body: 'Alterações e edições pontuais em Webflow.' },
-      { title: 'FixInfra', body: 'Site em Webflow, construído do zero. Está fora do ar hoje.' },
+      {
+        title: 'Conviva Hotelaria',
+        href: 'https://convivastay.com.br/',
+        body: 'Site institucional e de agendamento do zero à produção, em WordPress com Oxygen, substituindo um site antigo, lento e desorganizado.',
+        image: { src: orlaConvivaHotelaria, alt: 'Página inicial do site institucional da Conviva Hotelaria', width: 1573, height: 1810 },
+      },
+      {
+        title: 'Papelzinho',
+        href: 'https://papelzinho.com/pt-br/',
+        body: 'App de amigo secreto, produto da própria Orla. Participação pequena, como estagiário, ao longo de cerca de 4 meses: alguns commits e features menores.',
+        image: { src: orlaPapelzinho, alt: 'Página inicial do Papelzinho, app de amigo secreto', width: 1573, height: 1813 },
+      },
+      {
+        title: 'Site institucional da Orla',
+        href: 'https://www.orla.tech/',
+        body: 'Alterações e edições pontuais em Webflow.',
+        image: { src: orlaTech, alt: 'Página inicial do site institucional da Orla.tech', width: 1575, height: 1810 },
+      },
     ],
     results: [
       'Do zero à produção sob prazo e processo de time: padrão de código, review e ambiente de homologação, na maioria dos projetos hoje no ar para os clientes.',

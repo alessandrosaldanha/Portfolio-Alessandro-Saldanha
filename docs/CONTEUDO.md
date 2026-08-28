@@ -72,7 +72,19 @@ Outros:
   produto da própria Orla. Participação pequena, como estagiário, ao longo de cerca de 4 meses:
   alguns commits e features menores. Manter modesto, não inflar.
 - **FixInfra** — site em Webflow, construído do zero. **Está fora do ar hoje: nunca linkar,
-  mencionar sem link.**
+  mencionar sem link.** Removido do bloco "Projetos entregues" do case
+  `orla-corporativos` a pedido do Alessandro (28/ago/2026). Fica só neste histórico de
+  trajetória; não recriar a entrada na listagem de features sem instrução explícita.
+
+**Screenshots do case `orla-corporativos`**: reais, em `src/assets/orla-corporativos/`
+(convertidas de PNG para WebP; pasta renomeada de `projetos-orla/` para bater com o slug do
+projeto). Capa do case (`coverImage`) é `anbima-internacional.webp`, a pedido do Alessandro
+("img principal"). Oito dos nove blocos de "Projetos entregues" ganharam imagem própria
+(Drogasil, Droga Raia, ANBIMA Summit 2025, ANBIMA Global Insights, ANBIMA EDU, Conviva
+Hotelaria, Papelzinho, Site institucional da Orla); "ANBIMA Internacional" ficou sem imagem
+própria no bloco porque seu único arquivo (`anbima-internacional.webp`) já é a capa do case, e
+repetir a mesma imagem capa+feature na mesma página lê como erro, não como escolha visual (mesma
+lógica do CLAUDE.md contra repetir imagem entre blocos, aplicada aqui a capa vs. bloco).
 
 ## Home — Hero
 
