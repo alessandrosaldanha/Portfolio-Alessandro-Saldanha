@@ -297,6 +297,12 @@ alternativa válida.
   **confirmado pelo Alessandro que são dados de teste**, não de pessoas reais. Se um projeto
   futuro reenviar screenshot com esse tipo de dado sem confirmação prévia, perguntar antes de
   publicar (CPF é dado sensível pela LGPD).
+- Versões em modo escuro de "Dashboard Executivo" e "Trilha de Auditoria" no mobile
+  (`contabilidade-dashboard-mobile-dark.webp`, `contabilidade-auditoria-mobile-dark.webp`) foram
+  recebidas e guardadas em `src/assets/contabilidade-reformada/`, mas não entram na galeria: a
+  galeria já mostra a versão clara dessas duas telas, e a regra do projeto é nunca duplicar a
+  mesma tela em dois temas dentro de uma galeria (ver CLAUDE.md). Ficam disponíveis caso um
+  projeto futuro precise mostrar dark mode por mérito próprio.
 
 ### Gestão de Escalas
 - Tipo: produto próprio · solo. Status: em uso real.
