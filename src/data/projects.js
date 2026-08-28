@@ -160,7 +160,7 @@ export const projects = [
   {
     slug: 'gestao-de-escalas',
     name: 'Gestão de Escalas',
-    tagline: 'Escala de ministério em grupo de WhatsApp não tem confirmação nem histórico confiável. SaaS de escalas com convites, confirmações e e-mails transacionais reais, cobrindo louvor, mídia, cozinha, pastoral, EBD, ceia, diaconato e outros ministérios.',
+    tagline: 'SaaS de escalas de ministério, com convites, confirmações e e-mails transacionais reais, cobrindo louvor, mídia, cozinha, pastoral, EBD, ceia, diaconato e outros ministérios.',
     role: 'Produto próprio · solo',
     badges: ['Papel: Solo, full-stack', 'Período: desde 2025', 'Tipo: Produto próprio'],
     type: 'Produto próprio',
@@ -177,7 +177,7 @@ export const projects = [
       { label: 'Stack', value: 'Next.js (App Router), TypeScript, Zustand, Neon PostgreSQL, Google OAuth, Resend' },
     ],
     context:
-      'Escala de ministério vive em grupo de WhatsApp: alguém posta uma imagem, três pessoas respondem que não podem, e a versão final existe só na cabeça do líder. Faltava um lugar onde a escala fosse um estado, não uma mensagem. Cobre louvor, mídia, cozinha, pastoral, EBD (inclusive EBD de novos membros), ceia e diaconato, entre outros ministérios, e cada membro só vê a escala em que foi designado; a liderança vê tudo.',
+      'Cobre louvor, mídia, cozinha, pastoral, EBD (inclusive EBD de novos membros), ceia e diaconato, entre outros ministérios. Cada escala tem convites, confirmações e histórico registrados, e cada membro só vê a escala em que foi designado; a liderança vê tudo.',
     myRole: 'Produto próprio, feito sozinho: modelagem, autenticação, front-end, disparo de e-mails e deploy.',
     coverImage: {
       src: escalaVisaoGeral,
