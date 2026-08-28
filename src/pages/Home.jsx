@@ -61,7 +61,7 @@ export default function Home() {
                   {p.name}
                   {p.accessNote && <span className="chip access-note">🔒 {p.accessNote}</span>}
                 </h3>
-                <p className="project-card-outcome">{p.outcome}</p>
+                <p className="project-card-tagline">{p.tagline}</p>
                 <div className="chip-row">
                   {p.chips.map((chip) => (
                     <span key={chip} className="chip">
