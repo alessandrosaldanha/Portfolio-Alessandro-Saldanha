@@ -524,7 +524,12 @@ export const createEscalasSlice = (set, get) => ({
         body: 'Mesmo formato do Global Insights: portal em Framer construído em dupla, CMS estruturado para publicação autônoma do time do cliente.',
         image: { src: orlaAnbimaEdu, alt: 'Página inicial da plataforma ANBIMA Edu, com trilha de certificação', width: 1575, height: 1747 },
       },
-      { title: 'ANBIMA Internacional', href: 'https://international.anbima.com.br/', body: 'Manutenção e melhorias sobre uma base já existente.' },
+      {
+        title: 'ANBIMA Internacional',
+        href: 'https://international.anbima.com.br/',
+        body: 'Manutenção e melhorias sobre uma base já existente.',
+        image: { src: orlaAnbimaInternacional, alt: 'Página inicial do site institucional da ANBIMA Internacional', width: 1581, height: 1801 },
+      },
       {
         title: 'Conviva Hotelaria',
         href: 'https://convivastay.com.br/',
