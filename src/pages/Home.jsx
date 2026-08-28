@@ -3,7 +3,6 @@ import OrlaMarquee from '../components/OrlaMarquee'
 import { orlaProjects } from '../data/companies'
 import { featuredProjects } from '../data/projects'
 import { posts } from '../data/posts'
-import { stackGroups } from '../data/stack'
 
 export default function Home() {
   const featured = featuredProjects()
@@ -75,23 +74,20 @@ export default function Home() {
       </section>
 
       <section className="container section" style={{ paddingTop: 0 }}>
-        <h2 className="section-title" style={{ marginBottom: 44 }}>
-          Stack
+        <h2 className="section-title" style={{ marginBottom: 24 }}>
+          Como eu construo
         </h2>
-        <div className="stack-grid">
-          {stackGroups.map((g) => (
-            <div key={g.label} className="stack-col">
-              <p className="stack-col-label">{g.label}</p>
-              <ul className="stack-list">
-                {g.items.map((it) => (
-                  <li key={it}>
-                    <span className="dot" />
-                    {it}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+        <div className="build-note">
+          <p>
+            Hoje construo com React, Next.js, TypeScript, PostgreSQL e Supabase, do schema ao
+            deploy. A IA é parte do produto, não um extra: o Gemini lê e categoriza extrato
+            bancário no Contabilidade Reformada, e gera e corrige quiz no Maré de Estudos.
+          </p>
+          <p>
+            Antes disso foram dois anos entregando site de cliente em Framer, Webflow, WeWeb.io e
+            WordPress/Oxygen, sob prazo de agência e o critério de deixar o cliente autônomo
+            depois da entrega. Hoje o foco é full-code.
+          </p>
         </div>
       </section>
 

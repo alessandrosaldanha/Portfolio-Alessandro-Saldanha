@@ -202,6 +202,34 @@ mas sem uso por decisão do Alessandro — "Orla" não é um cliente, não faz s
 "projetos entregues durante a passagem pela Orla.tech". Disponível para uso futuro (ex.: se um dia
 o case `orla-corporativos` ganhar imagem no bloco "Site institucional da Orla").
 
+## Home — "Como eu construo" (ex-"Stack")
+
+Texto canônico da seção que substituiu a antiga grade de 21 itens em 4 colunas
+(`stack-grid`/`stackGroups`) na home ([src/pages/Home.jsx](../src/pages/Home.jsx)), definido pelo
+Alessandro como copy final, não rascunho. Não reescrever sem instrução explícita dele.
+
+- **Título**: "Como eu construo".
+- **Texto** (dois parágrafos, classe `.build-note` em `site.css`):
+  - "Hoje construo com React, Next.js, TypeScript, PostgreSQL e Supabase, do schema ao deploy. A
+    IA é parte do produto, não um extra: o Gemini lê e categoriza extrato bancário no
+    Contabilidade Reformada, e gera e corrige quiz no Maré de Estudos."
+  - "Antes disso foram dois anos entregando site de cliente em Framer, Webflow, WeWeb.io e
+    WordPress/Oxygen, sob prazo de agência e o critério de deixar o cliente autônomo depois da
+    entrega. Hoje o foco é full-code."
+
+Motivo da troca: a grade antiga dava o mesmo peso visual a React e Figma, não dizia no que o
+Alessandro é forte nem o que usou uma vez só, e contradizia o resto do portfólio (as páginas de
+case explicam por que cada decisão foi tomada; a grade era só uma lista de nomes sem contexto).
+Ferramentas básicas de qualquer dev (Git/GitHub, Figma, Vercel, Google OAuth) saíram por não
+acrescentarem nada. O texto novo cobre, nessa ordem: o núcleo real de stack hoje, a IA como parte
+do produto (não um item solto no meio de uma lista), e o low-code enquadrado como repertório de
+dois anos de agência, não como dispersão, com o full-code deixado explícito como foco atual.
+
+Nenhuma tecnologia citada na grade antiga saiu do site: `src/data/stack.js` (`stackGroups` e
+`allStack`) continua existindo e alimentando "Ferramentas do dia a dia" em `/sobre`
+([src/pages/Sobre.jsx](../src/pages/Sobre.jsx)), e os chips de stack em cada card/case de projeto
+continuam sendo a referência detalhada por tecnologia.
+
 ## Vocabulário padronizado
 
 - **"Contabilidade Reformada"** — nunca "Contabilidade Igreja". Domínio:

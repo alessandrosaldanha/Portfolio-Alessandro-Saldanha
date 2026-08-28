@@ -643,50 +643,20 @@ a.header-contact {
   font-size: 11px;
 }
 
-/* ── Stack grid ── */
+/* ── Build note (Home "Como eu construo") ── */
 
-.stack-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1px;
-  background: var(--border-subtle);
-  border: 1px solid var(--border-subtle);
-  border-radius: 16px;
-  overflow: hidden;
-}
-.stack-col {
-  background: var(--surface-page);
-  padding: 28px 24px;
-}
-.stack-col-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-  margin: 0 0 18px;
-}
-.stack-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.build-note {
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  gap: 16px;
+  max-width: 68ch;
 }
-.stack-list li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 15px;
-  color: var(--text-primary);
-}
-.dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 2px;
-  background: var(--orla-blue);
-  flex: 0 0 auto;
+.build-note p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  text-wrap: pretty;
 }
 
 /* ── Post cards (home + blog grid) ── */
