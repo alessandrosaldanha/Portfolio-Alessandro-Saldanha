@@ -1257,13 +1257,20 @@ a.header-contact {
 /* ── Gallery lightbox ── */
 
 .lightbox-backdrop {
+  /* Referenced by .lightbox-figure img's max-height calc below, so the
+     two stay in sync instead of duplicating the same clamp() twice. */
+  --lightbox-pad-v: clamp(56px, 6vh, 72px);
   position: fixed;
   inset: 0;
   z-index: 50;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(16px, 5vw, 56px);
+  /* Split so the image can use ~90% of the width on narrow viewports
+     (tight horizontal padding) while the top/bottom padding never drops
+     below ~56px — the room the close button (top: -44px) needs so it's
+     never clipped by the viewport edge. */
+  padding: var(--lightbox-pad-v) clamp(12px, 4vw, 40px);
   background: rgba(0, 0, 0, 0.85);
   animation: lightboxFadeIn 0.18s ease both;
 }
@@ -1286,7 +1293,7 @@ a.header-contact {
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  max-width: min(100%, 1100px);
+  max-width: min(100%, 90vw);
   max-height: 100%;
 }
 .lightbox-close {
@@ -1337,6 +1344,25 @@ a.header-contact {
 .lightbox-next {
   right: -8px;
 }
+/* Wider dialogs (see .lightbox-dialog max-width above) now shrink to the
+   image's own rendered width, so an -8px overhang sits mostly on top of
+   the image itself, not beside it (measured with Playwright: arrows
+   overlapped the screenshot in every case tested). The margin beside the
+   image only reliably clears a 44px button from ~1024px viewport width
+   up — measured against the widest real screenshot in the project
+   (supermercado-vital's ~16:9-ish crops): margin is ~51px at 1024px and
+   grows from there, never shrinks. -44px (flush, no extra gap) leaves a
+   few px of slack at that floor; below 1024px there isn't reliably
+   enough room, so it stays an overlay there (its own
+   rgba(0,0,0,0.4) fill keeps it legible over a light screenshot). */
+@media (min-width: 1024px) {
+  .lightbox-prev {
+    left: -44px;
+  }
+  .lightbox-next {
+    right: -44px;
+  }
+}
 .lightbox-figure {
   margin: 0;
   display: flex;
@@ -1350,7 +1376,13 @@ a.header-contact {
 .lightbox-figure img {
   display: block;
   max-width: 100%;
-  max-height: 72vh;
+  /* 85vh is the ceiling, but the figcaption (up to ~2 lines for a long
+     alt) plus the position counter plus their gaps need ~85px below the
+     image, inside the same backdrop padding the close button relies on
+     (--lightbox-pad-v, both sides). Without this the two can outgrow the
+     viewport together and push the close button off-screen — reproduced
+     with a real two-line caption at 1440x900 before this fix. */
+  max-height: min(85vh, calc(100vh - 2 * var(--lightbox-pad-v) - 85px));
   width: auto;
   height: auto;
   border-radius: 12px;
