@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 
 const NAV_ITEMS = [
@@ -59,54 +59,62 @@ export default function Header({ theme, onToggleTheme }) {
   }
 
   return (
-    <header className="site-header">
-      <div className="container site-header-inner">
-        <Link to="/" className="brand">
-          <span className="brand-name">alessandro saldanha</span>
-          <span className="brand-dot" />
-        </Link>
-
-        <nav className="nav-desktop">
-          {NAV_ITEMS.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              className={({ isActive }) => 'nav-link' + (isActive ? ' active' : '')}
-            >
-              {item.label}
-            </NavLink>
-          ))}
-        </nav>
-
-        <div className="header-actions">
-          <button
-            type="button"
-            className="theme-toggle"
-            aria-label="Alternar tema claro e escuro"
-            onClick={onToggleTheme}
-          >
-            {theme === 'dark' ? '☾' : '☀'}
-          </button>
-          <Link to="/contato" className="btn btn-dark header-contact" style={{ height: 44, padding: '0 18px' }}>
-            Contato
+    // Fragment, not a single <header>: the mobile nav panel below must be a
+    // SIBLING of <header>, not a descendant. .site-header has backdrop-filter,
+    // which establishes a containing block for position:fixed descendants (same
+    // spec category as transform/filter/perspective) — a fixed panel nested
+    // inside it resolves inset:0 against the header's own ~72px box instead of
+    // the viewport. See CLAUDE.md, "position: fixed e containing blocks".
+    <Fragment>
+      <header className="site-header">
+        <div className="container site-header-inner">
+          <Link to="/" className="brand">
+            <span className="brand-name">alessandro saldanha</span>
+            <span className="brand-dot" />
           </Link>
-          <button
-            type="button"
-            className="nav-toggle"
-            aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
-            aria-expanded={menuOpen}
-            aria-controls="mobile-nav-panel"
-            onClick={() => setMenuOpen((o) => !o)}
-            ref={buttonRef}
-          >
-            <span className="nav-toggle-bars" aria-hidden="true" data-open={menuOpen || undefined}>
-              <span />
-              <span />
-              <span />
-            </span>
-          </button>
+
+          <nav className="nav-desktop">
+            {NAV_ITEMS.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                className={({ isActive }) => 'nav-link' + (isActive ? ' active' : '')}
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </nav>
+
+          <div className="header-actions">
+            <button
+              type="button"
+              className="theme-toggle"
+              aria-label="Alternar tema claro e escuro"
+              onClick={onToggleTheme}
+            >
+              {theme === 'dark' ? '☾' : '☀'}
+            </button>
+            <Link to="/contato" className="btn btn-dark header-contact" style={{ height: 44, padding: '0 18px' }}>
+              Contato
+            </Link>
+            <button
+              type="button"
+              className="nav-toggle"
+              aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav-panel"
+              onClick={() => setMenuOpen((o) => !o)}
+              ref={buttonRef}
+            >
+              <span className="nav-toggle-bars" aria-hidden="true" data-open={menuOpen || undefined}>
+                <span />
+                <span />
+                <span />
+              </span>
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
       {menuOpen && (
         <div
@@ -139,6 +147,6 @@ export default function Header({ theme, onToggleTheme }) {
           </div>
         </div>
       )}
-    </header>
+    </Fragment>
   )
 }

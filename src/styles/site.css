@@ -249,7 +249,12 @@ a.header-contact {
 .mobile-nav-overlay {
   position: fixed;
   inset: 0;
-  z-index: 39;
+  /* Above .site-header (40): now a sibling of <header> in the DOM (see
+     Header.jsx), not a descendant, so the two compete in the same root
+     stacking context and this must outrank the header to still cover it.
+     Stays below .lightbox-backdrop (50) on purpose — the lightbox is a
+     modal dialog and should never be hidden behind the nav panel. */
+  z-index: 41;
   display: flex;
   align-items: center;
   justify-content: center;
