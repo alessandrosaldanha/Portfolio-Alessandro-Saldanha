@@ -903,7 +903,15 @@ a.header-contact {
 /* ── Project detail ── */
 
 .detail-back {
-  padding: clamp(28px, 5vw, 56px) 0 0;
+  /* padding-top/bottom only — never the padding shorthand here: this class
+     is always combined with .container (className="container detail-back"),
+     and a 3-value `padding: T 0 B` shorthand sets padding-left/right to 0
+     too, silently zeroing .container's own horizontal padding since both
+     classes share specificity and this one is declared later. Broke every
+     .detail-* + .container element in ProjetoDetalhe.jsx once (see git
+     history) — same rule applies to .detail-header/.detail-body/.detail-nav
+     below and to any future class combined with .container. */
+  padding-top: clamp(28px, 5vw, 56px);
 }
 .back-link {
   font-size: 13px;
@@ -911,7 +919,8 @@ a.header-contact {
   color: var(--text-tertiary);
 }
 .detail-header {
-  padding: 28px 0 clamp(40px, 6vw, 64px);
+  padding-top: 28px;
+  padding-bottom: clamp(40px, 6vw, 64px);
   border-bottom: 1px solid var(--border-subtle);
 }
 .detail-title {
@@ -955,7 +964,9 @@ a.header-contact {
 }
 
 .detail-body {
-  padding: clamp(40px, 6vw, 72px) 0 clamp(64px, 10vw, 120px);
+  /* padding-top/bottom only, see .detail-back's comment above. */
+  padding-top: clamp(40px, 6vw, 72px);
+  padding-bottom: clamp(64px, 10vw, 120px);
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: clamp(40px, 6vw, 72px);
@@ -1414,7 +1425,9 @@ a.header-contact {
 
 .detail-nav {
   border-top: 1px solid var(--border-subtle);
-  padding: 36px 0 clamp(56px, 8vw, 96px);
+  /* padding-top/bottom only, see .detail-back's comment. */
+  padding-top: 36px;
+  padding-bottom: clamp(56px, 8vw, 96px);
   display: flex;
   justify-content: space-between;
   gap: 20px;
