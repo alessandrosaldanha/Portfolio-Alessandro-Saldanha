@@ -486,12 +486,6 @@ export const createEscalasSlice = (set, get) => ({
       'Trabalhei na Orla.tech de maio de 2024 a agosto de 2026, como estagiário e depois desenvolvedor júnior. O ANBIMA Summit 2025 foi minha entrega mais completa: site do evento do zero à produção, com venda de ingressos e programação, no ar antes da data. Também construí do zero os dois sites de manipulação do Grupo RD e o site institucional da Conviva Hotelaria. No ANBIMA Global Insights e no ANBIMA EDU, entreguei as partes principais e mais complexas de uma construção em dupla. No ANBIMA Internacional atuei em manutenção e melhorias sobre uma base existente. Também fiz features no Papelzinho como estagiário e alterações pontuais no site institucional da própria Orla. A escolha de stack, entre Framer, WordPress com Oxygen e Webflow, sempre considerou a autonomia do cliente depois da entrega, e todo o trabalho passou por code review dentro dos padrões definidos pelo time.',
     decisions: [],
     featuresLabel: 'Projetos entregues',
-    coverImage: {
-      src: orlaAnbimaInternacional,
-      alt: 'Página inicial do site institucional da ANBIMA Internacional',
-      width: 1581,
-      height: 1801,
-    },
     features: [
       {
         title: 'Drogasil Manipulação',
