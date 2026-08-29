@@ -89,9 +89,15 @@ export default function OrlaMarquee({ items }) {
       const containerWidth = mask.getBoundingClientRect().width
       const needed = Math.max(2, Math.ceil((containerWidth * 2) / step))
       const speed = containerWidth < NARROW_BREAKPOINT_PX ? NARROW_SPEED_PX_PER_SECOND : SPEED_PX_PER_SECOND
+      const duration = step / speed
 
       setCopies(needed)
-      setMetrics({ step, duration: step / speed })
+      // Skip the update when nothing actually changed — recalc() re-runs on every
+      // ResizeObserver firing (including ones where the measured step/duration come
+      // out identical), and setMetrics with a fresh object literal would otherwise
+      // force a re-render every time regardless, since React compares object state
+      // by reference, not value.
+      setMetrics((prev) => (prev && prev.step === step && prev.duration === duration ? prev : { step, duration }))
     }
 
     recalc()
