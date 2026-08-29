@@ -256,8 +256,11 @@ a.header-contact {
      modal dialog and should never be hidden behind the nav panel. */
   z-index: 41;
   display: flex;
+  /* align-items:center keeps the panel vertically centered; no
+     justify-content here (defaults to flex-start) so the content sits at
+     the padded left edge instead of centered as a floating card — matches
+     how the rest of the site is left-aligned inside .container. */
   align-items: center;
-  justify-content: center;
   padding: clamp(16px, 5vw, 64px);
   background: var(--surface-page);
   animation: mobileNavIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -285,25 +288,47 @@ a.header-contact {
 .mobile-nav-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* Left-aligned, not centered: the overlay's own padding already gives the
+     same inset .container uses everywhere else on the site, so the block
+     just needs to sit at that edge, like page content does. No max-width
+     either — nothing here is a floating card that needs one; text sizes
+     itself, and .mobile-nav-overlay hides above 900px anyway. */
+  align-items: flex-start;
   gap: 12px;
   width: 100%;
-  max-width: 420px;
+}
+.mobile-nav-eyebrow {
+  /* Same "section kicker" style as .detail-eyebrow (CONTEXTO E PROBLEMA,
+     FUNCIONALIDADES PRINCIPAIS...) — ties the panel to the rest of the
+     site's visual language instead of reading as a generic menu. */
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orla-blue);
+  margin: 0;
 }
 .mobile-nav-links {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 4px;
   width: 100%;
 }
 .mobile-nav-link {
+  /* Family/weight match .section-title (Home's "Projetos em destaque" etc.)
+     instead of a generic uniform-weight menu font. */
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(28px, 8vw, 40px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  font-size: clamp(26px, 7vw, 34px);
   color: var(--text-primary);
   text-decoration: none;
-  padding: 10px 0;
+  /* min-height instead of vertical padding alone: guarantees the 44px
+     touch target explicitly, not as a side effect of font metrics. */
+  display: flex;
+  align-items: center;
+  min-height: 44px;
 }
 .mobile-nav-link:hover,
 .mobile-nav-link.active {
@@ -311,9 +336,21 @@ a.header-contact {
   text-decoration: none;
 }
 .mobile-nav-contact {
-  margin-top: 24px;
-  width: 100%;
-  max-width: 220px;
+  /* Auto width, not a stretched block: matches every other primary CTA on
+     the site (hero's "Ver projetos", the cta-band's "Falar comigo"), and
+     is what keeps it reading as the one standout action among plain nav
+     links now that the list itself is no longer centered. */
+  margin-top: 20px;
+}
+.mobile-nav-footer {
+  /* Discreet, not another kicker — same location line as the hero's
+     .eyebrow, but no uppercase/no accent color, so it doesn't compete with
+     .mobile-nav-eyebrow above. */
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
 }
 
 /* ── Buttons ── */

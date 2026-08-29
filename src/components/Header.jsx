@@ -7,6 +7,13 @@ const NAV_ITEMS = [
   { to: '/sobre', label: 'Sobre' },
 ]
 
+// Mobile panel only — desktop nav keeps NAV_ITEMS as-is. On desktop the brand
+// name in the header already links home, but that's not an obvious "go home"
+// affordance on mobile, so the panel gets its own explicit first item.
+// end: true is required just for this one: NavLink to="/" without `end`
+// matches (and shows active on) every route, since every path starts with "/".
+const MOBILE_NAV_ITEMS = [{ to: '/', label: 'Início', end: true }, ...NAV_ITEMS]
+
 function getFocusable(container) {
   return Array.from(container.querySelectorAll('a[href], button:not([disabled])'))
 }
@@ -129,11 +136,13 @@ export default function Header({ theme, onToggleTheme }) {
           onKeyDown={handlePanelKeyDown}
         >
           <div className="mobile-nav-content" onClick={(e) => e.stopPropagation()}>
+            <p className="mobile-nav-eyebrow">Navegação</p>
             <nav className="mobile-nav-links">
-              {NAV_ITEMS.map((item) => (
+              {MOBILE_NAV_ITEMS.map((item) => (
                 <NavLink
                   key={item.to}
                   to={item.to}
+                  end={item.end}
                   className={({ isActive }) => 'mobile-nav-link' + (isActive ? ' active' : '')}
                   onClick={closeMenu}
                 >
@@ -144,6 +153,7 @@ export default function Header({ theme, onToggleTheme }) {
             <Link to="/contato" className="btn btn-primary mobile-nav-contact" onClick={closeMenu}>
               Contato
             </Link>
+            <p className="mobile-nav-footer">Maceió · AL · remoto para o Brasil</p>
           </div>
         </div>
       )}
