@@ -1175,14 +1175,28 @@ a.header-contact {
   min-height: 0;
   max-width: 100%;
 }
-.detail-cover {
-  display: block;
+/* .detail-cover-wrap carries the shape (aspect-ratio set inline per project
+   in ProjetoDetalhe.jsx, max-height cap, clipping); .detail-cover (the
+   <img>) just fills it. Splitting it this way, instead of aspect-ratio/
+   max-height/height:auto directly on the <img>, is required: the <img>
+   keeps width/height HTML attributes (anti-CLS), and Chromium miscomputes
+   auto-sizing on an <img> that has both an aspect ratio (author or
+   attribute-derived) and those attributes — see CLAUDE.md. */
+.detail-cover-wrap {
   width: 100%;
   max-height: 520px;
-  object-fit: cover;
+  overflow: hidden;
   border-radius: 16px;
   border: 1px solid var(--border-subtle);
   margin-top: clamp(28px, 4vw, 48px);
+}
+.detail-cover {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  object-fit: cover;
 }
 .feature-highlight {
   margin-left: 10px;

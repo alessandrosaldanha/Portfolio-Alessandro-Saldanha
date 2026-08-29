@@ -89,14 +89,28 @@ export default function ProjetoDetalhe() {
 
       {p.coverImage && (
         <div className="container">
-          <img
-            className="detail-cover"
-            src={p.coverImage.src}
-            alt={p.coverImage.alt}
-            loading="lazy"
-            width={p.coverImage.width}
-            height={p.coverImage.height}
-          />
+          {/* aspect-ratio inline, not a fixed class value: each project's cover
+              has its own real ratio (near-square, tall, wide...), and putting
+              it on this wrapper instead of the <img> itself sidesteps the
+              Chromium bug where an <img> with HTML width/height attributes
+              miscomputes `height: auto` — confirmed live: height came out at
+              the max-height cap (520px) regardless of the image's real ratio
+              when aspect-ratio/height:auto lived on the <img>, and correctly
+              at width/ratio once moved to a plain-block wrapper. See
+              CLAUDE.md. */}
+          <div
+            className="detail-cover-wrap"
+            style={{ aspectRatio: `${p.coverImage.width} / ${p.coverImage.height}` }}
+          >
+            <img
+              className="detail-cover"
+              src={p.coverImage.src}
+              alt={p.coverImage.alt}
+              loading="lazy"
+              width={p.coverImage.width}
+              height={p.coverImage.height}
+            />
+          </div>
         </div>
       )}
 
