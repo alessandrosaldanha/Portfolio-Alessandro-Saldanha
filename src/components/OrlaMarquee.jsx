@@ -1,8 +1,15 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 
-// No token defines a marquee speed — this is a hardcoded design choice, not pulled
+// No token defines a marquee speed — these are hardcoded design choices, not pulled
 // from tokens/*.css (see CLAUDE.md note about spacing.css/effects.css being empty).
+// Speed is an absolute px/s, not scaled to viewport width, so the same value reads
+// much faster on a narrow screen (a bigger fraction of the visible width crosses per
+// second). Below NARROW_BREAKPOINT_PX (the same breakpoint site.css already uses for
+// .marquee-label) it drops to NARROW_SPEED_PX_PER_SECOND to keep the perceived speed
+// comparable to desktop.
 const SPEED_PX_PER_SECOND = 70
+const NARROW_SPEED_PX_PER_SECOND = 40
+const NARROW_BREAKPOINT_PX = 640
 
 // Renders a client logo recolored to the marquee's current text color, regardless
 // of the source file's own colors — a plain <img> can't be recolored via CSS, so
@@ -81,9 +88,10 @@ export default function OrlaMarquee({ items }) {
 
       const containerWidth = mask.getBoundingClientRect().width
       const needed = Math.max(2, Math.ceil((containerWidth * 2) / step))
+      const speed = containerWidth < NARROW_BREAKPOINT_PX ? NARROW_SPEED_PX_PER_SECOND : SPEED_PX_PER_SECOND
 
       setCopies(needed)
-      setMetrics({ step, duration: step / SPEED_PX_PER_SECOND })
+      setMetrics({ step, duration: step / speed })
     }
 
     recalc()
