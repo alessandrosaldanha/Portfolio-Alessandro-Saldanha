@@ -88,6 +88,16 @@ mesma imagem a deixar o bloco sem foto. Única exceção conhecida à regra do C
 repetir imagem entre blocos; não generalizar esse padrão pra outros projetos sem pedido
 igualmente explícito.
 
+## Tema (claro/escuro)
+
+Claro é o padrão do portfólio (decisão de 29/ago/2026). Todo visitante que nunca escolheu um
+tema explicitamente vê o site em claro, **mesmo que o sistema operacional dele esteja em modo
+escuro** — o projeto não consulta `prefers-color-scheme` em lugar nenhum, de propósito (ver
+CLAUDE.md). Escuro é opt-in: só aparece depois que a pessoa clica no botão de alternar tema no
+header, e a escolha persiste (`localStorage`, chave `portfolio-theme`) entre recarregamentos,
+páginas e visitas futuras. Não reintroduzir uma leitura de `prefers-color-scheme` pra decidir o
+tema inicial.
+
 ## Home — Hero
 
 Texto canônico do hero da home ([src/pages/Home.jsx](../src/pages/Home.jsx)), definido pelo
