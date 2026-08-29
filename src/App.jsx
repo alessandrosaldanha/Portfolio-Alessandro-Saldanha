@@ -10,6 +10,9 @@ import Post from './pages/Post'
 import Sobre from './pages/Sobre'
 import Contato from './pages/Contato'
 
+// Must match the literal key in the inline anti-FOUC script in index.html —
+// that script runs before this module even loads, so it can't import this
+// constant; keep the two strings in sync by hand if this ever changes.
 const THEME_KEY = 'portfolio-theme'
 
 function ScrollToTop() {
@@ -21,7 +24,11 @@ function ScrollToTop() {
 }
 
 function App() {
-  const [theme, setTheme] = useState(() => localStorage.getItem(THEME_KEY) || 'dark')
+  // Light is the site's default: a first-time visitor always sees light,
+  // regardless of OS preference — the project never queries
+  // prefers-color-scheme (see CLAUDE.md). Dark only applies after an
+  // explicit click on the toggle, persisted below.
+  const [theme, setTheme] = useState(() => localStorage.getItem(THEME_KEY) || 'light')
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)

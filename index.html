@@ -2,6 +2,30 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!--
+      Anti-FOUC: applies data-theme="dark" on <html> before React mounts, so
+      a visitor who already chose dark doesn't see a white flash on load.
+      Light is the site's default and needs no attribute — the bare :root
+      tokens in src/styles/tokens/colors.css are already light, so doing
+      nothing here is correct for "no theme saved" and for "light saved".
+
+      Plain script, not type="module": must run synchronously while the
+      document is still parsing, before body paints, which a deferred module
+      script doesn't guarantee. That also means it can't import THEME_KEY
+      from src/App.jsx — 'portfolio-theme' below must be kept in sync by
+      hand with THEME_KEY there if that key ever changes.
+    -->
+    <script>
+      try {
+        if (localStorage.getItem('portfolio-theme') === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark')
+        }
+      } catch (e) {
+        // localStorage can throw in restricted/private modes or with
+        // cookies/storage blocked — fall through and let the light :root
+        // tokens apply, same as "nothing saved".
+      }
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Portfólio de Alessandro Saldanha, desenvolvedor full-stack em Maceió. Projetos, decisões técnicas e blog." />
