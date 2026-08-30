@@ -9,6 +9,7 @@ import Blog from './pages/Blog'
 import Post from './pages/Post'
 import Sobre from './pages/Sobre'
 import Contato from './pages/Contato'
+import NotFound from './pages/NotFound'
 
 // Must match the literal key in the inline anti-FOUC script in index.html —
 // that script runs before this module even loads, so it can't import this
@@ -49,6 +50,7 @@ function App() {
         <Route path="/blog/:slug" element={<Post />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/contato" element={<Contato />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </>
